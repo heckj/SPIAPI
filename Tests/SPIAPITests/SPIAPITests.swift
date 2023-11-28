@@ -1,5 +1,5 @@
-import XCTest
 @testable import SPIAPI
+import XCTest
 
 final class SPIAPITests: XCTestCase {
     func testExample() throws {
