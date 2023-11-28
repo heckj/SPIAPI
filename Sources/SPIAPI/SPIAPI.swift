@@ -1,2 +1,8 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+import OpenAPIRuntime
+import OpenAPIURLSession
+
+
+//let client = Client(
+//    serverURL: try Servers.server2(),
+//    transport: URLSessionTransport()
+//)
