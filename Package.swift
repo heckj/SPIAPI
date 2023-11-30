@@ -39,13 +39,13 @@ let package = Package(
                     package: "swift-openapi-urlsession"
                 ),
             ],
-            path: "Sources",
-            plugins: [
-                .plugin(
-                    name: "OpenAPIGenerator",
-                    package: "swift-openapi-generator"
-                ),
-            ]
+            path: "Sources" //,
+//            plugins: [
+//                .plugin(
+//                    name: "OpenAPIGenerator",
+//                    package: "swift-openapi-generator"
+//                ),
+//            ]
         ),
         .testTarget(
             name: "SPIAPITests",
