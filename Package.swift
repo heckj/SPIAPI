@@ -39,7 +39,14 @@ let package = Package(
                     package: "swift-openapi-urlsession"
                 ),
             ],
-            path: "Sources" //,
+            path: "Sources/SPIAPI",
+            exclude: [
+                "production.openapi.json",
+                "staging.openapi.json"
+            ]
+//                "openapi.json",
+//                "openapi-generator-config.yaml"
+            // -
 //            plugins: [
 //                .plugin(
 //                    name: "OpenAPIGenerator",
