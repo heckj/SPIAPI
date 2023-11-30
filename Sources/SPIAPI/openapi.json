@@ -1298,7 +1298,10 @@
                         "type": "string"
                     },
                     "dependencies": {
-                        "$ref": "#/components/schemas/ArrayProductDependency"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProductDependency"
+                        }
                     },
                     "url": {
                         "type": "string"
