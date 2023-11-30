@@ -11,7 +11,7 @@ import struct Foundation.Date
 #endif
 import HTTPTypes
 /// Swift Package Index API
-package struct Client: APIProtocol {
+public struct Client: APIProtocol {
     /// The underlying HTTP client.
     private let client: UniversalClient
     /// Creates a new client.
@@ -22,7 +22,7 @@ package struct Client: APIProtocol {
     ///   - configuration: A set of configuration values for the client.
     ///   - transport: A transport that performs HTTP operations.
     ///   - middlewares: A list of middlewares to call before the transport.
-    package init(
+    public init(
         serverURL: Foundation.URL,
         configuration: Configuration = .init(),
         transport: any ClientTransport,
@@ -44,7 +44,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/builds/{id}/doc-report`.
     /// - Remark: Generated from `#/paths//api/builds/{id}/doc-report/post(postApiBuildsByIdDoc-report)`.
-    package func postApiBuildsByIdDoc_hyphen_report(_ input: Operations.postApiBuildsByIdDoc_hyphen_report.Input) async throws -> Operations.postApiBuildsByIdDoc_hyphen_report.Output {
+    public func postApiBuildsByIdDoc_hyphen_report(_ input: Operations.postApiBuildsByIdDoc_hyphen_report.Input) async throws -> Operations.postApiBuildsByIdDoc_hyphen_report.Output {
         try await client.send(
             input: input,
             forOperation: Operations.postApiBuildsByIdDoc_hyphen_report.id,
@@ -114,7 +114,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
     /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    package func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
+    public func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
         try await client.send(
             input: input,
             forOperation: Operations.postApiVersionsByIdBuild_hyphen_report.id,
@@ -184,7 +184,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}/badge`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/badge/get(getApiPackagesByOwnerByRepositoryBadge)`.
-    package func getApiPackagesByOwnerByRepositoryBadge(_ input: Operations.getApiPackagesByOwnerByRepositoryBadge.Input) async throws -> Operations.getApiPackagesByOwnerByRepositoryBadge.Output {
+    public func getApiPackagesByOwnerByRepositoryBadge(_ input: Operations.getApiPackagesByOwnerByRepositoryBadge.Input) async throws -> Operations.getApiPackagesByOwnerByRepositoryBadge.Output {
         try await client.send(
             input: input,
             forOperation: Operations.getApiPackagesByOwnerByRepositoryBadge.id,
@@ -253,7 +253,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/version`.
     /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    package func getApiVersion(_ input: Operations.getApiVersion.Input) async throws -> Operations.getApiVersion.Output {
+    public func getApiVersion(_ input: Operations.getApiVersion.Input) async throws -> Operations.getApiVersion.Output {
         try await client.send(
             input: input,
             forOperation: Operations.getApiVersion.id,
@@ -312,7 +312,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/search`.
     /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
-    package func getApiSearch(_ input: Operations.getApiSearch.Input) async throws -> Operations.getApiSearch.Output {
+    public func getApiSearch(_ input: Operations.getApiSearch.Input) async throws -> Operations.getApiSearch.Output {
         try await client.send(
             input: input,
             forOperation: Operations.getApiSearch.id,
@@ -392,7 +392,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
-    package func getApiPackagesByOwnerByRepository(_ input: Operations.getApiPackagesByOwnerByRepository.Input) async throws -> Operations.getApiPackagesByOwnerByRepository.Output {
+    public func getApiPackagesByOwnerByRepository(_ input: Operations.getApiPackagesByOwnerByRepository.Input) async throws -> Operations.getApiPackagesByOwnerByRepository.Output {
         try await client.send(
             input: input,
             forOperation: Operations.getApiPackagesByOwnerByRepository.id,
@@ -454,7 +454,7 @@ package struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/package-collections`.
     /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
-    package func postApiPackage_hyphen_collections(_ input: Operations.postApiPackage_hyphen_collections.Input) async throws -> Operations.postApiPackage_hyphen_collections.Output {
+    public func postApiPackage_hyphen_collections(_ input: Operations.postApiPackage_hyphen_collections.Input) async throws -> Operations.postApiPackage_hyphen_collections.Output {
         try await client.send(
             input: input,
             forOperation: Operations.postApiPackage_hyphen_collections.id,

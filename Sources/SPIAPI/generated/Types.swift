@@ -10,7 +10,7 @@ import struct Foundation.Data
 import struct Foundation.Date
 #endif
 /// A type that performs HTTP operations defined by the OpenAPI document.
-package protocol APIProtocol: Sendable {
+public protocol APIProtocol: Sendable {
     /// /api/builds/{id}/doc-report
     ///
     /// Send a documentation generation report.
@@ -70,7 +70,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/builds/{id}/doc-report`.
     /// - Remark: Generated from `#/paths//api/builds/{id}/doc-report/post(postApiBuildsByIdDoc-report)`.
-    package func postApiBuildsByIdDoc_hyphen_report(
+    public func postApiBuildsByIdDoc_hyphen_report(
         path: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Path,
         headers: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Headers = .init(),
         body: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Body
@@ -87,7 +87,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
     /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    package func postApiVersionsByIdBuild_hyphen_report(
+    public func postApiVersionsByIdBuild_hyphen_report(
         path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
         headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
         body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
@@ -104,7 +104,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}/badge`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/badge/get(getApiPackagesByOwnerByRepositoryBadge)`.
-    package func getApiPackagesByOwnerByRepositoryBadge(
+    public func getApiPackagesByOwnerByRepositoryBadge(
         path: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Path,
         query: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Query,
         headers: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Headers = .init()
@@ -121,7 +121,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/version`.
     /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    package func getApiVersion(headers: Operations.getApiVersion.Input.Headers = .init()) async throws -> Operations.getApiVersion.Output {
+    public func getApiVersion(headers: Operations.getApiVersion.Input.Headers = .init()) async throws -> Operations.getApiVersion.Output {
         try await getApiVersion(Operations.getApiVersion.Input(headers: headers))
     }
     /// /api/search
@@ -130,7 +130,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/search`.
     /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
-    package func getApiSearch(
+    public func getApiSearch(
         query: Operations.getApiSearch.Input.Query,
         headers: Operations.getApiSearch.Input.Headers = .init()
     ) async throws -> Operations.getApiSearch.Output {
@@ -145,7 +145,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
-    package func getApiPackagesByOwnerByRepository(
+    public func getApiPackagesByOwnerByRepository(
         path: Operations.getApiPackagesByOwnerByRepository.Input.Path,
         headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers = .init()
     ) async throws -> Operations.getApiPackagesByOwnerByRepository.Output {
@@ -160,7 +160,7 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /api/package-collections`.
     /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
-    package func postApiPackage_hyphen_collections(
+    public func postApiPackage_hyphen_collections(
         headers: Operations.postApiPackage_hyphen_collections.Input.Headers = .init(),
         body: Operations.postApiPackage_hyphen_collections.Input.Body
     ) async throws -> Operations.postApiPackage_hyphen_collections.Output {
@@ -172,32 +172,32 @@ extension APIProtocol {
 }
 
 /// Server URLs defined in the OpenAPI document.
-package enum Servers {}
+public enum Servers {}
 
 /// Types generated from the components section of the OpenAPI document.
-package enum Components {
+public enum Components {
     /// Types generated from the `#/components/schemas` section of the OpenAPI document.
-    package enum Schemas {
+    public enum Schemas {
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection`.
-        package struct PackageCollectionModelV1SignedCollection: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1SignedCollection: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/revision`.
-            package var revision: Swift.Int64?
+            public var revision: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedAt`.
-            package var generatedAt: Foundation.Date
+            public var generatedAt: Foundation.Date
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/name`.
-            package var name: Swift.String
+            public var name: Swift.String
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/keywords`.
-            package var keywords: [Swift.String]?
+            public var keywords: [Swift.String]?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/overview`.
-            package var overview: Swift.String?
+            public var overview: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/signature`.
-            package var signature: Components.Schemas.PackageCollectionModelV1Signature
+            public var signature: Components.Schemas.PackageCollectionModelV1Signature
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/formatVersion`.
-            package var formatVersion: Swift.String
+            public var formatVersion: Swift.String
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/packages`.
-            package var packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage]
+            public var packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage]
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedBy`.
-            package var generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor?
+            public var generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor?
             /// Creates a new `PackageCollectionModelV1SignedCollection`.
             ///
             /// - Parameters:
@@ -210,7 +210,7 @@ package enum Components {
             ///   - formatVersion:
             ///   - packages:
             ///   - generatedBy:
-            package init(
+            public init(
                 revision: Swift.Int64? = nil,
                 generatedAt: Foundation.Date,
                 name: Swift.String,
@@ -231,7 +231,7 @@ package enum Components {
                 self.packages = packages
                 self.generatedBy = generatedBy
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case revision
                 case generatedAt
                 case name
@@ -244,20 +244,20 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel`.
-        package struct SearchFilterViewModel: Codable, Hashable, Sendable {
+        public struct SearchFilterViewModel: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/value`.
-            package var value: Swift.String
+            public var value: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/key`.
-            package var key: Swift.String
+            public var key: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/operator`.
-            package var _operator: Swift.String
+            public var _operator: Swift.String
             /// Creates a new `SearchFilterViewModel`.
             ///
             /// - Parameters:
             ///   - value:
             ///   - key:
             ///   - _operator:
-            package init(
+            public init(
                 value: Swift.String,
                 key: Swift.String,
                 _operator: Swift.String
@@ -266,14 +266,14 @@ package enum Components {
                 self.key = key
                 self._operator = _operator
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case value
                 case key
                 case _operator = "operator"
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformCompatibility`.
-        @frozen package enum APIPackageControllerGetRouteModelPlatformCompatibility: String, Codable, Hashable, Sendable {
+        @frozen public enum APIPackageControllerGetRouteModelPlatformCompatibility: String, Codable, Hashable, Sendable {
             case iOS = "iOS"
             case linux = "linux"
             case macOS = "macOS"
@@ -282,66 +282,66 @@ package enum Components {
             case watchOS = "watchOS"
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
-        package struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/results`.
-            package var results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults
+            public var results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/referenceName`.
-            package var referenceName: Swift.String
+            public var referenceName: Swift.String
             /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
             ///
             /// - Parameters:
             ///   - results:
             ///   - referenceName:
-            package init(
+            public init(
                 results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults,
                 referenceName: Swift.String
             ) {
                 self.results = results
                 self.referenceName = referenceName
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case results
                 case referenceName
             }
         }
         /// - Remark: Generated from `#/components/schemas/DocArchive`.
-        package struct DocArchive: Codable, Hashable, Sendable {
+        public struct DocArchive: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/DocArchive/name`.
-            package var name: Swift.String
+            public var name: Swift.String
             /// - Remark: Generated from `#/components/schemas/DocArchive/title`.
-            package var title: Swift.String
+            public var title: Swift.String
             /// Creates a new `DocArchive`.
             ///
             /// - Parameters:
             ///   - name:
             ///   - title:
-            package init(
+            public init(
                 name: Swift.String,
                 title: Swift.String
             ) {
                 self.name = name
                 self.title = title
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case name
                 case title
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
-        package struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/stable`.
-            package var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/latest`.
-            package var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/beta`.
-            package var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
             /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
             ///
             /// - Parameters:
             ///   - stable:
             ///   - latest:
             ///   - beta:
-            package init(
+            public init(
                 stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
                 latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
                 beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil
@@ -350,44 +350,44 @@ package enum Components {
                 self.latest = latest
                 self.beta = beta
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case stable
                 case latest
                 case beta
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO`.
-        package struct APIPostPackageCollectionDTO: Codable, Hashable, Sendable {
+        public struct APIPostPackageCollectionDTO: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/collectionName`.
-            package var collectionName: Swift.String?
+            public var collectionName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/selection`.
-            package struct selectionPayload: Codable, Hashable, Sendable {
+            public struct selectionPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: Components.Schemas._Any]
+                public var additionalProperties: [String: Components.Schemas._Any]
                 /// Creates a new `selectionPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/selection`.
-            package var selection: Components.Schemas.APIPostPackageCollectionDTO.selectionPayload
+            public var selection: Components.Schemas.APIPostPackageCollectionDTO.selectionPayload
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/keywords`.
-            package var keywords: [Swift.String]?
+            public var keywords: [Swift.String]?
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/overview`.
-            package var overview: Swift.String?
+            public var overview: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/authorName`.
-            package var authorName: Swift.String?
+            public var authorName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/revision`.
-            package var revision: Swift.Int64?
+            public var revision: Swift.Int64?
             /// Creates a new `APIPostPackageCollectionDTO`.
             ///
             /// - Parameters:
@@ -397,7 +397,7 @@ package enum Components {
             ///   - overview:
             ///   - authorName:
             ///   - revision:
-            package init(
+            public init(
                 collectionName: Swift.String? = nil,
                 selection: Components.Schemas.APIPostPackageCollectionDTO.selectionPayload,
                 keywords: [Swift.String]? = nil,
@@ -412,7 +412,7 @@ package enum Components {
                 self.authorName = authorName
                 self.revision = revision
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case collectionName
                 case selection
                 case keywords
@@ -422,21 +422,21 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage`.
-        package struct PackageCollectionModelV1CollectionPackage: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1CollectionPackage: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/identity`.
-            package var identity: Swift.String?
+            public var identity: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/versions`.
-            package var versions: Swift.String
+            public var versions: Swift.String
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/readmeURL`.
-            package var readmeURL: Swift.String?
+            public var readmeURL: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/url`.
-            package var url: Swift.String
+            public var url: Swift.String
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/license`.
-            package var license: Components.Schemas.PackageCollectionModelV1License?
+            public var license: Components.Schemas.PackageCollectionModelV1License?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/keywords`.
-            package var keywords: [Swift.String]?
+            public var keywords: [Swift.String]?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/summary`.
-            package var summary: Swift.String?
+            public var summary: Swift.String?
             /// Creates a new `PackageCollectionModelV1CollectionPackage`.
             ///
             /// - Parameters:
@@ -447,7 +447,7 @@ package enum Components {
             ///   - license:
             ///   - keywords:
             ///   - summary:
-            package init(
+            public init(
                 identity: Swift.String? = nil,
                 versions: Swift.String,
                 readmeURL: Swift.String? = nil,
@@ -464,7 +464,7 @@ package enum Components {
                 self.keywords = keywords
                 self.summary = summary
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case identity
                 case versions
                 case readmeURL
@@ -475,21 +475,21 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO`.
-        package struct APIPostDocReportDTO: Codable, Hashable, Sendable {
+        public struct APIPostDocReportDTO: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/error`.
-            package var error: Swift.String?
+            public var error: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/fileCount`.
-            package var fileCount: Swift.Int64?
+            public var fileCount: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/docArchives`.
-            package var docArchives: [Components.Schemas.DocArchive]?
+            public var docArchives: [Components.Schemas.DocArchive]?
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/status`.
-            package var status: Swift.String
+            public var status: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/mbSize`.
-            package var mbSize: Swift.Int64?
+            public var mbSize: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/linkablePathsCount`.
-            package var linkablePathsCount: Swift.Int64?
+            public var linkablePathsCount: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/logUrl`.
-            package var logUrl: Swift.String?
+            public var logUrl: Swift.String?
             /// Creates a new `APIPostDocReportDTO`.
             ///
             /// - Parameters:
@@ -500,7 +500,7 @@ package enum Components {
             ///   - mbSize:
             ///   - linkablePathsCount:
             ///   - logUrl:
-            package init(
+            public init(
                 error: Swift.String? = nil,
                 fileCount: Swift.Int64? = nil,
                 docArchives: [Components.Schemas.DocArchive]? = nil,
@@ -517,7 +517,7 @@ package enum Components {
                 self.linkablePathsCount = linkablePathsCount
                 self.logUrl = logUrl
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case error
                 case fileCount
                 case docArchives
@@ -528,65 +528,65 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor`.
-        package struct PackageCollectionModelV1CollectionAuthor: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1CollectionAuthor: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor/name`.
-            package var name: Swift.String
+            public var name: Swift.String
             /// Creates a new `PackageCollectionModelV1CollectionAuthor`.
             ///
             /// - Parameters:
             ///   - name:
-            package init(name: Swift.String) {
+            public init(name: Swift.String) {
                 self.name = name
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case name
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
-        package struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/results`.
-            package var results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults
+            public var results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/referenceName`.
-            package var referenceName: Swift.String
+            public var referenceName: Swift.String
             /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
             ///
             /// - Parameters:
             ///   - results:
             ///   - referenceName:
-            package init(
+            public init(
                 results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults,
                 referenceName: Swift.String
             ) {
                 self.results = results
                 self.referenceName = referenceName
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case results
                 case referenceName
             }
         }
         /// - Remark: Generated from `#/components/schemas/SearchPackageResult`.
-        package struct SearchPackageResult: Codable, Hashable, Sendable {
+        public struct SearchPackageResult: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/summary`.
-            package var summary: Swift.String?
+            public var summary: Swift.String?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/hasDocs`.
-            package var hasDocs: Swift.Bool
+            public var hasDocs: Swift.Bool
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/lastActivityAt`.
-            package var lastActivityAt: Foundation.Date?
+            public var lastActivityAt: Foundation.Date?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageId`.
-            package var packageId: Swift.String
+            public var packageId: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageName`.
-            package var packageName: Swift.String?
+            public var packageName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/repositoryOwner`.
-            package var repositoryOwner: Swift.String
+            public var repositoryOwner: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/repositoryName`.
-            package var repositoryName: Swift.String
+            public var repositoryName: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/stars`.
-            package var stars: Swift.Int64?
+            public var stars: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/keywords`.
-            package var keywords: [Swift.String]?
+            public var keywords: [Swift.String]?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageURL`.
-            package var packageURL: Swift.String
+            public var packageURL: Swift.String
             /// Creates a new `SearchPackageResult`.
             ///
             /// - Parameters:
@@ -600,7 +600,7 @@ package enum Components {
             ///   - stars:
             ///   - keywords:
             ///   - packageURL:
-            package init(
+            public init(
                 summary: Swift.String? = nil,
                 hasDocs: Swift.Bool,
                 lastActivityAt: Foundation.Date? = nil,
@@ -623,7 +623,7 @@ package enum Components {
                 self.keywords = keywords
                 self.packageURL = packageURL
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case summary
                 case hasDocs
                 case lastActivityAt
@@ -637,60 +637,60 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget`.
-        package struct APIPackageControllerGetRouteModelTarget: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelTarget: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/name`.
-            package var name: Swift.String
+            public var name: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
-            package struct _typePayload: Codable, Hashable, Sendable {
+            public struct _typePayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: Components.Schemas._Any]
+                public var additionalProperties: [String: Components.Schemas._Any]
                 /// Creates a new `_typePayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
-            package var _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
+            public var _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
             /// Creates a new `APIPackageControllerGetRouteModelTarget`.
             ///
             /// - Parameters:
             ///   - name:
             ///   - _type:
-            package init(
+            public init(
                 name: Swift.String,
                 _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
             ) {
                 self.name = name
                 self._type = _type
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case name
                 case _type = "type"
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults`.
-        package struct APIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/linux`.
-            package var linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/tvOS`.
-            package var tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/iOS`.
-            package var iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/visionOS`.
-            package var visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/macOS`.
-            package var macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/watchOS`.
-            package var watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            public var watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
             /// Creates a new `APIPackageControllerGetRouteModelPlatformResults`.
             ///
             /// - Parameters:
@@ -700,7 +700,7 @@ package enum Components {
             ///   - visionOS:
             ///   - macOS:
             ///   - watchOS:
-            package init(
+            public init(
                 linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
                 tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
                 iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
@@ -715,7 +715,7 @@ package enum Components {
                 self.macOS = macOS
                 self.watchOS = watchOS
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case linux
                 case tvOS
                 case iOS
@@ -725,20 +725,20 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/SwiftVersion`.
-        package struct SwiftVersion: Codable, Hashable, Sendable {
+        public struct SwiftVersion: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/SwiftVersion/major`.
-            package var major: Swift.Int64
+            public var major: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/SwiftVersion/patch`.
-            package var patch: Swift.Int64
+            public var patch: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/SwiftVersion/minor`.
-            package var minor: Swift.Int64
+            public var minor: Swift.Int64
             /// Creates a new `SwiftVersion`.
             ///
             /// - Parameters:
             ///   - major:
             ///   - patch:
             ///   - minor:
-            package init(
+            public init(
                 major: Swift.Int64,
                 patch: Swift.Int64,
                 minor: Swift.Int64
@@ -747,26 +747,26 @@ package enum Components {
                 self.patch = patch
                 self.minor = minor
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case major
                 case patch
                 case minor
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity`.
-        package struct APIPackageControllerGetRouteModelActivity: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelActivity: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesURL`.
-            package var openIssuesURL: Swift.String?
+            public var openIssuesURL: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesCount`.
-            package var openIssuesCount: Swift.Int64
+            public var openIssuesCount: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsURL`.
-            package var openPullRequestsURL: Swift.String?
+            public var openPullRequestsURL: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastIssueClosedAt`.
-            package var lastIssueClosedAt: Foundation.Date?
+            public var lastIssueClosedAt: Foundation.Date?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastPullRequestClosedAt`.
-            package var lastPullRequestClosedAt: Foundation.Date?
+            public var lastPullRequestClosedAt: Foundation.Date?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsCount`.
-            package var openPullRequestsCount: Swift.Int64
+            public var openPullRequestsCount: Swift.Int64
             /// Creates a new `APIPackageControllerGetRouteModelActivity`.
             ///
             /// - Parameters:
@@ -776,7 +776,7 @@ package enum Components {
             ///   - lastIssueClosedAt:
             ///   - lastPullRequestClosedAt:
             ///   - openPullRequestsCount:
-            package init(
+            public init(
                 openIssuesURL: Swift.String? = nil,
                 openIssuesCount: Swift.Int64,
                 openPullRequestsURL: Swift.String? = nil,
@@ -791,7 +791,7 @@ package enum Components {
                 self.lastPullRequestClosedAt = lastPullRequestClosedAt
                 self.openPullRequestsCount = openPullRequestsCount
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case openIssuesURL
                 case openIssuesCount
                 case openPullRequestsURL
@@ -801,17 +801,17 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory`.
-        package struct APIPackageControllerGetRouteModelHistory: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelHistory: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCount`.
-            package var releaseCount: Swift.Int64
+            public var releaseCount: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCountURL`.
-            package var commitCountURL: Swift.String
+            public var commitCountURL: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCountURL`.
-            package var releaseCountURL: Swift.String
+            public var releaseCountURL: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/createdAt`.
-            package var createdAt: Foundation.Date
+            public var createdAt: Foundation.Date
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCount`.
-            package var commitCount: Swift.Int64
+            public var commitCount: Swift.Int64
             /// Creates a new `APIPackageControllerGetRouteModelHistory`.
             ///
             /// - Parameters:
@@ -820,7 +820,7 @@ package enum Components {
             ///   - releaseCountURL:
             ///   - createdAt:
             ///   - commitCount:
-            package init(
+            public init(
                 releaseCount: Swift.Int64,
                 commitCountURL: Swift.String,
                 releaseCountURL: Swift.String,
@@ -833,7 +833,7 @@ package enum Components {
                 self.createdAt = createdAt
                 self.commitCount = commitCount
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case releaseCount
                 case commitCountURL
                 case releaseCountURL
@@ -842,70 +842,70 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/Link`.
-        package struct Link: Codable, Hashable, Sendable {
+        public struct Link: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/Link/url`.
-            package var url: Swift.String
+            public var url: Swift.String
             /// - Remark: Generated from `#/components/schemas/Link/label`.
-            package var label: Swift.String
+            public var label: Swift.String
             /// Creates a new `Link`.
             ///
             /// - Parameters:
             ///   - url:
             ///   - label:
-            package init(
+            public init(
                 url: Swift.String,
                 label: Swift.String
             ) {
                 self.url = url
                 self.label = label
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case url
                 case label
             }
         }
         /// - Remark: Generated from `#/components/schemas/DateLink`.
-        package struct DateLink: Codable, Hashable, Sendable {
+        public struct DateLink: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/DateLink/date`.
-            package var date: Foundation.Date
+            public var date: Foundation.Date
             /// - Remark: Generated from `#/components/schemas/DateLink/link`.
-            package var link: Components.Schemas.Link
+            public var link: Components.Schemas.Link
             /// Creates a new `DateLink`.
             ///
             /// - Parameters:
             ///   - date:
             ///   - link:
-            package init(
+            public init(
                 date: Foundation.Date,
                 link: Components.Schemas.Link
             ) {
                 self.date = date
                 self.link = link
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case date
                 case link
             }
         }
         /// - Remark: Generated from `#/components/schemas/Reference`.
-        package struct Reference: Codable, Hashable, Sendable {
+        public struct Reference: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/Reference/branch`.
-            package var branch: Swift.String
+            public var branch: Swift.String
             /// Creates a new `Reference`.
             ///
             /// - Parameters:
             ///   - branch:
-            package init(branch: Swift.String) {
+            public init(branch: Swift.String) {
                 self.branch = branch
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case branch
             }
         }
         /// - Remark: Generated from `#/components/schemas/ProductDependency`.
-        package struct ProductDependency: Codable, Hashable, Sendable {
+        public struct ProductDependency: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/ProductDependency/identity`.
-            package var identity: Swift.String {
+            public var identity: Swift.String {
                 get  {
                     storage.value.identity
                 }
@@ -914,7 +914,7 @@ package enum Components {
                 }
             }
             /// - Remark: Generated from `#/components/schemas/ProductDependency/name`.
-            package var name: Swift.String {
+            public var name: Swift.String {
                 get  {
                     storage.value.name
                 }
@@ -923,7 +923,7 @@ package enum Components {
                 }
             }
             /// - Remark: Generated from `#/components/schemas/ProductDependency/dependencies`.
-            package var dependencies: [Components.Schemas.ProductDependency] {
+            public var dependencies: [Components.Schemas.ProductDependency] {
                 get  {
                     storage.value.dependencies
                 }
@@ -932,7 +932,7 @@ package enum Components {
                 }
             }
             /// - Remark: Generated from `#/components/schemas/ProductDependency/url`.
-            package var url: Swift.String {
+            public var url: Swift.String {
                 get  {
                     storage.value.url
                 }
@@ -947,7 +947,7 @@ package enum Components {
             ///   - name:
             ///   - dependencies:
             ///   - url:
-            package init(
+            public init(
                 identity: Swift.String,
                 name: Swift.String,
                 dependencies: [Components.Schemas.ProductDependency],
@@ -960,16 +960,16 @@ package enum Components {
                     url: url
                 ))
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case identity
                 case name
                 case dependencies
                 case url
             }
-            package init(from decoder: any Decoder) throws {
+            public init(from decoder: any Decoder) throws {
                 storage = try .init(from: decoder)
             }
-            package func encode(to encoder: any Encoder) throws {
+            public func encode(to encoder: any Encoder) throws {
                 try storage.encode(to: encoder)
             }
             /// Internal reference storage to allow type recursion.
@@ -998,44 +998,44 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
-        package struct APIPackageControllerGetRouteModelBuildResultSwiftVersion: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelBuildResultSwiftVersion: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/status`.
-            package var status: Swift.String
+            public var status: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/parameter`.
-            package var parameter: Components.Schemas.SwiftVersion
+            public var parameter: Components.Schemas.SwiftVersion
             /// Creates a new `APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
             ///
             /// - Parameters:
             ///   - status:
             ///   - parameter:
-            package init(
+            public init(
                 status: Swift.String,
                 parameter: Components.Schemas.SwiftVersion
             ) {
                 self.status = status
                 self.parameter = parameter
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case status
                 case parameter
             }
         }
         /// - Remark: Generated from `#/components/schemas/Badge`.
-        package struct Badge: Codable, Hashable, Sendable {
+        public struct Badge: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/Badge/color`.
-            package var color: Swift.String
+            public var color: Swift.String
             /// - Remark: Generated from `#/components/schemas/Badge/cacheSeconds`.
-            package var cacheSeconds: Swift.Int64
+            public var cacheSeconds: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/Badge/logoSvg`.
-            package var logoSvg: Swift.String?
+            public var logoSvg: Swift.String?
             /// - Remark: Generated from `#/components/schemas/Badge/isError`.
-            package var isError: Swift.Bool
+            public var isError: Swift.Bool
             /// - Remark: Generated from `#/components/schemas/Badge/message`.
-            package var message: Swift.String
+            public var message: Swift.String
             /// - Remark: Generated from `#/components/schemas/Badge/schemaVersion`.
-            package var schemaVersion: Swift.Int64
+            public var schemaVersion: Swift.Int64
             /// - Remark: Generated from `#/components/schemas/Badge/label`.
-            package var label: Swift.String
+            public var label: Swift.String
             /// Creates a new `Badge`.
             ///
             /// - Parameters:
@@ -1046,7 +1046,7 @@ package enum Components {
             ///   - message:
             ///   - schemaVersion:
             ///   - label:
-            package init(
+            public init(
                 color: Swift.String,
                 cacheSeconds: Swift.Int64,
                 logoSvg: Swift.String? = nil,
@@ -1063,7 +1063,7 @@ package enum Components {
                 self.schemaVersion = schemaVersion
                 self.label = label
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case color
                 case cacheSeconds
                 case logoSvg
@@ -1074,68 +1074,68 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License`.
-        package struct PackageCollectionModelV1License: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1License: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License/name`.
-            package var name: Swift.String?
+            public var name: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License/url`.
-            package var url: Swift.String
+            public var url: Swift.String
             /// Creates a new `PackageCollectionModelV1License`.
             ///
             /// - Parameters:
             ///   - name:
             ///   - url:
-            package init(
+            public init(
                 name: Swift.String? = nil,
                 url: Swift.String
             ) {
                 self.name = name
                 self.url = url
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case name
                 case url
             }
         }
         /// - Remark: Generated from `#/components/schemas/Any`.
-        package struct _Any: Codable, Hashable, Sendable {
+        public struct _Any: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/Any/_0`.
-            package var _0: Components.Schemas.SearchPackageResult
+            public var _0: Components.Schemas.SearchPackageResult
             /// Creates a new `_Any`.
             ///
             /// - Parameters:
             ///   - _0:
-            package init(_0: Components.Schemas.SearchPackageResult) {
+            public init(_0: Components.Schemas.SearchPackageResult) {
                 self._0 = _0
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case _0
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate`.
-        package struct PackageCollectionModelV1SignatureCertificate: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1SignatureCertificate: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate/subject`.
-            package var subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
+            public var subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate/issuer`.
-            package var issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
+            public var issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             /// Creates a new `PackageCollectionModelV1SignatureCertificate`.
             ///
             /// - Parameters:
             ///   - subject:
             ///   - issuer:
-            package init(
+            public init(
                 subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName,
                 issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             ) {
                 self.subject = subject
                 self.issuer = issuer
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case subject
                 case issuer
             }
         }
         /// - Remark: Generated from `#/components/schemas/BuildPlatform`.
-        @frozen package enum BuildPlatform: String, Codable, Hashable, Sendable {
+        @frozen public enum BuildPlatform: String, Codable, Hashable, Sendable {
             case ios = "ios"
             case linux = "linux"
             case macos_hyphen_spm = "macos-spm"
@@ -1145,35 +1145,35 @@ package enum Components {
             case watchos = "watchos"
         }
         /// - Remark: Generated from `#/components/schemas/SearchResponse`.
-        package struct SearchResponse: Codable, Hashable, Sendable {
+        public struct SearchResponse: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/SearchResponse/searchTerm`.
-            package var searchTerm: Swift.String
+            public var searchTerm: Swift.String
             /// - Remark: Generated from `#/components/schemas/SearchResponse/resultsPayload`.
-            package struct resultsPayloadPayload: Codable, Hashable, Sendable {
+            public struct resultsPayloadPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: Components.Schemas._Any]
+                public var additionalProperties: [String: Components.Schemas._Any]
                 /// Creates a new `resultsPayloadPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/SearchResponse/results`.
-            package typealias resultsPayload = [Components.Schemas.SearchResponse.resultsPayloadPayload]
+            public typealias resultsPayload = [Components.Schemas.SearchResponse.resultsPayloadPayload]
             /// - Remark: Generated from `#/components/schemas/SearchResponse/results`.
-            package var results: Components.Schemas.SearchResponse.resultsPayload
+            public var results: Components.Schemas.SearchResponse.resultsPayload
             /// - Remark: Generated from `#/components/schemas/SearchResponse/hasMoreResults`.
-            package var hasMoreResults: Swift.Bool
+            public var hasMoreResults: Swift.Bool
             /// - Remark: Generated from `#/components/schemas/SearchResponse/searchFilters`.
-            package var searchFilters: [Components.Schemas.SearchFilterViewModel]
+            public var searchFilters: [Components.Schemas.SearchFilterViewModel]
             /// Creates a new `SearchResponse`.
             ///
             /// - Parameters:
@@ -1181,7 +1181,7 @@ package enum Components {
             ///   - results:
             ///   - hasMoreResults:
             ///   - searchFilters:
-            package init(
+            public init(
                 searchTerm: Swift.String,
                 results: Components.Schemas.SearchResponse.resultsPayload,
                 hasMoreResults: Swift.Bool,
@@ -1192,7 +1192,7 @@ package enum Components {
                 self.hasMoreResults = hasMoreResults
                 self.searchFilters = searchFilters
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case searchTerm
                 case results
                 case hasMoreResults
@@ -1200,43 +1200,43 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/ResolvedDependency`.
-        package struct ResolvedDependency: Codable, Hashable, Sendable {
+        public struct ResolvedDependency: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/ResolvedDependency/repositoryURL`.
-            package var repositoryURL: Swift.String
+            public var repositoryURL: Swift.String
             /// - Remark: Generated from `#/components/schemas/ResolvedDependency/packageName`.
-            package var packageName: Swift.String
+            public var packageName: Swift.String
             /// Creates a new `ResolvedDependency`.
             ///
             /// - Parameters:
             ///   - repositoryURL:
             ///   - packageName:
-            package init(
+            public init(
                 repositoryURL: Swift.String,
                 packageName: Swift.String
             ) {
                 self.repositoryURL = repositoryURL
                 self.packageName = packageName
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case repositoryURL
                 case packageName
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
-        package struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/stable`.
-            package var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/beta`.
-            package var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/latest`.
-            package var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
             /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
             ///
             /// - Parameters:
             ///   - stable:
             ///   - beta:
             ///   - latest:
-            package init(
+            public init(
                 stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
                 beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
                 latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil
@@ -1245,27 +1245,27 @@ package enum Components {
                 self.beta = beta
                 self.latest = latest
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case stable
                 case beta
                 case latest
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo`.
-        package struct APIPackageControllerGetRouteModelReleaseInfo: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelReleaseInfo: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/stable`.
-            package var stable: Components.Schemas.DateLink?
+            public var stable: Components.Schemas.DateLink?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/latest`.
-            package var latest: Components.Schemas.DateLink?
+            public var latest: Components.Schemas.DateLink?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/beta`.
-            package var beta: Components.Schemas.DateLink?
+            public var beta: Components.Schemas.DateLink?
             /// Creates a new `APIPackageControllerGetRouteModelReleaseInfo`.
             ///
             /// - Parameters:
             ///   - stable:
             ///   - latest:
             ///   - beta:
-            package init(
+            public init(
                 stable: Components.Schemas.DateLink? = nil,
                 latest: Components.Schemas.DateLink? = nil,
                 beta: Components.Schemas.DateLink? = nil
@@ -1274,37 +1274,37 @@ package enum Components {
                 self.latest = latest
                 self.beta = beta
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case stable
                 case latest
                 case beta
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
-        package struct APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/parameter`.
-            package var parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility
+            public var parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/status`.
-            package var status: Swift.String
+            public var status: Swift.String
             /// Creates a new `APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
             ///
             /// - Parameters:
             ///   - parameter:
             ///   - status:
-            package init(
+            public init(
                 parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility,
                 status: Swift.String
             ) {
                 self.parameter = parameter
                 self.status = status
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case parameter
                 case status
             }
         }
         /// - Remark: Generated from `#/components/schemas/License`.
-        @frozen package enum License: String, Codable, Hashable, Sendable {
+        @frozen public enum License: String, Codable, Hashable, Sendable {
             case afl_hyphen_3_period_0 = "afl-3.0"
             case apache_hyphen_2_period_0 = "apache-2.0"
             case artistic_hyphen_2_period_0 = "artistic-2.0"
@@ -1340,71 +1340,71 @@ package enum Components {
             case none = "none"
         }
         /// - Remark: Generated from `#/components/schemas/APIVersion`.
-        package struct APIVersion: Codable, Hashable, Sendable {
+        public struct APIVersion: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIVersion/version`.
-            package var version: Swift.String
+            public var version: Swift.String
             /// Creates a new `APIVersion`.
             ///
             /// - Parameters:
             ///   - version:
-            package init(version: Swift.String) {
+            public init(version: Swift.String) {
                 self.version = version
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case version
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelProduct`.
-        package struct APIPackageControllerGetRouteModelProduct: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelProduct: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelProduct/name`.
-            package var name: Swift.String
+            public var name: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelProduct/type`.
-            package struct _typePayload: Codable, Hashable, Sendable {
+            public struct _typePayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: Components.Schemas._Any]
+                public var additionalProperties: [String: Components.Schemas._Any]
                 /// Creates a new `_typePayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelProduct/type`.
-            package var _type: Components.Schemas.APIPackageControllerGetRouteModelProduct._typePayload
+            public var _type: Components.Schemas.APIPackageControllerGetRouteModelProduct._typePayload
             /// Creates a new `APIPackageControllerGetRouteModelProduct`.
             ///
             /// - Parameters:
             ///   - name:
             ///   - _type:
-            package init(
+            public init(
                 name: Swift.String,
                 _type: Components.Schemas.APIPackageControllerGetRouteModelProduct._typePayload
             ) {
                 self.name = name
                 self._type = _type
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case name
                 case _type = "type"
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults`.
-        package struct APIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_7`.
-            package var v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            public var v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_6`.
-            package var v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            public var v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_8`.
-            package var v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            public var v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_9`.
-            package var v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            public var v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
             /// Creates a new `APIPackageControllerGetRouteModelSwiftVersionResults`.
             ///
             /// - Parameters:
@@ -1412,7 +1412,7 @@ package enum Components {
             ///   - v5_6:
             ///   - v5_8:
             ///   - v5_9:
-            package init(
+            public init(
                 v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
                 v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
                 v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
@@ -1423,7 +1423,7 @@ package enum Components {
                 self.v5_8 = v5_8
                 self.v5_9 = v5_9
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case v5_7
                 case v5_6
                 case v5_8
@@ -1431,15 +1431,15 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName`.
-        package struct PackageCollectionModelV1SignatureCertificateName: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1SignatureCertificateName: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organizationalUnit`.
-            package var organizationalUnit: Swift.String?
+            public var organizationalUnit: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/commonName`.
-            package var commonName: Swift.String?
+            public var commonName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organization`.
-            package var organization: Swift.String?
+            public var organization: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/userID`.
-            package var userID: Swift.String?
+            public var userID: Swift.String?
             /// Creates a new `PackageCollectionModelV1SignatureCertificateName`.
             ///
             /// - Parameters:
@@ -1447,7 +1447,7 @@ package enum Components {
             ///   - commonName:
             ///   - organization:
             ///   - userID:
-            package init(
+            public init(
                 organizationalUnit: Swift.String? = nil,
                 commonName: Swift.String? = nil,
                 organization: Swift.String? = nil,
@@ -1458,7 +1458,7 @@ package enum Components {
                 self.organization = organization
                 self.userID = userID
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case organizationalUnit
                 case commonName
                 case organization
@@ -1466,52 +1466,52 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signature`.
-        package struct PackageCollectionModelV1Signature: Codable, Hashable, Sendable {
+        public struct PackageCollectionModelV1Signature: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signature/certificate`.
-            package var certificate: Components.Schemas.PackageCollectionModelV1SignatureCertificate
+            public var certificate: Components.Schemas.PackageCollectionModelV1SignatureCertificate
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signature/signature`.
-            package var signature: Swift.String
+            public var signature: Swift.String
             /// Creates a new `PackageCollectionModelV1Signature`.
             ///
             /// - Parameters:
             ///   - certificate:
             ///   - signature:
-            package init(
+            public init(
                 certificate: Components.Schemas.PackageCollectionModelV1SignatureCertificate,
                 signature: Swift.String
             ) {
                 self.certificate = certificate
                 self.signature = signature
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case certificate
                 case signature
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO`.
-        package struct APIPostBuildReportDTO: Codable, Hashable, Sendable {
+        public struct APIPostBuildReportDTO: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildCommand`.
-            package var buildCommand: Swift.String?
+            public var buildCommand: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/status`.
-            package var status: Swift.String
+            public var status: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/jobUrl`.
-            package var jobUrl: Swift.String?
+            public var jobUrl: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/logUrl`.
-            package var logUrl: Swift.String?
+            public var logUrl: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/platform`.
-            package var platform: Components.Schemas.BuildPlatform
+            public var platform: Components.Schemas.BuildPlatform
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/swiftVersion`.
-            package var swiftVersion: Components.Schemas.SwiftVersion
+            public var swiftVersion: Components.Schemas.SwiftVersion
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildId`.
-            package var buildId: Swift.String
+            public var buildId: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/runnerId`.
-            package var runnerId: Swift.String?
+            public var runnerId: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/productDependencies`.
-            package var productDependencies: [Components.Schemas.ProductDependency]?
+            public var productDependencies: [Components.Schemas.ProductDependency]?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/builderVersion`.
-            package var builderVersion: Swift.String?
+            public var builderVersion: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/resolvedDependencies`.
-            package var resolvedDependencies: [Components.Schemas.ResolvedDependency]?
+            public var resolvedDependencies: [Components.Schemas.ResolvedDependency]?
             /// Creates a new `APIPostBuildReportDTO`.
             ///
             /// - Parameters:
@@ -1526,7 +1526,7 @@ package enum Components {
             ///   - productDependencies:
             ///   - builderVersion:
             ///   - resolvedDependencies:
-            package init(
+            public init(
                 buildCommand: Swift.String? = nil,
                 status: Swift.String,
                 jobUrl: Swift.String? = nil,
@@ -1551,7 +1551,7 @@ package enum Components {
                 self.builderVersion = builderVersion
                 self.resolvedDependencies = resolvedDependencies
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case buildCommand
                 case status
                 case jobUrl
@@ -1566,101 +1566,101 @@ package enum Components {
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel`.
-        package struct APIPackageControllerGetRouteModel: Codable, Hashable, Sendable {
+        public struct APIPackageControllerGetRouteModel: Codable, Hashable, Sendable {
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionCompatibility`.
-            package var swiftVersionCompatibility: [Components.Schemas.SwiftVersion]?
+            public var swiftVersionCompatibility: [Components.Schemas.SwiftVersion]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/weightedKeywords`.
-            package var weightedKeywords: Swift.String
+            public var weightedKeywords: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/keywords`.
-            package var keywords: [Swift.String]?
+            public var keywords: [Swift.String]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/packageId`.
-            package var packageId: Swift.String
+            public var packageId: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/summary`.
-            package var summary: Swift.String?
+            public var summary: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/license`.
-            package var license: Components.Schemas.License
+            public var license: Components.Schemas.License
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformBuildInfo`.
-            package var platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults?
+            public var platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/products`.
-            package var products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]?
+            public var products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
-            package struct authorsPayload: Codable, Hashable, Sendable {
+            public struct authorsPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: Components.Schemas._Any]
+                public var additionalProperties: [String: Components.Schemas._Any]
                 /// Creates a new `authorsPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
-            package var authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload?
+            public var authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/activity`.
-            package var activity: Components.Schemas.APIPackageControllerGetRouteModelActivity?
+            public var activity: Components.Schemas.APIPackageControllerGetRouteModelActivity?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/score`.
-            package var score: Swift.Int64?
+            public var score: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/title`.
-            package var title: Swift.String
+            public var title: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwner`.
-            package var repositoryOwner: Swift.String
+            public var repositoryOwner: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformCompatibility`.
-            package var platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]?
+            public var platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/targets`.
-            package var targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]?
+            public var targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releaseReferences`.
-            package var releaseReferences: [Components.Schemas.Reference]
+            public var releaseReferences: [Components.Schemas.Reference]
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/dependencies`.
-            package var dependencies: [Components.Schemas.ResolvedDependency]?
+            public var dependencies: [Components.Schemas.ResolvedDependency]?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/url`.
-            package var url: Swift.String
+            public var url: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/homepageUrl`.
-            package var homepageUrl: Swift.String?
+            public var homepageUrl: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/isArchived`.
-            package var isArchived: Swift.Bool
+            public var isArchived: Swift.Bool
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/licenseUrl`.
-            package var licenseUrl: Swift.String?
+            public var licenseUrl: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
-            package struct documentationTargetPayload: Codable, Hashable, Sendable {
+            public struct documentationTargetPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
-                package var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
                 /// Creates a new `documentationTargetPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
-                package init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
                     self.additionalProperties = additionalProperties
                 }
-                package init(from decoder: any Decoder) throws {
+                public init(from decoder: any Decoder) throws {
                     additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
                 }
-                package func encode(to encoder: any Encoder) throws {
+                public func encode(to encoder: any Encoder) throws {
                     try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
-            package var documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload?
+            public var documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionBuildInfo`.
-            package var swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults?
+            public var swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwnerName`.
-            package var repositoryOwnerName: Swift.String
+            public var repositoryOwnerName: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/hasBinaryTargets`.
-            package var hasBinaryTargets: Swift.Bool
+            public var hasBinaryTargets: Swift.Bool
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/stars`.
-            package var stars: Swift.Int64?
+            public var stars: Swift.Int64?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/history`.
-            package var history: Components.Schemas.APIPackageControllerGetRouteModelHistory?
+            public var history: Components.Schemas.APIPackageControllerGetRouteModelHistory?
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryName`.
-            package var repositoryName: Swift.String
+            public var repositoryName: Swift.String
             /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releases`.
-            package var releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo
+            public var releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo
             /// Creates a new `APIPackageControllerGetRouteModel`.
             ///
             /// - Parameters:
@@ -1693,7 +1693,7 @@ package enum Components {
             ///   - history:
             ///   - repositoryName:
             ///   - releases:
-            package init(
+            public init(
                 swiftVersionCompatibility: [Components.Schemas.SwiftVersion]? = nil,
                 weightedKeywords: Swift.String,
                 keywords: [Swift.String]? = nil,
@@ -1754,7 +1754,7 @@ package enum Components {
                 self.repositoryName = repositoryName
                 self.releases = releases
             }
-            package enum CodingKeys: String, CodingKey {
+            public enum CodingKeys: String, CodingKey {
                 case swiftVersionCompatibility
                 case weightedKeywords
                 case keywords
@@ -1788,64 +1788,64 @@ package enum Components {
         }
     }
     /// Types generated from the `#/components/parameters` section of the OpenAPI document.
-    package enum Parameters {}
+    public enum Parameters {}
     /// Types generated from the `#/components/requestBodies` section of the OpenAPI document.
-    package enum RequestBodies {}
+    public enum RequestBodies {}
     /// Types generated from the `#/components/responses` section of the OpenAPI document.
-    package enum Responses {}
+    public enum Responses {}
     /// Types generated from the `#/components/headers` section of the OpenAPI document.
-    package enum Headers {}
+    public enum Headers {}
 }
 
 /// API operations, with input and output types, generated from `#/paths` in the OpenAPI document.
-package enum Operations {
+public enum Operations {
     /// /api/builds/{id}/doc-report
     ///
     /// Send a documentation generation report.
     ///
     /// - Remark: HTTP `POST /api/builds/{id}/doc-report`.
     /// - Remark: Generated from `#/paths//api/builds/{id}/doc-report/post(postApiBuildsByIdDoc-report)`.
-    package enum postApiBuildsByIdDoc_hyphen_report {
-        package static let id: Swift.String = "postApiBuildsByIdDoc-report"
-        package struct Input: Sendable, Hashable {
+    public enum postApiBuildsByIdDoc_hyphen_report {
+        public static let id: Swift.String = "postApiBuildsByIdDoc-report"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/path`.
-            package struct Path: Sendable, Hashable {
+            public struct Path: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/path/id`.
-                package var id: Swift.String
+                public var id: Swift.String
                 /// Creates a new `Path`.
                 ///
                 /// - Parameters:
                 ///   - id:
-                package init(id: Swift.String) {
+                public init(id: Swift.String) {
                     self.id = id
                 }
             }
-            package var path: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Path
+            public var path: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Path
             /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiBuildsByIdDoc_hyphen_report.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiBuildsByIdDoc_hyphen_report.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiBuildsByIdDoc_hyphen_report.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiBuildsByIdDoc_hyphen_report.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Headers
+            public var headers: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Headers
             /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/requestBody`.
-            @frozen package enum Body: Sendable, Hashable {
+            @frozen public enum Body: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/requestBody/content/application\/json`.
                 case json(Components.Schemas.APIPostDocReportDTO)
             }
-            package var body: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Body
+            public var body: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Body
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - path:
             ///   - headers:
             ///   - body:
-            package init(
+            public init(
                 path: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Path,
                 headers: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Headers = .init(),
                 body: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Body
@@ -1855,17 +1855,17 @@ package enum Operations {
                 self.body = body
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/builds/{id}/doc-report/POST/responses/200/content/application\/json`.
                     case json(Swift.Int64)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Swift.Int64 {
+                    public var json: Swift.Int64 {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -1875,12 +1875,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok.Body
+                public var body: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok.Body) {
+                public init(body: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -1894,7 +1894,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok {
+            public var ok: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -1912,10 +1912,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -1923,7 +1923,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -1931,7 +1931,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -1944,47 +1944,47 @@ package enum Operations {
     ///
     /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
     /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    package enum postApiVersionsByIdBuild_hyphen_report {
-        package static let id: Swift.String = "postApiVersionsByIdBuild-report"
-        package struct Input: Sendable, Hashable {
+    public enum postApiVersionsByIdBuild_hyphen_report {
+        public static let id: Swift.String = "postApiVersionsByIdBuild-report"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path`.
-            package struct Path: Sendable, Hashable {
+            public struct Path: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path/id`.
-                package var id: Swift.String
+                public var id: Swift.String
                 /// Creates a new `Path`.
                 ///
                 /// - Parameters:
                 ///   - id:
-                package init(id: Swift.String) {
+                public init(id: Swift.String) {
                     self.id = id
                 }
             }
-            package var path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path
+            public var path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path
             /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers
+            public var headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers
             /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody`.
-            @frozen package enum Body: Sendable, Hashable {
+            @frozen public enum Body: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody/content/application\/json`.
                 case json(Components.Schemas.APIPostBuildReportDTO)
             }
-            package var body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
+            public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - path:
             ///   - headers:
             ///   - body:
-            package init(
+            public init(
                 path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
                 headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
                 body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
@@ -1994,17 +1994,17 @@ package enum Operations {
                 self.body = body
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content/application\/json`.
                     case json(Swift.Int64)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Swift.Int64 {
+                    public var json: Swift.Int64 {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2014,12 +2014,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
+                public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body) {
+                public init(body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2033,7 +2033,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok {
+            public var ok: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2051,10 +2051,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2062,7 +2062,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2070,7 +2070,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -2083,21 +2083,21 @@ package enum Operations {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}/badge`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/badge/get(getApiPackagesByOwnerByRepositoryBadge)`.
-    package enum getApiPackagesByOwnerByRepositoryBadge {
-        package static let id: Swift.String = "getApiPackagesByOwnerByRepositoryBadge"
-        package struct Input: Sendable, Hashable {
+    public enum getApiPackagesByOwnerByRepositoryBadge {
+        public static let id: Swift.String = "getApiPackagesByOwnerByRepositoryBadge"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/path`.
-            package struct Path: Sendable, Hashable {
+            public struct Path: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/path/owner`.
-                package var owner: Swift.String
+                public var owner: Swift.String
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/path/repository`.
-                package var repository: Swift.String
+                public var repository: Swift.String
                 /// Creates a new `Path`.
                 ///
                 /// - Parameters:
                 ///   - owner:
                 ///   - repository:
-                package init(
+                public init(
                     owner: Swift.String,
                     repository: Swift.String
                 ) {
@@ -2105,39 +2105,39 @@ package enum Operations {
                     self.repository = repository
                 }
             }
-            package var path: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Path
+            public var path: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Path
             /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/query`.
-            package struct Query: Sendable, Hashable {
+            public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/query/type`.
-                package var _type: Swift.String
+                public var _type: Swift.String
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _type:
-                package init(_type: Swift.String) {
+                public init(_type: Swift.String) {
                     self._type = _type
                 }
             }
-            package var query: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Query
+            public var query: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Query
             /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepositoryBadge.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepositoryBadge.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepositoryBadge.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepositoryBadge.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Headers
+            public var headers: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - path:
             ///   - query:
             ///   - headers:
-            package init(
+            public init(
                 path: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Path,
                 query: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Query,
                 headers: Operations.getApiPackagesByOwnerByRepositoryBadge.Input.Headers = .init()
@@ -2147,17 +2147,17 @@ package enum Operations {
                 self.headers = headers
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/badge/GET/responses/200/content/application\/json`.
                     case json(Components.Schemas.Badge)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Components.Schemas.Badge {
+                    public var json: Components.Schemas.Badge {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2167,12 +2167,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok.Body
+                public var body: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok.Body) {
+                public init(body: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2186,7 +2186,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok {
+            public var ok: Operations.getApiPackagesByOwnerByRepositoryBadge.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2204,10 +2204,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2215,7 +2215,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2223,7 +2223,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -2236,40 +2236,40 @@ package enum Operations {
     ///
     /// - Remark: HTTP `GET /api/version`.
     /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    package enum getApiVersion {
-        package static let id: Swift.String = "getApiVersion"
-        package struct Input: Sendable, Hashable {
+    public enum getApiVersion {
+        public static let id: Swift.String = "getApiVersion"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/version/GET/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.getApiVersion.Input.Headers
+            public var headers: Operations.getApiVersion.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - headers:
-            package init(headers: Operations.getApiVersion.Input.Headers = .init()) {
+            public init(headers: Operations.getApiVersion.Input.Headers = .init()) {
                 self.headers = headers
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content/application\/json`.
                     case json(Components.Schemas.APIVersion)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Components.Schemas.APIVersion {
+                    public var json: Components.Schemas.APIVersion {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2279,12 +2279,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.getApiVersion.Output.Ok.Body
+                public var body: Operations.getApiVersion.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.getApiVersion.Output.Ok.Body) {
+                public init(body: Operations.getApiVersion.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2298,7 +2298,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.getApiVersion.Output.Ok {
+            public var ok: Operations.getApiVersion.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2316,10 +2316,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2327,7 +2327,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2335,7 +2335,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -2348,24 +2348,24 @@ package enum Operations {
     ///
     /// - Remark: HTTP `GET /api/search`.
     /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
-    package enum getApiSearch {
-        package static let id: Swift.String = "getApiSearch"
-        package struct Input: Sendable, Hashable {
+    public enum getApiSearch {
+        public static let id: Swift.String = "getApiSearch"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/search/GET/query`.
-            package struct Query: Sendable, Hashable {
+            public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/search/GET/query/query`.
-                package var query: Swift.String
+                public var query: Swift.String
                 /// - Remark: Generated from `#/paths/api/search/GET/query/page`.
-                package var page: Swift.Int64
+                public var page: Swift.Int64
                 /// - Remark: Generated from `#/paths/api/search/GET/query/pageSize`.
-                package var pageSize: Swift.Int64
+                public var pageSize: Swift.Int64
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - query:
                 ///   - page:
                 ///   - pageSize:
-                package init(
+                public init(
                     query: Swift.String,
                     page: Swift.Int64,
                     pageSize: Swift.Int64
@@ -2375,25 +2375,25 @@ package enum Operations {
                     self.pageSize = pageSize
                 }
             }
-            package var query: Operations.getApiSearch.Input.Query
+            public var query: Operations.getApiSearch.Input.Query
             /// - Remark: Generated from `#/paths/api/search/GET/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiSearch.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiSearch.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiSearch.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiSearch.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.getApiSearch.Input.Headers
+            public var headers: Operations.getApiSearch.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - query:
             ///   - headers:
-            package init(
+            public init(
                 query: Operations.getApiSearch.Input.Query,
                 headers: Operations.getApiSearch.Input.Headers = .init()
             ) {
@@ -2401,17 +2401,17 @@ package enum Operations {
                 self.headers = headers
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/search/GET/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/search/GET/responses/200/content/application\/json`.
                     case json(Components.Schemas.SearchResponse)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Components.Schemas.SearchResponse {
+                    public var json: Components.Schemas.SearchResponse {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2421,12 +2421,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.getApiSearch.Output.Ok.Body
+                public var body: Operations.getApiSearch.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.getApiSearch.Output.Ok.Body) {
+                public init(body: Operations.getApiSearch.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2440,7 +2440,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.getApiSearch.Output.Ok {
+            public var ok: Operations.getApiSearch.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2458,10 +2458,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2469,7 +2469,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2477,7 +2477,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -2490,21 +2490,21 @@ package enum Operations {
     ///
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
-    package enum getApiPackagesByOwnerByRepository {
-        package static let id: Swift.String = "getApiPackagesByOwnerByRepository"
-        package struct Input: Sendable, Hashable {
+    public enum getApiPackagesByOwnerByRepository {
+        public static let id: Swift.String = "getApiPackagesByOwnerByRepository"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path`.
-            package struct Path: Sendable, Hashable {
+            public struct Path: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/owner`.
-                package var owner: Swift.String
+                public var owner: Swift.String
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/repository`.
-                package var repository: Swift.String
+                public var repository: Swift.String
                 /// Creates a new `Path`.
                 ///
                 /// - Parameters:
                 ///   - owner:
                 ///   - repository:
-                package init(
+                public init(
                     owner: Swift.String,
                     repository: Swift.String
                 ) {
@@ -2512,25 +2512,25 @@ package enum Operations {
                     self.repository = repository
                 }
             }
-            package var path: Operations.getApiPackagesByOwnerByRepository.Input.Path
+            public var path: Operations.getApiPackagesByOwnerByRepository.Input.Path
             /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers
+            public var headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - path:
             ///   - headers:
-            package init(
+            public init(
                 path: Operations.getApiPackagesByOwnerByRepository.Input.Path,
                 headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers = .init()
             ) {
@@ -2538,17 +2538,17 @@ package enum Operations {
                 self.headers = headers
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content/application\/json`.
                     case json(Components.Schemas.APIPackageControllerGetRouteModel)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Components.Schemas.APIPackageControllerGetRouteModel {
+                    public var json: Components.Schemas.APIPackageControllerGetRouteModel {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2558,12 +2558,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
+                public var body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body) {
+                public init(body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2577,7 +2577,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.getApiPackagesByOwnerByRepository.Output.Ok {
+            public var ok: Operations.getApiPackagesByOwnerByRepository.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2595,10 +2595,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2606,7 +2606,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2614,7 +2614,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
@@ -2627,33 +2627,33 @@ package enum Operations {
     ///
     /// - Remark: HTTP `POST /api/package-collections`.
     /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
-    package enum postApiPackage_hyphen_collections {
-        package static let id: Swift.String = "postApiPackage-collections"
-        package struct Input: Sendable, Hashable {
+    public enum postApiPackage_hyphen_collections {
+        public static let id: Swift.String = "postApiPackage-collections"
+        public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/api/package-collections/POST/header`.
-            package struct Headers: Sendable, Hashable {
-                package var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>]
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                package init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            package var headers: Operations.postApiPackage_hyphen_collections.Input.Headers
+            public var headers: Operations.postApiPackage_hyphen_collections.Input.Headers
             /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody`.
-            @frozen package enum Body: Sendable, Hashable {
+            @frozen public enum Body: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody/content/application\/json`.
                 case json(Components.Schemas.APIPostPackageCollectionDTO)
             }
-            package var body: Operations.postApiPackage_hyphen_collections.Input.Body
+            public var body: Operations.postApiPackage_hyphen_collections.Input.Body
             /// Creates a new `Input`.
             ///
             /// - Parameters:
             ///   - headers:
             ///   - body:
-            package init(
+            public init(
                 headers: Operations.postApiPackage_hyphen_collections.Input.Headers = .init(),
                 body: Operations.postApiPackage_hyphen_collections.Input.Body
             ) {
@@ -2661,17 +2661,17 @@ package enum Operations {
                 self.body = body
             }
         }
-        @frozen package enum Output: Sendable, Hashable {
-            package struct Ok: Sendable, Hashable {
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content`.
-                @frozen package enum Body: Sendable, Hashable {
+                @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content/application\/json`.
                     case json(Components.Schemas.PackageCollectionModelV1SignedCollection)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    package var json: Components.Schemas.PackageCollectionModelV1SignedCollection {
+                    public var json: Components.Schemas.PackageCollectionModelV1SignedCollection {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2681,12 +2681,12 @@ package enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                package var body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
+                public var body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                package init(body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body) {
+                public init(body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body) {
                     self.body = body
                 }
             }
@@ -2700,7 +2700,7 @@ package enum Operations {
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            package var ok: Operations.postApiPackage_hyphen_collections.Output.Ok {
+            public var ok: Operations.postApiPackage_hyphen_collections.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2718,10 +2718,10 @@ package enum Operations {
             /// A response with a code that is not documented in the OpenAPI document.
             case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
         }
-        @frozen package enum AcceptableContentType: AcceptableProtocol {
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
             case other(Swift.String)
-            package init?(rawValue: Swift.String) {
+            public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
@@ -2729,7 +2729,7 @@ package enum Operations {
                     self = .other(rawValue)
                 }
             }
-            package var rawValue: Swift.String {
+            public var rawValue: Swift.String {
                 switch self {
                 case let .other(string):
                     return string
@@ -2737,7 +2737,7 @@ package enum Operations {
                     return "application/json"
                 }
             }
-            package static var allCases: [Self] {
+            public static var allCases: [Self] {
                 [
                     .json
                 ]
