@@ -1,1 +1,2083 @@
-{"openapi":"3.0.1","paths":{"\/api\/builds\/{id}\/doc-report":{"post":{"parameters":[{"required":true,"name":"id","schema":{"type":"string"},"in":"path"}],"summary":"\/api\/builds\/{id}\/doc-report","operationId":"postApiBuildsByIdDoc-report","requestBody":{"required":true,"content":{"application\/json":{"schema":{"$ref":"#\/components\/schemas\/APIPostDocReportDTO"},"examples":{"APIPostDocReportDTO":{"$ref":"#\/components\/examples\/APIPostDocReportDTO"}}}}},"responses":{"200":{"content":{"application\/json":{"schema":{"format":"int64","type":"integer"}}},"description":"OK"}},"security":[{"builder_token":[]}],"description":"Send a documentation generation report.","tags":["api"]}},"\/api\/versions\/{id}\/build-report":{"post":{"tags":["api"],"description":"Send a build report.","operationId":"postApiVersionsByIdBuild-report","security":[{"builder_token":[]}],"parameters":[{"schema":{"type":"string"},"in":"path","required":true,"name":"id"}],"summary":"\/api\/versions\/{id}\/build-report","requestBody":{"content":{"application\/json":{"examples":{"APIPostBuildReportDTO":{"$ref":"#\/components\/examples\/APIPostBuildReportDTO"}},"schema":{"$ref":"#\/components\/schemas\/APIPostBuildReportDTO"}}},"required":true},"responses":{"200":{"content":{"application\/json":{"schema":{"type":"integer","format":"int64"}}},"description":"OK"}}}},"\/api\/packages\/{owner}\/{repository}\/badge":{"get":{"summary":"\/api\/packages\/{owner}\/{repository}\/badge","parameters":[{"in":"query","required":true,"name":"type","example":"platforms","schema":{"type":"string"}},{"in":"path","required":true,"name":"owner","schema":{"type":"string"}},{"in":"path","required":true,"name":"repository","schema":{"type":"string"}}],"description":"Get shields.io badge for the given repository.","responses":{"200":{"content":{"application\/json":{"examples":{"Badge":{"$ref":"#\/components\/examples\/Badge"}},"schema":{"$ref":"#\/components\/schemas\/Badge"}}},"description":"OK"}},"operationId":"getApiPackagesByOwnerByRepositoryBadge","tags":["api"]}},"\/api\/version":{"get":{"summary":"\/api\/version","description":"Get the site's version.","tags":["api"],"operationId":"getApiVersion","responses":{"200":{"description":"OK","content":{"application\/json":{"schema":{"$ref":"#\/components\/schemas\/APIVersion"},"examples":{"APIVersion":{"$ref":"#\/components\/examples\/APIVersion"}}}}}}}},"\/api\/search":{"get":{"parameters":[{"name":"query","in":"query","required":true,"schema":{"type":"string"},"example":"LinkedList"},{"name":"page","in":"query","required":true,"schema":{"format":"int64","type":"integer"},"example":1},{"name":"pageSize","in":"query","required":true,"schema":{"type":"integer","format":"int64"},"example":20}],"operationId":"getApiSearch","tags":["api"],"responses":{"200":{"description":"OK","content":{"application\/json":{"schema":{"$ref":"#\/components\/schemas\/SearchResponse"},"examples":{"SearchResponse":{"$ref":"#\/components\/examples\/SearchResponse"}}}}}},"summary":"\/api\/search","description":"Execute a search.","security":[{"api_token":[]}]}},"\/api\/packages\/{owner}\/{repository}":{"get":{"description":"Get package details.","summary":"\/api\/packages\/{owner}\/{repository}","responses":{"200":{"description":"OK","content":{"application\/json":{"schema":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModel"},"examples":{"APIPackageControllerGetRouteModel":{"$ref":"#\/components\/examples\/APIPackageControllerGetRouteModel"}}}}}},"operationId":"getApiPackagesByOwnerByRepository","tags":["api"],"parameters":[{"required":true,"in":"path","schema":{"type":"string"},"name":"owner"},{"required":true,"in":"path","schema":{"type":"string"},"name":"repository"}],"security":[{"api_token":[]}]}},"\/api\/package-collections":{"post":{"tags":["api"],"description":"Generate a signed package collection.","security":[{"api_token":[]}],"requestBody":{"content":{"application\/json":{"examples":{"APIPostPackageCollectionDTO":{"$ref":"#\/components\/examples\/APIPostPackageCollectionDTO"}},"schema":{"$ref":"#\/components\/schemas\/APIPostPackageCollectionDTO"}}},"required":true},"summary":"\/api\/package-collections","operationId":"postApiPackage-collections","responses":{"200":{"description":"OK","content":{"application\/json":{"examples":{"PackageCollectionModelV1SignedCollection":{"$ref":"#\/components\/examples\/PackageCollectionModelV1SignedCollection"}},"schema":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1SignedCollection"}}}}}}}},"info":{"description":"Swift Package Index API","title":"Swift Package Index API","version":"0.1.1"},"components":{"examples":{"APIPackageControllerGetRouteModel":{"value":{"weightedKeywords":{},"summary":"An example package","repositoryOwner":"mona","hasBinaryTargets":false,"license":"mit","releases":{"stable":{"date":"2020-04-25T10:55:00Z","link":{"url":"https:\/\/github.com\/mona\/LinkedList\/releases\/tag\/1.2.3","label":"1.2.3"}},"latest":{"date":"2020-04-25T10:55:00Z","link":{"label":"main","url":"https:\/\/github.com\/mona\/LinkedList\/tree\/main"}}},"title":"LinkedList","releaseReferences":["release",{"tag":{"semVer":{"preRelease":"1.2.3","minor":2,"major":1,"build":"","patch":3},"tagName":"1.2.3-1.2.3"}},"default_branch",{"branch":"main"}],"authors":{"fromSPIManifest":{"_0":"Mona"}},"repositoryName":"LinkedList","isArchived":false,"swiftVersionBuildInfo":{"stable":{"results":{"v5_6":{"parameter":{"major":5,"minor":6,"patch":0},"status":"incompatible"},"v5_8":{"parameter":{"major":5,"minor":8,"patch":0},"status":"unknown"},"v5_7":{"parameter":{"major":5,"patch":0,"minor":7},"status":"incompatible"},"v5_9":{"parameter":{"major":5,"patch":0,"minor":9},"status":"compatible"}},"referenceName":"1.2.3"},"latest":{"results":{"v5_9":{"status":"compatible","parameter":{"patch":0,"major":5,"minor":9}},"v5_6":{"status":"incompatible","parameter":{"major":5,"patch":0,"minor":6}},"v5_7":{"status":"incompatible","parameter":{"patch":0,"major":5,"minor":7}},"v5_8":{"status":"unknown","parameter":{"major":5,"patch":0,"minor":8}}},"referenceName":"main"},"beta":{"results":{"v5_9":{"parameter":{"patch":0,"major":5,"minor":9},"status":"compatible"},"v5_8":{"parameter":{"patch":0,"major":5,"minor":8},"status":"unknown"},"v5_6":{"parameter":{"major":5,"patch":0,"minor":6},"status":"incompatible"},"v5_7":{"parameter":{"major":5,"patch":0,"minor":7},"status":"incompatible"}},"referenceName":"2.0.0-b1"}},"products":[{"type":{"library":{}},"name":"lib"}],"platformBuildInfo":{"stable":{"results":{"macOS":{"parameter":"macOS","status":"unknown"},"iOS":{"parameter":"iOS","status":"compatible"},"watchOS":{"parameter":"watchOS","status":"unknown"},"visionOS":{"parameter":"visionOS","status":"unknown"},"linux":{"parameter":"linux","status":"unknown"},"tvOS":{"parameter":"tvOS","status":"unknown"}},"referenceName":"1.2.3"},"latest":{"results":{"visionOS":{"parameter":"visionOS","status":"compatible"},"linux":{"parameter":"linux","status":"compatible"},"macOS":{"parameter":"macOS","status":"compatible"},"watchOS":{"parameter":"watchOS","status":"compatible"},"iOS":{"parameter":"iOS","status":"compatible"},"tvOS":{"parameter":"tvOS","status":"compatible"}},"referenceName":"main"},"beta":{"results":{"macOS":{"parameter":"macOS","status":"unknown"},"iOS":{"parameter":"iOS","status":"compatible"},"watchOS":{"parameter":"watchOS","status":"unknown"},"linux":{"parameter":"linux","status":"unknown"},"visionOS":{"parameter":"visionOS","status":"unknown"},"tvOS":{"parameter":"tvOS","status":"unknown"}},"referenceName":"2.0.0-b1"}},"platformCompatibility":["iOS","linux","macOS","tvOS","visionOS","watchOS"],"packageId":"75E00076-E898-464F-8813-1C13A8DD7B5D","targets":[{"type":{"macro":{}},"name":"target"}],"repositoryOwnerName":"Mona","stars":123,"history":{"commitCountURL":"https:\/\/github.com\/mona\/LinkedList\/commits\/main","releaseCount":5,"commitCount":433,"releaseCountURL":"https:\/\/github.com\/mona\/LinkedList\/releases","createdAt":"2020-04-25T10:55:00Z"},"swiftVersionCompatibility":[{"minor":9,"patch":0,"major":5}],"activity":{"openPullRequestsURL":"https:\/\/github.com\/mona\/LinkedList\/pulls","lastIssueClosedAt":"2020-04-25T10:55:00Z","lastPullRequestClosedAt":"2020-04-25T10:55:00Z","openIssuesCount":2,"openIssuesURL":"https:\/\/github.com\/mona\/LinkedList\/issues","openPullRequestsCount":1},"url":"https:\/\/github.com\/mona\/LinkedList.git"}},"APIPostDocReportDTO":{"value":{"status":"ok","logUrl":"https:\/\/us-east-2.console.aws.amazon.com\/logs\/123456678","docArchives":[{"title":"LinkedList","name":"linkedlist"}],"mbSize":23,"linkablePathsCount":137,"fileCount":2639}},"SearchResponse":{"value":{"results":[{"package":{"_0":{"keywords":{},"packageName":"LinkedList","hasDocs":true,"packageId":"75E00076-E898-464F-8813-1C13A8DD7B5D","repositoryOwner":"mona","stars":123,"summary":"An example package","packageURL":"https:\/\/github.com\/mona\/LinkedList.git","repositoryName":"LinkedList","lastActivityAt":"2020-04-25T10:55:00Z"}}}],"searchTerm":"LinkedList","searchFilters":[{"key":"author","value":"mona","operator":"is"}],"hasMoreResults":false}},"APIVersion":{"value":{"version":"1.2.3"}},"APIPostPackageCollectionDTO":{"value":{"overview":"This is a package collection created for demonstration purposes.","collectionName":"LinkedList collection","selection":{"packageURLs":{"_0":["https:\/\/github.com\/mona\/LinkedList.git"]}},"revision":3}},"APIPostBuildReportDTO":{"value":{"status":"ok","swiftVersion":{"minor":8,"major":5,"patch":0},"buildId":"75E00076-E898-464F-8813-1C13A8DD7B5D","builderVersion":"1.2.3","platform":"ios"}},"PackageCollectionModelV1SignedCollection":{"value":{"name":"Packages by mona","packages":[{"summary":"An example package","versions":{},"readmeURL":"https:\/\/github.com\/mona\/LinkedList\/blob\/main\/README.md","license":{"name":"MIT","url":"https:\/\/github.com\/mona\/LinkedList\/blob\/main\/LICENSE"},"url":"https:\/\/github.com\/mona\/LinkedList.git"}],"formatVersion":"1.0","generatedBy":{"name":"mona"},"overview":"A collection of packages authored by mona from the Swift Package Index","generatedAt":"2023-11-29T11:04:41Z","signature":{"certificate":{"subject":{"userID":"V676TFACYJ","organization":"SPI Operations Limited","organizationalUnit":"V676TFACYJ","commonName":"Swift Package Collection: SPI Operations Limited"},"issuer":{"organization":"Apple Inc.","commonName":"Apple Worldwide Developer Relations Certification Authority","organizationalUnit":"G3"}},"signature":"ewogICJhbGciIDogIlJ...<snip>...WD1pXXPrkvVJlv4w"}}},"Badge":{"value":{"schemaVersion":1,"color":"F05138","logoSvg":"<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><defs><filter id=\"a\" height=\"110.6%\" width=\"110.6%\" x=\"-5.3%\" y=\"-5.3%\"><feOffset dy=\"3\" in=\"SourceAlpha\" result=\"o\"\/><feGaussianBlur result=\"b\" stdDeviation=\"5\"\/><feColorMatrix result=\"m\" values=\"0,0,0,0 0,0,0,0 0,0,0,0 0,0,0,0 0,0,.3,0\"\/><feMerge><feMergeNode in=\"m\"\/><feMergeNode in=\"SourceGraphic\"\/><\/feMerge><\/filter><linearGradient id=\"b\"><stop stop-color=\"#f88a36\"\/><stop stop-color=\"#fd2020\" offset=\"1\"\/><\/linearGradient><linearGradient id=\"c\" href=\"#b\" x1=\"1\" x2=\"0\" y2=\"1\"\/><linearGradient id=\"d\" href=\"#c\" x1=\".5\" x2=\".5\"\/><path id=\"e\" d=\"m70.5,70.5h339v339h-339z\"\/><\/defs><g fill=\"#fdfafa\" filter=\"url(#a)\" stroke=\"url(#c)\" stroke-width=\"11\"><use href=\"#e\" transform=\"matrix(.5.866-.866.5 343.846-71.846)\"\/><use href=\"#e\" transform=\"matrix(.866.5-.5.866 168.154-71.846)\"\/><use href=\"#e\" x=\"16\" y=\"16\"\/><\/g><path d=\"m312.9,348.5c-61.4,35.55-154.9,2.73-199.9-69.44,26.83,22.4,96.8,52.38,151,18.64-46.27-38.32-92.45-85.2-125.7-135.7,34.22,31.3,88.52,70.82,107.9,82-40.9-43.24-77.36-96.92-75.88-95.43,38.96,40.35,83.1,74.95,129.8,105.8,11.13-28.52,12.75-76.75-24.1-127.4,74.3,45.05,93.9,121.2,79.8,167.1,29.26,36.15,22.86,78.98,18.37,69.98-14.65-26.1-36.4-25.37-61.24-15.56z\" fill=\"url(#d)\"\/><\/svg>\r","isError":false,"label":"Platform Compatibility","message":"iOS","cacheSeconds":21600}}},"schemas":{"PackageCollectionModelV1SignedCollection":{"properties":{"revision":{"nullable":true,"type":"integer","format":"int64"},"generatedAt":{"type":"string","format":"date-time"},"name":{"type":"string"},"keywords":{"nullable":true,"items":{"type":"string"},"type":"array"},"overview":{"nullable":true,"type":"string"},"signature":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1Signature"},"formatVersion":{"type":"string"},"packages":{"items":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1CollectionPackage"},"type":"array"},"generatedBy":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1CollectionAuthor"}},"type":"object","required":["formatVersion","generatedAt","name","packages","signature"]},"SearchFilterViewModel":{"properties":{"value":{"type":"string"},"key":{"type":"string"},"operator":{"type":"string"}},"required":["key","operator","value"],"type":"object"},"APIPackageControllerGetRouteModelPlatformCompatibility":{"enum":["iOS","linux","macOS","tvOS","visionOS","watchOS"],"type":"string"},"APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults":{"properties":{"results":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelPlatformResults"},"referenceName":{"type":"string"}},"required":["referenceName","results"],"type":"object"},"DocArchive":{"properties":{"name":{"type":"string"},"title":{"type":"string"}},"type":"object","required":["name","title"]},"APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults":{"properties":{"stable":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"},"latest":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"},"beta":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"}},"type":"object"},"APIPostPackageCollectionDTO":{"properties":{"collectionName":{"type":"string","nullable":true},"selection":{"additionalProperties":{"$ref":"#\/components\/schemas\/Any"},"type":"object"},"keywords":{"items":{"type":"string"},"type":"array","nullable":true},"overview":{"type":"string","nullable":true},"authorName":{"type":"string","nullable":true},"revision":{"format":"int64","type":"integer","nullable":true}},"type":"object","required":["selection"]},"PackageCollectionModelV1CollectionPackage":{"properties":{"identity":{"type":"string","nullable":true},"versions":{"type":"string"},"readmeURL":{"type":"string","nullable":true,"format":"uri"},"url":{"type":"string","format":"uri"},"license":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1License"},"keywords":{"type":"array","nullable":true,"items":{"type":"string"}},"summary":{"type":"string","nullable":true}},"type":"object","required":["url","versions"]},"APIPostDocReportDTO":{"properties":{"error":{"type":"string","nullable":true},"fileCount":{"type":"integer","format":"int64","nullable":true},"docArchives":{"items":{"$ref":"#\/components\/schemas\/DocArchive"},"type":"array","nullable":true},"status":{"type":"string"},"mbSize":{"type":"integer","format":"int64","nullable":true},"linkablePathsCount":{"type":"integer","format":"int64","nullable":true},"logUrl":{"type":"string","nullable":true}},"type":"object","required":["status"]},"PackageCollectionModelV1CollectionAuthor":{"properties":{"name":{"type":"string"}},"type":"object","required":["name"]},"APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults":{"properties":{"results":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelSwiftVersionResults"},"referenceName":{"type":"string"}},"required":["referenceName","results"],"type":"object"},"SearchPackageResult":{"properties":{"summary":{"nullable":true,"type":"string"},"hasDocs":{"type":"boolean"},"lastActivityAt":{"nullable":true,"format":"date-time","type":"string"},"packageId":{"format":"uuid","type":"string"},"packageName":{"nullable":true,"type":"string"},"repositoryOwner":{"type":"string"},"repositoryName":{"type":"string"},"stars":{"nullable":true,"format":"int64","type":"integer"},"keywords":{"nullable":true,"items":{"type":"string"},"type":"array"},"packageURL":{"type":"string"}},"required":["hasDocs","packageId","packageURL","repositoryName","repositoryOwner"],"type":"object"},"APIPackageControllerGetRouteModelTarget":{"properties":{"name":{"type":"string"},"type":{"additionalProperties":{"$ref":"#\/components\/schemas\/Any"},"type":"object"}},"required":["name","type"],"type":"object"},"APIPackageControllerGetRouteModelPlatformResults":{"properties":{"linux":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"},"tvOS":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"},"iOS":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"},"visionOS":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"},"macOS":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"},"watchOS":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"}},"required":["iOS","linux","macOS","tvOS","visionOS","watchOS"],"type":"object"},"SwiftVersion":{"properties":{"major":{"type":"integer","format":"int64"},"patch":{"type":"integer","format":"int64"},"minor":{"type":"integer","format":"int64"}},"required":["major","minor","patch"],"type":"object"},"APIPackageControllerGetRouteModelActivity":{"properties":{"openIssuesURL":{"type":"string","nullable":true},"openIssuesCount":{"type":"integer","format":"int64"},"openPullRequestsURL":{"type":"string","nullable":true},"lastIssueClosedAt":{"type":"string","format":"date-time","nullable":true},"lastPullRequestClosedAt":{"type":"string","format":"date-time","nullable":true},"openPullRequestsCount":{"type":"integer","format":"int64"}},"required":["openIssuesCount","openPullRequestsCount"],"type":"object"},"APIPackageControllerGetRouteModelHistory":{"properties":{"releaseCount":{"type":"integer","format":"int64"},"commitCountURL":{"type":"string"},"releaseCountURL":{"type":"string"},"createdAt":{"type":"string","format":"date-time"},"commitCount":{"type":"integer","format":"int64"}},"required":["commitCount","commitCountURL","createdAt","releaseCount","releaseCountURL"],"type":"object"},"Link":{"properties":{"url":{"type":"string"},"label":{"type":"string"}},"required":["label","url"],"type":"object"},"DateLink":{"properties":{"date":{"format":"date-time","type":"string"},"link":{"$ref":"#\/components\/schemas\/Link"}},"required":["date","link"],"type":"object"},"Reference":{"properties":{"branch":{"type":"string"}},"type":"object","required":["branch"]},"ProductDependency":{"properties":{"identity":{"type":"string"},"name":{"type":"string"},"dependencies":{"$ref":"#\/components\/schemas\/ArrayProductDependency"},"url":{"type":"string"}},"type":"object","required":["dependencies","identity","name","url"]},"APIPackageControllerGetRouteModelBuildResultSwiftVersion":{"properties":{"status":{"type":"string"},"parameter":{"$ref":"#\/components\/schemas\/SwiftVersion"}},"required":["parameter","status"],"type":"object"},"Badge":{"properties":{"color":{"type":"string"},"cacheSeconds":{"type":"integer","format":"int64"},"logoSvg":{"type":"string","nullable":true},"isError":{"type":"boolean"},"message":{"type":"string"},"schemaVersion":{"type":"integer","format":"int64"},"label":{"type":"string"}},"required":["cacheSeconds","color","isError","label","message","schemaVersion"],"type":"object"},"PackageCollectionModelV1License":{"properties":{"name":{"type":"string","nullable":true},"url":{"type":"string","format":"uri"}},"type":"object","required":["url"]},"Any":{"properties":{"_0":{"$ref":"#\/components\/schemas\/SearchPackageResult"}},"required":["_0"],"type":"object"},"PackageCollectionModelV1SignatureCertificate":{"properties":{"subject":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1SignatureCertificateName"},"issuer":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1SignatureCertificateName"}},"type":"object","required":["issuer","subject"]},"BuildPlatform":{"enum":["ios","linux","macos-spm","macos-xcodebuild","tvos","visionos","watchos"],"type":"string"},"SearchResponse":{"properties":{"searchTerm":{"type":"string"},"results":{"type":"array","items":{"type":"object","additionalProperties":{"$ref":"#\/components\/schemas\/Any"}}},"hasMoreResults":{"type":"boolean"},"searchFilters":{"type":"array","items":{"$ref":"#\/components\/schemas\/SearchFilterViewModel"}}},"required":["hasMoreResults","results","searchFilters","searchTerm"],"type":"object"},"ResolvedDependency":{"properties":{"repositoryURL":{"type":"string"},"packageName":{"type":"string"}},"required":["packageName","repositoryURL"],"type":"object"},"APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults":{"properties":{"stable":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"},"beta":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"},"latest":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"}},"type":"object"},"APIPackageControllerGetRouteModelReleaseInfo":{"properties":{"stable":{"$ref":"#\/components\/schemas\/DateLink"},"latest":{"$ref":"#\/components\/schemas\/DateLink"},"beta":{"$ref":"#\/components\/schemas\/DateLink"}},"type":"object"},"APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility":{"properties":{"parameter":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelPlatformCompatibility"},"status":{"type":"string"}},"required":["parameter","status"],"type":"object"},"License":{"enum":["afl-3.0","apache-2.0","artistic-2.0","bsd-2-clause","bsd-3-clause","bsd-3-clause-clear","bsl-1.0","cc","cc0-1.0","cc-by-4.0","cc-by-sa-4.0","wtfpl","ecl-2.0","epl-1.0","eupl-1.1","agpl-3.0","gpl","gpl-2.0","gpl-3.0","lgpl","lgpl-2.1","lgpl-3.0","isc","ms-pl","mit","mpl-2.0","osl-3.0","postgresql","ncsa","unlicense","zlib","other","none"],"type":"string"},"APIVersion":{"properties":{"version":{"type":"string"}},"required":["version"],"type":"object"},"APIPackageControllerGetRouteModelProduct":{"properties":{"name":{"type":"string"},"type":{"additionalProperties":{"$ref":"#\/components\/schemas\/Any"},"type":"object"}},"required":["name","type"],"type":"object"},"APIPackageControllerGetRouteModelSwiftVersionResults":{"properties":{"v5_7":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultSwiftVersion"},"v5_6":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultSwiftVersion"},"v5_8":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultSwiftVersion"},"v5_9":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildResultSwiftVersion"}},"required":["v5_6","v5_7","v5_8","v5_9"],"type":"object"},"PackageCollectionModelV1SignatureCertificateName":{"properties":{"organizationalUnit":{"type":"string","nullable":true},"commonName":{"type":"string","nullable":true},"organization":{"type":"string","nullable":true},"userID":{"type":"string","nullable":true}},"type":"object"},"PackageCollectionModelV1Signature":{"properties":{"certificate":{"$ref":"#\/components\/schemas\/PackageCollectionModelV1SignatureCertificate"},"signature":{"type":"string"}},"type":"object","required":["certificate","signature"]},"APIPostBuildReportDTO":{"properties":{"buildCommand":{"type":"string","nullable":true},"status":{"type":"string"},"jobUrl":{"type":"string","nullable":true},"logUrl":{"type":"string","nullable":true},"platform":{"$ref":"#\/components\/schemas\/BuildPlatform"},"swiftVersion":{"$ref":"#\/components\/schemas\/SwiftVersion"},"buildId":{"type":"string","format":"uuid"},"runnerId":{"type":"string","nullable":true},"productDependencies":{"items":{"$ref":"#\/components\/schemas\/ProductDependency"},"type":"array","nullable":true},"builderVersion":{"type":"string","nullable":true},"resolvedDependencies":{"items":{"$ref":"#\/components\/schemas\/ResolvedDependency"},"type":"array","nullable":true}},"type":"object","required":["buildId","platform","status","swiftVersion"]},"APIPackageControllerGetRouteModel":{"properties":{"swiftVersionCompatibility":{"nullable":true,"type":"array","items":{"$ref":"#\/components\/schemas\/SwiftVersion"}},"weightedKeywords":{"type":"string"},"keywords":{"nullable":true,"type":"array","items":{"type":"string"}},"packageId":{"format":"uuid","type":"string"},"summary":{"nullable":true,"type":"string"},"license":{"$ref":"#\/components\/schemas\/License"},"platformBuildInfo":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults"},"products":{"nullable":true,"type":"array","items":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelProduct"}},"authors":{"nullable":true,"additionalProperties":{"$ref":"#\/components\/schemas\/Any"},"type":"object"},"activity":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelActivity"},"score":{"nullable":true,"format":"int64","type":"integer"},"title":{"type":"string"},"repositoryOwner":{"type":"string"},"platformCompatibility":{"nullable":true,"type":"array","items":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelPlatformCompatibility"}},"targets":{"nullable":true,"type":"array","items":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelTarget"}},"releaseReferences":{"type":"array","items":{"$ref":"#\/components\/schemas\/Reference"}},"dependencies":{"nullable":true,"type":"array","items":{"$ref":"#\/components\/schemas\/ResolvedDependency"}},"url":{"type":"string"},"homepageUrl":{"nullable":true,"type":"string"},"isArchived":{"type":"boolean"},"licenseUrl":{"nullable":true,"type":"string"},"documentationTarget":{"additionalProperties":{},"nullable":true,"type":"object"},"swiftVersionBuildInfo":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults"},"repositoryOwnerName":{"type":"string"},"hasBinaryTargets":{"type":"boolean"},"stars":{"nullable":true,"format":"int64","type":"integer"},"history":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelHistory"},"repositoryName":{"type":"string"},"releases":{"$ref":"#\/components\/schemas\/APIPackageControllerGetRouteModelReleaseInfo"}},"type":"object","required":["hasBinaryTargets","isArchived","license","packageId","releaseReferences","releases","repositoryName","repositoryOwner","repositoryOwnerName","title","url","weightedKeywords"]}},"securitySchemes":{"builder_token":{"type":"http","description":"Token used for build result reporting.","scheme":"bearer"},"api_token":{"type":"http","description":"Token used for API access.","scheme":"bearer"}}},"tags":[{"name":"api"}]}
+{
+    "paths": {
+        "/api/version": {
+            "get": {
+                "tags": [
+                    "api"
+                ],
+                "operationId": "getApiVersion",
+                "description": "Get the site's version.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "APIVersion": {
+                                        "$ref": "#/components/examples/APIVersion"
+                                    }
+                                },
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIVersion"
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "/api/version"
+            }
+        },
+        "/api/builds/{id}/doc-report": {
+            "post": {
+                "security": [
+                    {
+                        "builder_token": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "summary": "/api/builds/{id}/doc-report",
+                "description": "Send a documentation generation report.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "APIPostDocReportDTO": {
+                                    "$ref": "#/components/examples/APIPostDocReportDTO"
+                                }
+                            },
+                            "schema": {
+                                "$ref": "#/components/schemas/APIPostDocReportDTO"
+                            }
+                        }
+                    }
+                },
+                "operationId": "postApiBuildsByIdDoc-report",
+                "tags": [
+                    "api"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/api/packages/{owner}/{repository}/badge": {
+            "get": {
+                "operationId": "getApiPackagesByOwnerByRepositoryBadge",
+                "description": "Get shields.io badge for the given repository.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "type",
+                        "example": "platforms",
+                        "required": true
+                    },
+                    {
+                        "name": "owner",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "repository",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "summary": "/api/packages/{owner}/{repository}/badge",
+                "tags": [
+                    "api"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Badge": {
+                                        "$ref": "#/components/examples/Badge"
+                                    }
+                                },
+                                "schema": {
+                                    "$ref": "#/components/schemas/Badge"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/packages/{owner}/{repository}": {
+            "get": {
+                "summary": "/api/packages/{owner}/{repository}",
+                "parameters": [
+                    {
+                        "name": "owner",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "required": true,
+                        "name": "repository",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "api_token": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "APIPackageControllerGetRouteModel": {
+                                        "$ref": "#/components/examples/APIPackageControllerGetRouteModel"
+                                    }
+                                },
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIPackageControllerGetRouteModel"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "description": "Get package details.",
+                "tags": [
+                    "api"
+                ],
+                "operationId": "getApiPackagesByOwnerByRepository"
+            }
+        },
+        "/api/versions/{id}/build-report": {
+            "post": {
+                "description": "Send a build report.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "builder_token": []
+                    }
+                ],
+                "operationId": "postApiVersionsByIdBuild-report",
+                "tags": [
+                    "api"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/APIPostBuildReportDTO"
+                            },
+                            "examples": {
+                                "APIPostBuildReportDTO": {
+                                    "$ref": "#/components/examples/APIPostBuildReportDTO"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "summary": "/api/versions/{id}/build-report"
+            }
+        },
+        "/api/package-collections": {
+            "post": {
+                "description": "Generate a signed package collection.",
+                "security": [
+                    {
+                        "api_token": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "PackageCollectionModelV1SignedCollection": {
+                                        "$ref": "#/components/examples/PackageCollectionModelV1SignedCollection"
+                                    }
+                                },
+                                "schema": {
+                                    "$ref": "#/components/schemas/PackageCollectionModelV1SignedCollection"
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "/api/package-collections",
+                "operationId": "postApiPackage-collections",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "APIPostPackageCollectionDTO": {
+                                    "$ref": "#/components/examples/APIPostPackageCollectionDTO"
+                                }
+                            },
+                            "schema": {
+                                "$ref": "#/components/schemas/APIPostPackageCollectionDTO"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            }
+        },
+        "/api/search": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SearchResponse"
+                                },
+                                "examples": {
+                                    "SearchResponse": {
+                                        "$ref": "#/components/examples/SearchResponse"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "description": "Execute a search.",
+                "security": [
+                    {
+                        "api_token": []
+                    }
+                ],
+                "tags": [
+                    "api"
+                ],
+                "operationId": "getApiSearch",
+                "summary": "/api/search",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "LinkedList",
+                        "in": "query",
+                        "required": true,
+                        "name": "query"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1,
+                        "required": true,
+                        "name": "page"
+                    },
+                    {
+                        "in": "query",
+                        "name": "pageSize",
+                        "example": 20,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "required": true
+                    }
+                ]
+            }
+        }
+    },
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Swift Package Index API",
+        "description": "Swift Package Index API",
+        "version": "0.1.1"
+    },
+    "components": {
+        "examples": {
+            "APIPostDocReportDTO": {
+                "value": {
+                    "logUrl": "https://us-east-2.console.aws.amazon.com/logs/123456678",
+                    "mbSize": 23,
+                    "fileCount": 2639,
+                    "linkablePathsCount": 137,
+                    "status": "ok",
+                    "docArchives": [
+                        {
+                            "title": "LinkedList",
+                            "name": "linkedlist"
+                        }
+                    ]
+                }
+            },
+            "APIVersion": {
+                "value": {
+                    "version": "1.2.3"
+                }
+            },
+            "APIPostBuildReportDTO": {
+                "value": {
+                    "productDependencies": [
+                        {
+                            "dependencies": {},
+                            "name": "name",
+                            "url": "http://vapor.com",
+                            "identity": "1"
+                        }
+                    ],
+                    "status": "ok",
+                    "platform": "ios",
+                    "swiftVersion": {
+                        "major": 5,
+                        "patch": 0,
+                        "minor": 8
+                    },
+                    "builderVersion": "1.2.3",
+                    "buildId": "45BF4D77-7830-4A37-937E-C6853F8C1A26"
+                }
+            },
+            "PackageCollectionModelV1SignedCollection": {
+                "value": {
+                    "name": "Packages by mona",
+                    "packages": [
+                        {
+                            "summary": "An example package",
+                            "versions": {},
+                            "readmeURL": "https://github.com/mona/LinkedList/blob/main/README.md",
+                            "url": "https://github.com/mona/LinkedList.git",
+                            "license": {
+                                "name": "MIT",
+                                "url": "https://github.com/mona/LinkedList/blob/main/LICENSE"
+                            }
+                        }
+                    ],
+                    "overview": "A collection of packages authored by mona from the Swift Package Index",
+                    "generatedAt": "2023-12-01T21:53:08Z",
+                    "generatedBy": {
+                        "name": "mona"
+                    },
+                    "formatVersion": "1.0",
+                    "signature": {
+                        "certificate": {
+                            "issuer": {
+                                "organization": "Apple Inc.",
+                                "commonName": "Apple Worldwide Developer Relations Certification Authority",
+                                "organizationalUnit": "G3"
+                            },
+                            "subject": {
+                                "organizationalUnit": "V676TFACYJ",
+                                "userID": "V676TFACYJ",
+                                "commonName": "Swift Package Collection: SPI Operations Limited",
+                                "organization": "SPI Operations Limited"
+                            }
+                        },
+                        "signature": "ewogICJhbGciIDogIlJ...<snip>...WD1pXXPrkvVJlv4w"
+                    }
+                }
+            },
+            "APIPostPackageCollectionDTO": {
+                "value": {
+                    "overview": "This is a package collection created for demonstration purposes.",
+                    "revision": 3,
+                    "collectionName": "LinkedList collection",
+                    "selection": {
+                        "packageURLs": {
+                            "_0": [
+                                "https://github.com/mona/LinkedList.git"
+                            ]
+                        }
+                    }
+                }
+            },
+            "Badge": {
+                "value": {
+                    "label": "Platform Compatibility",
+                    "schemaVersion": 1,
+                    "isError": false,
+                    "cacheSeconds": 21600,
+                    "color": "F05138",
+                    "message": "iOS",
+                    "logoSvg": "<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><defs><filter id=\"a\" height=\"110.6%\" width=\"110.6%\" x=\"-5.3%\" y=\"-5.3%\"><feOffset dy=\"3\" in=\"SourceAlpha\" result=\"o\"/><feGaussianBlur result=\"b\" stdDeviation=\"5\"/><feColorMatrix result=\"m\" values=\"0,0,0,0 0,0,0,0 0,0,0,0 0,0,0,0 0,0,.3,0\"/><feMerge><feMergeNode in=\"m\"/><feMergeNode in=\"SourceGraphic\"/></feMerge></filter><linearGradient id=\"b\"><stop stop-color=\"#f88a36\"/><stop stop-color=\"#fd2020\" offset=\"1\"/></linearGradient><linearGradient id=\"c\" href=\"#b\" x1=\"1\" x2=\"0\" y2=\"1\"/><linearGradient id=\"d\" href=\"#c\" x1=\".5\" x2=\".5\"/><path id=\"e\" d=\"m70.5,70.5h339v339h-339z\"/></defs><g fill=\"#fdfafa\" filter=\"url(#a)\" stroke=\"url(#c)\" stroke-width=\"11\"><use href=\"#e\" transform=\"matrix(.5.866-.866.5 343.846-71.846)\"/><use href=\"#e\" transform=\"matrix(.866.5-.5.866 168.154-71.846)\"/><use href=\"#e\" x=\"16\" y=\"16\"/></g><path d=\"m312.9,348.5c-61.4,35.55-154.9,2.73-199.9-69.44,26.83,22.4,96.8,52.38,151,18.64-46.27-38.32-92.45-85.2-125.7-135.7,34.22,31.3,88.52,70.82,107.9,82-40.9-43.24-77.36-96.92-75.88-95.43,38.96,40.35,83.1,74.95,129.8,105.8,11.13-28.52,12.75-76.75-24.1-127.4,74.3,45.05,93.9,121.2,79.8,167.1,29.26,36.15,22.86,78.98,18.37,69.98-14.65-26.1-36.4-25.37-61.24-15.56z\" fill=\"url(#d)\"/></svg>\r"
+                }
+            },
+            "SearchResponse": {
+                "value": {
+                    "searchFilters": [
+                        {
+                            "value": "mona",
+                            "operator": "is",
+                            "key": "author"
+                        }
+                    ],
+                    "results": [
+                        {
+                            "package": {
+                                "_0": {
+                                    "stars": 123,
+                                    "hasDocs": true,
+                                    "summary": "An example package",
+                                    "packageURL": "https://github.com/mona/LinkedList.git",
+                                    "keywords": {},
+                                    "repositoryOwner": "mona",
+                                    "packageId": "45BF4D77-7830-4A37-937E-C6853F8C1A26",
+                                    "lastActivityAt": "2020-04-25T10:55:00Z",
+                                    "packageName": "LinkedList",
+                                    "repositoryName": "LinkedList"
+                                }
+                            }
+                        }
+                    ],
+                    "hasMoreResults": false,
+                    "searchTerm": "LinkedList"
+                }
+            },
+            "APIPackageControllerGetRouteModel": {
+                "value": {
+                    "url": "https://github.com/mona/LinkedList.git",
+                    "isArchived": false,
+                    "summary": "An example package",
+                    "platformBuildInfo": {
+                        "latest": {
+                            "referenceName": "main",
+                            "results": {
+                                "macOS": {
+                                    "parameter": "macOS",
+                                    "status": "compatible"
+                                },
+                                "visionOS": {
+                                    "status": "compatible",
+                                    "parameter": "visionOS"
+                                },
+                                "tvOS": {
+                                    "status": "compatible",
+                                    "parameter": "tvOS"
+                                },
+                                "watchOS": {
+                                    "parameter": "watchOS",
+                                    "status": "compatible"
+                                },
+                                "iOS": {
+                                    "parameter": "iOS",
+                                    "status": "compatible"
+                                },
+                                "linux": {
+                                    "status": "compatible",
+                                    "parameter": "linux"
+                                }
+                            }
+                        },
+                        "beta": {
+                            "referenceName": "2.0.0-b1",
+                            "results": {
+                                "visionOS": {
+                                    "status": "unknown",
+                                    "parameter": "visionOS"
+                                },
+                                "iOS": {
+                                    "parameter": "iOS",
+                                    "status": "compatible"
+                                },
+                                "linux": {
+                                    "parameter": "linux",
+                                    "status": "unknown"
+                                },
+                                "macOS": {
+                                    "status": "unknown",
+                                    "parameter": "macOS"
+                                },
+                                "watchOS": {
+                                    "status": "unknown",
+                                    "parameter": "watchOS"
+                                },
+                                "tvOS": {
+                                    "parameter": "tvOS",
+                                    "status": "unknown"
+                                }
+                            }
+                        },
+                        "stable": {
+                            "results": {
+                                "linux": {
+                                    "parameter": "linux",
+                                    "status": "unknown"
+                                },
+                                "tvOS": {
+                                    "status": "unknown",
+                                    "parameter": "tvOS"
+                                },
+                                "visionOS": {
+                                    "status": "unknown",
+                                    "parameter": "visionOS"
+                                },
+                                "macOS": {
+                                    "parameter": "macOS",
+                                    "status": "unknown"
+                                },
+                                "watchOS": {
+                                    "parameter": "watchOS",
+                                    "status": "unknown"
+                                },
+                                "iOS": {
+                                    "parameter": "iOS",
+                                    "status": "compatible"
+                                }
+                            },
+                            "referenceName": "1.2.3"
+                        }
+                    },
+                    "repositoryName": "LinkedList",
+                    "releaseReferences": [
+                        "release",
+                        {
+                            "tag": {
+                                "tagName": "1.2.3-1.2.3",
+                                "semVer": {
+                                    "build": "",
+                                    "preRelease": "1.2.3",
+                                    "minor": 2,
+                                    "patch": 3,
+                                    "major": 1
+                                }
+                            }
+                        },
+                        "default_branch",
+                        {
+                            "branch": "main"
+                        }
+                    ],
+                    "stars": 123,
+                    "repositoryOwnerName": "Mona",
+                    "swiftVersionCompatibility": [
+                        {
+                            "patch": 0,
+                            "minor": 9,
+                            "major": 5
+                        }
+                    ],
+                    "swiftVersionBuildInfo": {
+                        "latest": {
+                            "results": {
+                                "v5_9": {
+                                    "parameter": {
+                                        "major": 5,
+                                        "minor": 9,
+                                        "patch": 0
+                                    },
+                                    "status": "compatible"
+                                },
+                                "v5_7": {
+                                    "status": "incompatible",
+                                    "parameter": {
+                                        "major": 5,
+                                        "patch": 0,
+                                        "minor": 7
+                                    }
+                                },
+                                "v5_6": {
+                                    "parameter": {
+                                        "minor": 6,
+                                        "patch": 0,
+                                        "major": 5
+                                    },
+                                    "status": "incompatible"
+                                },
+                                "v5_8": {
+                                    "status": "unknown",
+                                    "parameter": {
+                                        "patch": 0,
+                                        "minor": 8,
+                                        "major": 5
+                                    }
+                                }
+                            },
+                            "referenceName": "main"
+                        },
+                        "stable": {
+                            "referenceName": "1.2.3",
+                            "results": {
+                                "v5_7": {
+                                    "status": "incompatible",
+                                    "parameter": {
+                                        "major": 5,
+                                        "minor": 7,
+                                        "patch": 0
+                                    }
+                                },
+                                "v5_6": {
+                                    "status": "incompatible",
+                                    "parameter": {
+                                        "minor": 6,
+                                        "patch": 0,
+                                        "major": 5
+                                    }
+                                },
+                                "v5_9": {
+                                    "parameter": {
+                                        "patch": 0,
+                                        "minor": 9,
+                                        "major": 5
+                                    },
+                                    "status": "compatible"
+                                },
+                                "v5_8": {
+                                    "status": "unknown",
+                                    "parameter": {
+                                        "minor": 8,
+                                        "major": 5,
+                                        "patch": 0
+                                    }
+                                }
+                            }
+                        },
+                        "beta": {
+                            "referenceName": "2.0.0-b1",
+                            "results": {
+                                "v5_8": {
+                                    "parameter": {
+                                        "patch": 0,
+                                        "major": 5,
+                                        "minor": 8
+                                    },
+                                    "status": "unknown"
+                                },
+                                "v5_9": {
+                                    "status": "compatible",
+                                    "parameter": {
+                                        "major": 5,
+                                        "patch": 0,
+                                        "minor": 9
+                                    }
+                                },
+                                "v5_6": {
+                                    "status": "incompatible",
+                                    "parameter": {
+                                        "major": 5,
+                                        "patch": 0,
+                                        "minor": 6
+                                    }
+                                },
+                                "v5_7": {
+                                    "parameter": {
+                                        "patch": 0,
+                                        "minor": 7,
+                                        "major": 5
+                                    },
+                                    "status": "incompatible"
+                                }
+                            }
+                        }
+                    },
+                    "platformCompatibility": [
+                        "iOS",
+                        "linux",
+                        "macOS",
+                        "tvOS",
+                        "visionOS",
+                        "watchOS"
+                    ],
+                    "authors": {
+                        "fromSPIManifest": {
+                            "_0": "Mona"
+                        }
+                    },
+                    "title": "LinkedList",
+                    "hasBinaryTargets": false,
+                    "activity": {
+                        "openPullRequestsCount": 1,
+                        "lastPullRequestClosedAt": "2020-04-25T10:55:00Z",
+                        "lastIssueClosedAt": "2020-04-25T10:55:00Z",
+                        "openIssuesURL": "https://github.com/mona/LinkedList/issues",
+                        "openIssuesCount": 2,
+                        "openPullRequestsURL": "https://github.com/mona/LinkedList/pulls"
+                    },
+                    "packageId": "45BF4D77-7830-4A37-937E-C6853F8C1A26",
+                    "targets": [
+                        {
+                            "type": {
+                                "macro": {}
+                            },
+                            "name": "target"
+                        }
+                    ],
+                    "history": {
+                        "commitCount": 433,
+                        "releaseCount": 5,
+                        "createdAt": "2020-04-25T10:55:00Z",
+                        "releaseCountURL": "https://github.com/mona/LinkedList/releases",
+                        "commitCountURL": "https://github.com/mona/LinkedList/commits/main"
+                    },
+                    "repositoryOwner": "mona",
+                    "license": "mit",
+                    "products": [
+                        {
+                            "name": "lib",
+                            "type": {
+                                "library": {}
+                            }
+                        }
+                    ],
+                    "weightedKeywords": {},
+                    "releases": {
+                        "latest": {
+                            "date": "2020-04-25T10:55:00Z",
+                            "link": {
+                                "url": "https://github.com/mona/LinkedList/tree/main",
+                                "label": "main"
+                            }
+                        },
+                        "stable": {
+                            "link": {
+                                "url": "https://github.com/mona/LinkedList/releases/tag/1.2.3",
+                                "label": "1.2.3"
+                            },
+                            "date": "2020-04-25T10:55:00Z"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "api_token": {
+                "scheme": "bearer",
+                "description": "Token used for API access.",
+                "type": "http"
+            },
+            "builder_token": {
+                "description": "Token used for build result reporting.",
+                "scheme": "bearer",
+                "type": "http"
+            }
+        },
+        "schemas": {
+            "PackageCollectionModelV1CollectionPackageVersion": {
+                "properties": {
+                    "manifests": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest"
+                        }
+                    },
+                    "verifiedCompatibility": {
+                        "type": "array",
+                        "nullable": true,
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1Compatibility"
+                        }
+                    },
+                    "summary": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1CollectionPackageVersionAuthor"
+                    },
+                    "license": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1License"
+                    },
+                    "defaultToolsVersion": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time"
+                    },
+                    "signer": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1Signer"
+                    }
+                },
+                "required": [
+                    "defaultToolsVersion",
+                    "manifests",
+                    "version"
+                ],
+                "type": "object"
+            },
+            "Reference": {
+                "required": [
+                    "branch"
+                ],
+                "properties": {
+                    "branch": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "APIPackageControllerGetRouteModelReleaseInfo": {
+                "type": "object",
+                "properties": {
+                    "stable": {
+                        "$ref": "#/components/schemas/DateLink"
+                    },
+                    "beta": {
+                        "$ref": "#/components/schemas/DateLink"
+                    },
+                    "latest": {
+                        "$ref": "#/components/schemas/DateLink"
+                    }
+                }
+            },
+            "APIVersion": {
+                "properties": {
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "version"
+                ],
+                "type": "object"
+            },
+            "PackageCollectionModelV1Target": {
+                "type": "object",
+                "properties": {
+                    "moduleName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "PackageCollectionModelV1Product": {
+                "required": [
+                    "name",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PackageCollectionModelV1Signer": {
+                "type": "object",
+                "required": [
+                    "commonName",
+                    "organizationName",
+                    "organizationalUnitName",
+                    "type"
+                ],
+                "properties": {
+                    "commonName": {
+                        "type": "string"
+                    },
+                    "organizationName": {
+                        "type": "string"
+                    },
+                    "organizationalUnitName": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelPlatformResults": {
+                "required": [
+                    "iOS",
+                    "linux",
+                    "macOS",
+                    "tvOS",
+                    "visionOS",
+                    "watchOS"
+                ],
+                "type": "object",
+                "properties": {
+                    "tvOS": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    },
+                    "linux": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    },
+                    "macOS": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    },
+                    "visionOS": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    },
+                    "iOS": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    },
+                    "watchOS": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility"
+                    }
+                }
+            },
+            "APIPostPackageCollectionDTO": {
+                "required": [
+                    "selection"
+                ],
+                "properties": {
+                    "collectionName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "selection": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Any"
+                        },
+                        "type": "object"
+                    },
+                    "keywords": {
+                        "nullable": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "revision": {
+                        "format": "int64",
+                        "nullable": true,
+                        "type": "integer"
+                    },
+                    "authorName": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "overview": {
+                        "nullable": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SearchPackageResult": {
+                "properties": {
+                    "repositoryOwner": {
+                        "type": "string"
+                    },
+                    "lastActivityAt": {
+                        "format": "date-time",
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "repositoryName": {
+                        "type": "string"
+                    },
+                    "packageName": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "packageURL": {
+                        "type": "string"
+                    },
+                    "keywords": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "nullable": true
+                    },
+                    "packageId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "stars": {
+                        "format": "int64",
+                        "nullable": true,
+                        "type": "integer"
+                    },
+                    "hasDocs": {
+                        "type": "boolean"
+                    },
+                    "summary": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "hasDocs",
+                    "packageId",
+                    "packageURL",
+                    "repositoryName",
+                    "repositoryOwner"
+                ],
+                "type": "object"
+            },
+            "ProductDependency": {
+                "required": [
+                    "dependencies",
+                    "identity",
+                    "name",
+                    "url"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "identity": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "dependencies": {
+                        "items": {
+                            "$ref": "#/components/schemas/ProductDependency"
+                        },
+                        "type": "array"
+                    }
+                }
+            },
+            "PackageCollectionModelV1PlatformVersion": {
+                "required": [
+                    "name",
+                    "version"
+                ],
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PackageCollectionModelV1CollectionPackageVersionManifest": {
+                "required": [
+                    "packageName",
+                    "products",
+                    "targets",
+                    "toolsVersion"
+                ],
+                "type": "object",
+                "properties": {
+                    "targets": {
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1Target"
+                        },
+                        "type": "array"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1Product"
+                        }
+                    },
+                    "minimumPlatformVersions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1PlatformVersion"
+                        },
+                        "nullable": true
+                    },
+                    "toolsVersion": {
+                        "type": "string"
+                    },
+                    "packageName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults": {
+                "type": "object",
+                "properties": {
+                    "beta": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"
+                    },
+                    "latest": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"
+                    },
+                    "stable": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelSwiftVersionResults": {
+                "required": [
+                    "v5_6",
+                    "v5_7",
+                    "v5_8",
+                    "v5_9"
+                ],
+                "type": "object",
+                "properties": {
+                    "v5_8": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion"
+                    },
+                    "v5_7": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion"
+                    },
+                    "v5_6": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion"
+                    },
+                    "v5_9": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelBuildResultSwiftVersion": {
+                "type": "object",
+                "required": [
+                    "parameter",
+                    "status"
+                ],
+                "properties": {
+                    "parameter": {
+                        "$ref": "#/components/schemas/SwiftVersion"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults": {
+                "properties": {
+                    "referenceName": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelPlatformResults"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "referenceName",
+                    "results"
+                ]
+            },
+            "DateLink": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "link": {
+                        "$ref": "#/components/schemas/Link"
+                    }
+                },
+                "required": [
+                    "date",
+                    "link"
+                ]
+            },
+            "WeightedKeyword": {
+                "required": [
+                    "count",
+                    "keyword"
+                ],
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "keyword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModel": {
+                "required": [
+                    "hasBinaryTargets",
+                    "isArchived",
+                    "license",
+                    "packageId",
+                    "releaseReferences",
+                    "releases",
+                    "repositoryName",
+                    "repositoryOwner",
+                    "repositoryOwnerName",
+                    "title",
+                    "url",
+                    "weightedKeywords"
+                ],
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "nullable": true,
+                        "items": {
+                            "$ref": "#/components/schemas/APIPackageControllerGetRouteModelProduct"
+                        },
+                        "type": "array"
+                    },
+                    "history": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelHistory"
+                    },
+                    "swiftVersionBuildInfo": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults"
+                    },
+                    "platformCompatibility": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/APIPackageControllerGetRouteModelPlatformCompatibility"
+                        },
+                        "nullable": true
+                    },
+                    "activity": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelActivity"
+                    },
+                    "swiftVersionCompatibility": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SwiftVersion"
+                        },
+                        "nullable": true
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "dependencies": {
+                        "type": "array",
+                        "nullable": true,
+                        "items": {
+                            "$ref": "#/components/schemas/ResolvedDependency"
+                        }
+                    },
+                    "hasBinaryTargets": {
+                        "type": "boolean"
+                    },
+                    "homepageUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "summary": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "isArchived": {
+                        "type": "boolean"
+                    },
+                    "license": {
+                        "$ref": "#/components/schemas/License"
+                    },
+                    "stars": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "repositoryName": {
+                        "type": "string"
+                    },
+                    "documentationTarget": {
+                        "nullable": true,
+                        "additionalProperties": {},
+                        "type": "object"
+                    },
+                    "weightedKeywords": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WeightedKeyword"
+                        }
+                    },
+                    "releaseReferences": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reference"
+                        }
+                    },
+                    "releases": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "packageId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "authors": {
+                        "nullable": true,
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Any"
+                        },
+                        "type": "object"
+                    },
+                    "licenseUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "nullable": true,
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "repositoryOwner": {
+                        "type": "string"
+                    },
+                    "repositoryOwnerName": {
+                        "type": "string"
+                    },
+                    "platformBuildInfo": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults"
+                    },
+                    "targets": {
+                        "type": "array",
+                        "nullable": true,
+                        "items": {
+                            "$ref": "#/components/schemas/APIPackageControllerGetRouteModelTarget"
+                        }
+                    },
+                    "score": {
+                        "nullable": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelHistory": {
+                "type": "object",
+                "properties": {
+                    "commitCountURL": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "releaseCount": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "releaseCountURL": {
+                        "type": "string"
+                    },
+                    "commitCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "required": [
+                    "commitCount",
+                    "commitCountURL",
+                    "createdAt",
+                    "releaseCount",
+                    "releaseCountURL"
+                ]
+            },
+            "PackageCollectionModelV1Compatibility": {
+                "type": "object",
+                "required": [
+                    "platform",
+                    "swiftVersion"
+                ],
+                "properties": {
+                    "swiftVersion": {
+                        "type": "string"
+                    },
+                    "platform": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1Platform"
+                    }
+                }
+            },
+            "PackageCollectionModelV1License": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "url"
+                ],
+                "type": "object"
+            },
+            "PackageCollectionModelV1SignatureCertificate": {
+                "required": [
+                    "issuer",
+                    "subject"
+                ],
+                "properties": {
+                    "issuer": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1SignatureCertificateName"
+                    },
+                    "subject": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1SignatureCertificateName"
+                    }
+                },
+                "type": "object"
+            },
+            "APIPackageControllerGetRouteModelTarget": {
+                "required": [
+                    "name",
+                    "type"
+                ],
+                "properties": {
+                    "type": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Any"
+                        },
+                        "type": "object"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PackageCollectionModelV1Platform": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "type": "object"
+            },
+            "APIPostBuildReportDTO": {
+                "type": "object",
+                "properties": {
+                    "buildCommand": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "logUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "resolvedDependencies": {
+                        "nullable": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ResolvedDependency"
+                        }
+                    },
+                    "buildId": {
+                        "format": "uuid",
+                        "type": "string"
+                    },
+                    "runnerId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "builderVersion": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "jobUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "platform": {
+                        "$ref": "#/components/schemas/BuildPlatform"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "productDependencies": {
+                        "items": {
+                            "$ref": "#/components/schemas/ProductDependency"
+                        },
+                        "type": "array",
+                        "nullable": true
+                    },
+                    "swiftVersion": {
+                        "$ref": "#/components/schemas/SwiftVersion"
+                    }
+                },
+                "required": [
+                    "buildId",
+                    "platform",
+                    "status",
+                    "swiftVersion"
+                ]
+            },
+            "PackageCollectionModelV1SignatureCertificateName": {
+                "type": "object",
+                "properties": {
+                    "commonName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "organizationalUnit": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userID": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            },
+            "Link": {
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "label",
+                    "url"
+                ]
+            },
+            "PackageCollectionModelV1CollectionAuthor": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults": {
+                "type": "object",
+                "properties": {
+                    "referenceName": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults"
+                    }
+                },
+                "required": [
+                    "referenceName",
+                    "results"
+                ]
+            },
+            "APIPostDocReportDTO": {
+                "required": [
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "fileCount": {
+                        "format": "int64",
+                        "nullable": true,
+                        "type": "integer"
+                    },
+                    "logUrl": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "mbSize": {
+                        "nullable": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "error": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "linkablePathsCount": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int64"
+                    },
+                    "docArchives": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DocArchive"
+                        },
+                        "nullable": true
+                    }
+                }
+            },
+            "PackageCollectionModelV1SignedCollection": {
+                "required": [
+                    "formatVersion",
+                    "generatedAt",
+                    "name",
+                    "packages",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "revision": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "overview": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "generatedBy": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1CollectionAuthor"
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "nullable": true,
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "packages": {
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1CollectionPackage"
+                        },
+                        "type": "array"
+                    },
+                    "generatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "signature": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1Signature"
+                    },
+                    "formatVersion": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SearchResponse": {
+                "properties": {
+                    "searchTerm": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "additionalProperties": {
+                                "$ref": "#/components/schemas/Any"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "hasMoreResults": {
+                        "type": "boolean"
+                    },
+                    "searchFilters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchFilterViewModel"
+                        }
+                    }
+                },
+                "required": [
+                    "hasMoreResults",
+                    "results",
+                    "searchFilters",
+                    "searchTerm"
+                ],
+                "type": "object"
+            },
+            "PackageCollectionModelV1CollectionPackage": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "versions": {
+                        "items": {
+                            "$ref": "#/components/schemas/PackageCollectionModelV1CollectionPackageVersion"
+                        },
+                        "type": "array"
+                    },
+                    "identity": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "keywords": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true,
+                        "type": "array"
+                    },
+                    "readmeURL": {
+                        "nullable": true,
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "summary": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "license": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1License"
+                    }
+                },
+                "required": [
+                    "url",
+                    "versions"
+                ]
+            },
+            "APIPackageControllerGetRouteModelPlatformCompatibility": {
+                "enum": [
+                    "iOS",
+                    "linux",
+                    "macOS",
+                    "tvOS",
+                    "visionOS",
+                    "watchOS"
+                ],
+                "type": "string"
+            },
+            "License": {
+                "type": "string",
+                "enum": [
+                    "afl-3.0",
+                    "apache-2.0",
+                    "artistic-2.0",
+                    "bsd-2-clause",
+                    "bsd-3-clause",
+                    "bsd-3-clause-clear",
+                    "bsl-1.0",
+                    "cc",
+                    "cc0-1.0",
+                    "cc-by-4.0",
+                    "cc-by-sa-4.0",
+                    "wtfpl",
+                    "ecl-2.0",
+                    "epl-1.0",
+                    "eupl-1.1",
+                    "agpl-3.0",
+                    "gpl",
+                    "gpl-2.0",
+                    "gpl-3.0",
+                    "lgpl",
+                    "lgpl-2.1",
+                    "lgpl-3.0",
+                    "isc",
+                    "ms-pl",
+                    "mit",
+                    "mpl-2.0",
+                    "osl-3.0",
+                    "postgresql",
+                    "ncsa",
+                    "unlicense",
+                    "zlib",
+                    "other",
+                    "none"
+                ]
+            },
+            "APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults": {
+                "type": "object",
+                "properties": {
+                    "beta": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"
+                    },
+                    "latest": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"
+                    },
+                    "stable": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelProduct": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Any"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "type"
+                ]
+            },
+            "Any": {
+                "required": [
+                    "_0"
+                ],
+                "type": "object",
+                "properties": {
+                    "_0": {
+                        "$ref": "#/components/schemas/SearchPackageResult"
+                    }
+                }
+            },
+            "PackageCollectionModelV1CollectionPackageVersionAuthor": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "type": "object"
+            },
+            "ResolvedDependency": {
+                "properties": {
+                    "packageName": {
+                        "type": "string"
+                    },
+                    "repositoryURL": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "packageName",
+                    "repositoryURL"
+                ],
+                "type": "object"
+            },
+            "BuildPlatform": {
+                "type": "string",
+                "enum": [
+                    "ios",
+                    "linux",
+                    "macos-spm",
+                    "macos-xcodebuild",
+                    "tvos",
+                    "visionos",
+                    "watchos"
+                ]
+            },
+            "APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility": {
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "parameter": {
+                        "$ref": "#/components/schemas/APIPackageControllerGetRouteModelPlatformCompatibility"
+                    }
+                },
+                "required": [
+                    "parameter",
+                    "status"
+                ],
+                "type": "object"
+            },
+            "PackageCollectionModelV1Signature": {
+                "required": [
+                    "certificate",
+                    "signature"
+                ],
+                "type": "object",
+                "properties": {
+                    "certificate": {
+                        "$ref": "#/components/schemas/PackageCollectionModelV1SignatureCertificate"
+                    },
+                    "signature": {
+                        "type": "string"
+                    }
+                }
+            },
+            "DocArchive": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "title"
+                ],
+                "type": "object"
+            },
+            "SearchFilterViewModel": {
+                "required": [
+                    "key",
+                    "operator",
+                    "value"
+                ],
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Badge": {
+                "properties": {
+                    "schemaVersion": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "cacheSeconds": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "isError": {
+                        "type": "boolean"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "logoSvg": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cacheSeconds",
+                    "color",
+                    "isError",
+                    "label",
+                    "message",
+                    "schemaVersion"
+                ],
+                "type": "object"
+            },
+            "SwiftVersion": {
+                "required": [
+                    "major",
+                    "minor",
+                    "patch"
+                ],
+                "type": "object",
+                "properties": {
+                    "patch": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "major": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "minor": {
+                        "format": "int64",
+                        "type": "integer"
+                    }
+                }
+            },
+            "APIPackageControllerGetRouteModelActivity": {
+                "required": [
+                    "openIssuesCount",
+                    "openPullRequestsCount"
+                ],
+                "type": "object",
+                "properties": {
+                    "lastIssueClosedAt": {
+                        "format": "date-time",
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "lastPullRequestClosedAt": {
+                        "nullable": true,
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "openPullRequestsCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "openPullRequestsURL": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "openIssuesCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "openIssuesURL": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "api"
+        }
+    ]
+}

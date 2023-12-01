@@ -38,6 +38,65 @@ public struct Client: APIProtocol {
     private var converter: Converter {
         client.converter
     }
+    /// /api/version
+    ///
+    /// Get the site's version.
+    ///
+    /// - Remark: HTTP `GET /api/version`.
+    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
+    public func getApiVersion(_ input: Operations.getApiVersion.Input) async throws -> Operations.getApiVersion.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.getApiVersion.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/api/version",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                case 200:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.getApiVersion.Output.Ok.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.APIVersion.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .ok(.init(body: body))
+                default:
+                    return .undocumented(
+                        statusCode: response.status.code,
+                        .init()
+                    )
+                }
+            }
+        )
+    }
     /// /api/builds/{id}/doc-report
     ///
     /// Send a documentation generation report.
@@ -80,76 +139,6 @@ public struct Client: APIProtocol {
                 case 200:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
                     let body: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Swift.Int64.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .ok(.init(body: body))
-                default:
-                    return .undocumented(
-                        statusCode: response.status.code,
-                        .init()
-                    )
-                }
-            }
-        )
-    }
-    /// /api/versions/{id}/build-report
-    ///
-    /// Send a build report.
-    ///
-    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
-    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    public func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.postApiVersionsByIdBuild_hyphen_report.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/api/versions/{}/build-report",
-                    parameters: [
-                        input.path.id
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case let .json(value):
-                    body = try converter.setRequiredRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                case 200:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -247,20 +236,23 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// /api/version
+    /// /api/packages/{owner}/{repository}
     ///
-    /// Get the site's version.
+    /// Get package details.
     ///
-    /// - Remark: HTTP `GET /api/version`.
-    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    public func getApiVersion(_ input: Operations.getApiVersion.Input) async throws -> Operations.getApiVersion.Output {
+    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
+    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
+    public func getApiPackagesByOwnerByRepository(_ input: Operations.getApiPackagesByOwnerByRepository.Input) async throws -> Operations.getApiPackagesByOwnerByRepository.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.getApiVersion.id,
+            forOperation: Operations.getApiPackagesByOwnerByRepository.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/api/version",
-                    parameters: []
+                    template: "/api/packages/{}/{}",
+                    parameters: [
+                        input.path.owner,
+                        input.path.repository
+                    ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
                     soar_path: path,
@@ -277,7 +269,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 case 200:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.getApiVersion.Output.Ok.Body
+                    let body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -287,7 +279,145 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.APIVersion.self,
+                            Components.Schemas.APIPackageControllerGetRouteModel.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .ok(.init(body: body))
+                default:
+                    return .undocumented(
+                        statusCode: response.status.code,
+                        .init()
+                    )
+                }
+            }
+        )
+    }
+    /// /api/versions/{id}/build-report
+    ///
+    /// Send a build report.
+    ///
+    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
+    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
+    public func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.postApiVersionsByIdBuild_hyphen_report.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/api/versions/{}/build-report",
+                    parameters: [
+                        input.path.id
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case let .json(value):
+                    body = try converter.setRequiredRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                case 200:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Swift.Int64.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .ok(.init(body: body))
+                default:
+                    return .undocumented(
+                        statusCode: response.status.code,
+                        .init()
+                    )
+                }
+            }
+        )
+    }
+    /// /api/package-collections
+    ///
+    /// Generate a signed package collection.
+    ///
+    /// - Remark: HTTP `POST /api/package-collections`.
+    /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
+    public func postApiPackage_hyphen_collections(_ input: Operations.postApiPackage_hyphen_collections.Input) async throws -> Operations.postApiPackage_hyphen_collections.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.postApiPackage_hyphen_collections.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/api/package-collections",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case let .json(value):
+                    body = try converter.setRequiredRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                case 200:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.PackageCollectionModelV1SignedCollection.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -368,136 +498,6 @@ public struct Client: APIProtocol {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
                             Components.Schemas.SearchResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .ok(.init(body: body))
-                default:
-                    return .undocumented(
-                        statusCode: response.status.code,
-                        .init()
-                    )
-                }
-            }
-        )
-    }
-    /// /api/packages/{owner}/{repository}
-    ///
-    /// Get package details.
-    ///
-    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
-    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
-    public func getApiPackagesByOwnerByRepository(_ input: Operations.getApiPackagesByOwnerByRepository.Input) async throws -> Operations.getApiPackagesByOwnerByRepository.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.getApiPackagesByOwnerByRepository.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/api/packages/{}/{}",
-                    parameters: [
-                        input.path.owner,
-                        input.path.repository
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                case 200:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.APIPackageControllerGetRouteModel.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .ok(.init(body: body))
-                default:
-                    return .undocumented(
-                        statusCode: response.status.code,
-                        .init()
-                    )
-                }
-            }
-        )
-    }
-    /// /api/package-collections
-    ///
-    /// Generate a signed package collection.
-    ///
-    /// - Remark: HTTP `POST /api/package-collections`.
-    /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
-    public func postApiPackage_hyphen_collections(_ input: Operations.postApiPackage_hyphen_collections.Input) async throws -> Operations.postApiPackage_hyphen_collections.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.postApiPackage_hyphen_collections.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/api/package-collections",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case let .json(value):
-                    body = try converter.setRequiredRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                case 200:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.PackageCollectionModelV1SignedCollection.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)

@@ -11,27 +11,6 @@ import struct Foundation.Date
 #endif
 /// A type that performs HTTP operations defined by the OpenAPI document.
 public protocol APIProtocol: Sendable {
-    /// /api/builds/{id}/doc-report
-    ///
-    /// Send a documentation generation report.
-    ///
-    /// - Remark: HTTP `POST /api/builds/{id}/doc-report`.
-    /// - Remark: Generated from `#/paths//api/builds/{id}/doc-report/post(postApiBuildsByIdDoc-report)`.
-    func postApiBuildsByIdDoc_hyphen_report(_ input: Operations.postApiBuildsByIdDoc_hyphen_report.Input) async throws -> Operations.postApiBuildsByIdDoc_hyphen_report.Output
-    /// /api/versions/{id}/build-report
-    ///
-    /// Send a build report.
-    ///
-    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
-    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output
-    /// /api/packages/{owner}/{repository}/badge
-    ///
-    /// Get shields.io badge for the given repository.
-    ///
-    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}/badge`.
-    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/badge/get(getApiPackagesByOwnerByRepositoryBadge)`.
-    func getApiPackagesByOwnerByRepositoryBadge(_ input: Operations.getApiPackagesByOwnerByRepositoryBadge.Input) async throws -> Operations.getApiPackagesByOwnerByRepositoryBadge.Output
     /// /api/version
     ///
     /// Get the site's version.
@@ -39,13 +18,20 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `GET /api/version`.
     /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
     func getApiVersion(_ input: Operations.getApiVersion.Input) async throws -> Operations.getApiVersion.Output
-    /// /api/search
+    /// /api/builds/{id}/doc-report
     ///
-    /// Execute a search.
+    /// Send a documentation generation report.
     ///
-    /// - Remark: HTTP `GET /api/search`.
-    /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
-    func getApiSearch(_ input: Operations.getApiSearch.Input) async throws -> Operations.getApiSearch.Output
+    /// - Remark: HTTP `POST /api/builds/{id}/doc-report`.
+    /// - Remark: Generated from `#/paths//api/builds/{id}/doc-report/post(postApiBuildsByIdDoc-report)`.
+    func postApiBuildsByIdDoc_hyphen_report(_ input: Operations.postApiBuildsByIdDoc_hyphen_report.Input) async throws -> Operations.postApiBuildsByIdDoc_hyphen_report.Output
+    /// /api/packages/{owner}/{repository}/badge
+    ///
+    /// Get shields.io badge for the given repository.
+    ///
+    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}/badge`.
+    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/badge/get(getApiPackagesByOwnerByRepositoryBadge)`.
+    func getApiPackagesByOwnerByRepositoryBadge(_ input: Operations.getApiPackagesByOwnerByRepositoryBadge.Input) async throws -> Operations.getApiPackagesByOwnerByRepositoryBadge.Output
     /// /api/packages/{owner}/{repository}
     ///
     /// Get package details.
@@ -53,6 +39,13 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
     /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
     func getApiPackagesByOwnerByRepository(_ input: Operations.getApiPackagesByOwnerByRepository.Input) async throws -> Operations.getApiPackagesByOwnerByRepository.Output
+    /// /api/versions/{id}/build-report
+    ///
+    /// Send a build report.
+    ///
+    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
+    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
+    func postApiVersionsByIdBuild_hyphen_report(_ input: Operations.postApiVersionsByIdBuild_hyphen_report.Input) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output
     /// /api/package-collections
     ///
     /// Generate a signed package collection.
@@ -60,10 +53,26 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `POST /api/package-collections`.
     /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
     func postApiPackage_hyphen_collections(_ input: Operations.postApiPackage_hyphen_collections.Input) async throws -> Operations.postApiPackage_hyphen_collections.Output
+    /// /api/search
+    ///
+    /// Execute a search.
+    ///
+    /// - Remark: HTTP `GET /api/search`.
+    /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
+    func getApiSearch(_ input: Operations.getApiSearch.Input) async throws -> Operations.getApiSearch.Output
 }
 
 /// Convenience overloads for operation inputs.
 extension APIProtocol {
+    /// /api/version
+    ///
+    /// Get the site's version.
+    ///
+    /// - Remark: HTTP `GET /api/version`.
+    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
+    public func getApiVersion(headers: Operations.getApiVersion.Input.Headers = .init()) async throws -> Operations.getApiVersion.Output {
+        try await getApiVersion(Operations.getApiVersion.Input(headers: headers))
+    }
     /// /api/builds/{id}/doc-report
     ///
     /// Send a documentation generation report.
@@ -76,23 +85,6 @@ extension APIProtocol {
         body: Operations.postApiBuildsByIdDoc_hyphen_report.Input.Body
     ) async throws -> Operations.postApiBuildsByIdDoc_hyphen_report.Output {
         try await postApiBuildsByIdDoc_hyphen_report(Operations.postApiBuildsByIdDoc_hyphen_report.Input(
-            path: path,
-            headers: headers,
-            body: body
-        ))
-    }
-    /// /api/versions/{id}/build-report
-    ///
-    /// Send a build report.
-    ///
-    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
-    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    public func postApiVersionsByIdBuild_hyphen_report(
-        path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
-        headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
-        body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
-    ) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
-        try await postApiVersionsByIdBuild_hyphen_report(Operations.postApiVersionsByIdBuild_hyphen_report.Input(
             path: path,
             headers: headers,
             body: body
@@ -115,30 +107,6 @@ extension APIProtocol {
             headers: headers
         ))
     }
-    /// /api/version
-    ///
-    /// Get the site's version.
-    ///
-    /// - Remark: HTTP `GET /api/version`.
-    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    public func getApiVersion(headers: Operations.getApiVersion.Input.Headers = .init()) async throws -> Operations.getApiVersion.Output {
-        try await getApiVersion(Operations.getApiVersion.Input(headers: headers))
-    }
-    /// /api/search
-    ///
-    /// Execute a search.
-    ///
-    /// - Remark: HTTP `GET /api/search`.
-    /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
-    public func getApiSearch(
-        query: Operations.getApiSearch.Input.Query,
-        headers: Operations.getApiSearch.Input.Headers = .init()
-    ) async throws -> Operations.getApiSearch.Output {
-        try await getApiSearch(Operations.getApiSearch.Input(
-            query: query,
-            headers: headers
-        ))
-    }
     /// /api/packages/{owner}/{repository}
     ///
     /// Get package details.
@@ -152,6 +120,23 @@ extension APIProtocol {
         try await getApiPackagesByOwnerByRepository(Operations.getApiPackagesByOwnerByRepository.Input(
             path: path,
             headers: headers
+        ))
+    }
+    /// /api/versions/{id}/build-report
+    ///
+    /// Send a build report.
+    ///
+    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
+    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
+    public func postApiVersionsByIdBuild_hyphen_report(
+        path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
+        headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
+        body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
+    ) async throws -> Operations.postApiVersionsByIdBuild_hyphen_report.Output {
+        try await postApiVersionsByIdBuild_hyphen_report(Operations.postApiVersionsByIdBuild_hyphen_report.Input(
+            path: path,
+            headers: headers,
+            body: body
         ))
     }
     /// /api/package-collections
@@ -169,6 +154,21 @@ extension APIProtocol {
             body: body
         ))
     }
+    /// /api/search
+    ///
+    /// Execute a search.
+    ///
+    /// - Remark: HTTP `GET /api/search`.
+    /// - Remark: Generated from `#/paths//api/search/get(getApiSearch)`.
+    public func getApiSearch(
+        query: Operations.getApiSearch.Input.Query,
+        headers: Operations.getApiSearch.Input.Headers = .init()
+    ) async throws -> Operations.getApiSearch.Output {
+        try await getApiSearch(Operations.getApiSearch.Input(
+            query: query,
+            headers: headers
+        ))
+    }
 }
 
 /// Server URLs defined in the OpenAPI document.
@@ -178,182 +178,292 @@ public enum Servers {}
 public enum Components {
     /// Types generated from the `#/components/schemas` section of the OpenAPI document.
     public enum Schemas {
-        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection`.
-        public struct PackageCollectionModelV1SignedCollection: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/revision`.
-            public var revision: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedAt`.
-            public var generatedAt: Foundation.Date
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/name`.
-            public var name: Swift.String
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/keywords`.
-            public var keywords: [Swift.String]?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/overview`.
-            public var overview: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/signature`.
-            public var signature: Components.Schemas.PackageCollectionModelV1Signature
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/formatVersion`.
-            public var formatVersion: Swift.String
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/packages`.
-            public var packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage]
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedBy`.
-            public var generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor?
-            /// Creates a new `PackageCollectionModelV1SignedCollection`.
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion`.
+        public struct PackageCollectionModelV1CollectionPackageVersion: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/manifests`.
+            public struct manifestsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Components.Schemas.PackageCollectionModelV1CollectionPackageVersionManifest]
+                /// Creates a new `manifestsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Components.Schemas.PackageCollectionModelV1CollectionPackageVersionManifest] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/manifests`.
+            public var manifests: Components.Schemas.PackageCollectionModelV1CollectionPackageVersion.manifestsPayload
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/verifiedCompatibility`.
+            public var verifiedCompatibility: [Components.Schemas.PackageCollectionModelV1Compatibility]?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/summary`.
+            public var summary: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/version`.
+            public var version: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/author`.
+            public var author: Components.Schemas.PackageCollectionModelV1CollectionPackageVersionAuthor?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/license`.
+            public var license: Components.Schemas.PackageCollectionModelV1License?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/defaultToolsVersion`.
+            public var defaultToolsVersion: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/createdAt`.
+            public var createdAt: Foundation.Date?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersion/signer`.
+            public var signer: Components.Schemas.PackageCollectionModelV1Signer?
+            /// Creates a new `PackageCollectionModelV1CollectionPackageVersion`.
             ///
             /// - Parameters:
-            ///   - revision:
-            ///   - generatedAt:
-            ///   - name:
-            ///   - keywords:
-            ///   - overview:
-            ///   - signature:
-            ///   - formatVersion:
-            ///   - packages:
-            ///   - generatedBy:
+            ///   - manifests:
+            ///   - verifiedCompatibility:
+            ///   - summary:
+            ///   - version:
+            ///   - author:
+            ///   - license:
+            ///   - defaultToolsVersion:
+            ///   - createdAt:
+            ///   - signer:
             public init(
-                revision: Swift.Int64? = nil,
-                generatedAt: Foundation.Date,
-                name: Swift.String,
-                keywords: [Swift.String]? = nil,
-                overview: Swift.String? = nil,
-                signature: Components.Schemas.PackageCollectionModelV1Signature,
-                formatVersion: Swift.String,
-                packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage],
-                generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor? = nil
+                manifests: Components.Schemas.PackageCollectionModelV1CollectionPackageVersion.manifestsPayload,
+                verifiedCompatibility: [Components.Schemas.PackageCollectionModelV1Compatibility]? = nil,
+                summary: Swift.String? = nil,
+                version: Swift.String,
+                author: Components.Schemas.PackageCollectionModelV1CollectionPackageVersionAuthor? = nil,
+                license: Components.Schemas.PackageCollectionModelV1License? = nil,
+                defaultToolsVersion: Swift.String,
+                createdAt: Foundation.Date? = nil,
+                signer: Components.Schemas.PackageCollectionModelV1Signer? = nil
             ) {
-                self.revision = revision
-                self.generatedAt = generatedAt
-                self.name = name
-                self.keywords = keywords
-                self.overview = overview
-                self.signature = signature
-                self.formatVersion = formatVersion
-                self.packages = packages
-                self.generatedBy = generatedBy
+                self.manifests = manifests
+                self.verifiedCompatibility = verifiedCompatibility
+                self.summary = summary
+                self.version = version
+                self.author = author
+                self.license = license
+                self.defaultToolsVersion = defaultToolsVersion
+                self.createdAt = createdAt
+                self.signer = signer
             }
             public enum CodingKeys: String, CodingKey {
-                case revision
-                case generatedAt
-                case name
-                case keywords
-                case overview
-                case signature
-                case formatVersion
-                case packages
-                case generatedBy
+                case manifests
+                case verifiedCompatibility
+                case summary
+                case version
+                case author
+                case license
+                case defaultToolsVersion
+                case createdAt
+                case signer
             }
         }
-        /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel`.
-        public struct SearchFilterViewModel: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/value`.
-            public var value: Swift.String
-            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/key`.
-            public var key: Swift.String
-            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/operator`.
-            public var _operator: Swift.String
-            /// Creates a new `SearchFilterViewModel`.
+        /// - Remark: Generated from `#/components/schemas/Reference`.
+        public struct Reference: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Reference/branch`.
+            public var branch: Swift.String
+            /// Creates a new `Reference`.
             ///
             /// - Parameters:
-            ///   - value:
-            ///   - key:
-            ///   - _operator:
-            public init(
-                value: Swift.String,
-                key: Swift.String,
-                _operator: Swift.String
-            ) {
-                self.value = value
-                self.key = key
-                self._operator = _operator
+            ///   - branch:
+            public init(branch: Swift.String) {
+                self.branch = branch
             }
             public enum CodingKeys: String, CodingKey {
-                case value
-                case key
-                case _operator = "operator"
+                case branch
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformCompatibility`.
-        @frozen public enum APIPackageControllerGetRouteModelPlatformCompatibility: String, Codable, Hashable, Sendable {
-            case iOS = "iOS"
-            case linux = "linux"
-            case macOS = "macOS"
-            case tvOS = "tvOS"
-            case visionOS = "visionOS"
-            case watchOS = "watchOS"
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
-        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/results`.
-            public var results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/referenceName`.
-            public var referenceName: Swift.String
-            /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
-            ///
-            /// - Parameters:
-            ///   - results:
-            ///   - referenceName:
-            public init(
-                results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults,
-                referenceName: Swift.String
-            ) {
-                self.results = results
-                self.referenceName = referenceName
-            }
-            public enum CodingKeys: String, CodingKey {
-                case results
-                case referenceName
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/DocArchive`.
-        public struct DocArchive: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/DocArchive/name`.
-            public var name: Swift.String
-            /// - Remark: Generated from `#/components/schemas/DocArchive/title`.
-            public var title: Swift.String
-            /// Creates a new `DocArchive`.
-            ///
-            /// - Parameters:
-            ///   - name:
-            ///   - title:
-            public init(
-                name: Swift.String,
-                title: Swift.String
-            ) {
-                self.name = name
-                self.title = title
-            }
-            public enum CodingKeys: String, CodingKey {
-                case name
-                case title
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
-        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/stable`.
-            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/latest`.
-            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/beta`.
-            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
-            /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo`.
+        public struct APIPackageControllerGetRouteModelReleaseInfo: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/stable`.
+            public var stable: Components.Schemas.DateLink?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/beta`.
+            public var beta: Components.Schemas.DateLink?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/latest`.
+            public var latest: Components.Schemas.DateLink?
+            /// Creates a new `APIPackageControllerGetRouteModelReleaseInfo`.
             ///
             /// - Parameters:
             ///   - stable:
-            ///   - latest:
             ///   - beta:
+            ///   - latest:
             public init(
-                stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
-                latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
-                beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil
+                stable: Components.Schemas.DateLink? = nil,
+                beta: Components.Schemas.DateLink? = nil,
+                latest: Components.Schemas.DateLink? = nil
             ) {
                 self.stable = stable
-                self.latest = latest
                 self.beta = beta
+                self.latest = latest
             }
             public enum CodingKeys: String, CodingKey {
                 case stable
-                case latest
                 case beta
+                case latest
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIVersion`.
+        public struct APIVersion: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIVersion/version`.
+            public var version: Swift.String
+            /// Creates a new `APIVersion`.
+            ///
+            /// - Parameters:
+            ///   - version:
+            public init(version: Swift.String) {
+                self.version = version
+            }
+            public enum CodingKeys: String, CodingKey {
+                case version
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Target`.
+        public struct PackageCollectionModelV1Target: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Target/moduleName`.
+            public var moduleName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Target/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1Target`.
+            ///
+            /// - Parameters:
+            ///   - moduleName:
+            ///   - name:
+            public init(
+                moduleName: Swift.String? = nil,
+                name: Swift.String
+            ) {
+                self.moduleName = moduleName
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case moduleName
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Product`.
+        public struct PackageCollectionModelV1Product: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Product/type`.
+            public struct _typePayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `_typePayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Product/type`.
+            public var _type: Components.Schemas.PackageCollectionModelV1Product._typePayload
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Product/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1Product`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            ///   - name:
+            public init(
+                _type: Components.Schemas.PackageCollectionModelV1Product._typePayload,
+                name: Swift.String
+            ) {
+                self._type = _type
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signer`.
+        public struct PackageCollectionModelV1Signer: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signer/commonName`.
+            public var commonName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signer/organizationName`.
+            public var organizationName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signer/organizationalUnitName`.
+            public var organizationalUnitName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signer/type`.
+            public var _type: Swift.String
+            /// Creates a new `PackageCollectionModelV1Signer`.
+            ///
+            /// - Parameters:
+            ///   - commonName:
+            ///   - organizationName:
+            ///   - organizationalUnitName:
+            ///   - _type:
+            public init(
+                commonName: Swift.String,
+                organizationName: Swift.String,
+                organizationalUnitName: Swift.String,
+                _type: Swift.String
+            ) {
+                self.commonName = commonName
+                self.organizationName = organizationName
+                self.organizationalUnitName = organizationalUnitName
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case commonName
+                case organizationName
+                case organizationalUnitName
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults`.
+        public struct APIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/tvOS`.
+            public var tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/linux`.
+            public var linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/macOS`.
+            public var macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/visionOS`.
+            public var visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/iOS`.
+            public var iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/watchOS`.
+            public var watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            /// Creates a new `APIPackageControllerGetRouteModelPlatformResults`.
+            ///
+            /// - Parameters:
+            ///   - tvOS:
+            ///   - linux:
+            ///   - macOS:
+            ///   - visionOS:
+            ///   - iOS:
+            ///   - watchOS:
+            public init(
+                tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
+                linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
+                macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
+                visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
+                iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
+                watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
+            ) {
+                self.tvOS = tvOS
+                self.linux = linux
+                self.macOS = macOS
+                self.visionOS = visionOS
+                self.iOS = iOS
+                self.watchOS = watchOS
+            }
+            public enum CodingKeys: String, CodingKey {
+                case tvOS
+                case linux
+                case macOS
+                case visionOS
+                case iOS
+                case watchOS
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO`.
@@ -382,486 +492,383 @@ public enum Components {
             public var selection: Components.Schemas.APIPostPackageCollectionDTO.selectionPayload
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/keywords`.
             public var keywords: [Swift.String]?
-            /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/overview`.
-            public var overview: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/authorName`.
-            public var authorName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/revision`.
             public var revision: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/authorName`.
+            public var authorName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostPackageCollectionDTO/overview`.
+            public var overview: Swift.String?
             /// Creates a new `APIPostPackageCollectionDTO`.
             ///
             /// - Parameters:
             ///   - collectionName:
             ///   - selection:
             ///   - keywords:
-            ///   - overview:
-            ///   - authorName:
             ///   - revision:
+            ///   - authorName:
+            ///   - overview:
             public init(
                 collectionName: Swift.String? = nil,
                 selection: Components.Schemas.APIPostPackageCollectionDTO.selectionPayload,
                 keywords: [Swift.String]? = nil,
-                overview: Swift.String? = nil,
+                revision: Swift.Int64? = nil,
                 authorName: Swift.String? = nil,
-                revision: Swift.Int64? = nil
+                overview: Swift.String? = nil
             ) {
                 self.collectionName = collectionName
                 self.selection = selection
                 self.keywords = keywords
-                self.overview = overview
-                self.authorName = authorName
                 self.revision = revision
+                self.authorName = authorName
+                self.overview = overview
             }
             public enum CodingKeys: String, CodingKey {
                 case collectionName
                 case selection
                 case keywords
-                case overview
-                case authorName
                 case revision
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage`.
-        public struct PackageCollectionModelV1CollectionPackage: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/identity`.
-            public var identity: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/versions`.
-            public var versions: Swift.String
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/readmeURL`.
-            public var readmeURL: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/url`.
-            public var url: Swift.String
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/license`.
-            public var license: Components.Schemas.PackageCollectionModelV1License?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/keywords`.
-            public var keywords: [Swift.String]?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/summary`.
-            public var summary: Swift.String?
-            /// Creates a new `PackageCollectionModelV1CollectionPackage`.
-            ///
-            /// - Parameters:
-            ///   - identity:
-            ///   - versions:
-            ///   - readmeURL:
-            ///   - url:
-            ///   - license:
-            ///   - keywords:
-            ///   - summary:
-            public init(
-                identity: Swift.String? = nil,
-                versions: Swift.String,
-                readmeURL: Swift.String? = nil,
-                url: Swift.String,
-                license: Components.Schemas.PackageCollectionModelV1License? = nil,
-                keywords: [Swift.String]? = nil,
-                summary: Swift.String? = nil
-            ) {
-                self.identity = identity
-                self.versions = versions
-                self.readmeURL = readmeURL
-                self.url = url
-                self.license = license
-                self.keywords = keywords
-                self.summary = summary
-            }
-            public enum CodingKeys: String, CodingKey {
-                case identity
-                case versions
-                case readmeURL
-                case url
-                case license
-                case keywords
-                case summary
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO`.
-        public struct APIPostDocReportDTO: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/error`.
-            public var error: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/fileCount`.
-            public var fileCount: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/docArchives`.
-            public var docArchives: [Components.Schemas.DocArchive]?
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/status`.
-            public var status: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/mbSize`.
-            public var mbSize: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/linkablePathsCount`.
-            public var linkablePathsCount: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/logUrl`.
-            public var logUrl: Swift.String?
-            /// Creates a new `APIPostDocReportDTO`.
-            ///
-            /// - Parameters:
-            ///   - error:
-            ///   - fileCount:
-            ///   - docArchives:
-            ///   - status:
-            ///   - mbSize:
-            ///   - linkablePathsCount:
-            ///   - logUrl:
-            public init(
-                error: Swift.String? = nil,
-                fileCount: Swift.Int64? = nil,
-                docArchives: [Components.Schemas.DocArchive]? = nil,
-                status: Swift.String,
-                mbSize: Swift.Int64? = nil,
-                linkablePathsCount: Swift.Int64? = nil,
-                logUrl: Swift.String? = nil
-            ) {
-                self.error = error
-                self.fileCount = fileCount
-                self.docArchives = docArchives
-                self.status = status
-                self.mbSize = mbSize
-                self.linkablePathsCount = linkablePathsCount
-                self.logUrl = logUrl
-            }
-            public enum CodingKeys: String, CodingKey {
-                case error
-                case fileCount
-                case docArchives
-                case status
-                case mbSize
-                case linkablePathsCount
-                case logUrl
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor`.
-        public struct PackageCollectionModelV1CollectionAuthor: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor/name`.
-            public var name: Swift.String
-            /// Creates a new `PackageCollectionModelV1CollectionAuthor`.
-            ///
-            /// - Parameters:
-            ///   - name:
-            public init(name: Swift.String) {
-                self.name = name
-            }
-            public enum CodingKeys: String, CodingKey {
-                case name
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
-        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/results`.
-            public var results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/referenceName`.
-            public var referenceName: Swift.String
-            /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
-            ///
-            /// - Parameters:
-            ///   - results:
-            ///   - referenceName:
-            public init(
-                results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults,
-                referenceName: Swift.String
-            ) {
-                self.results = results
-                self.referenceName = referenceName
-            }
-            public enum CodingKeys: String, CodingKey {
-                case results
-                case referenceName
+                case authorName
+                case overview
             }
         }
         /// - Remark: Generated from `#/components/schemas/SearchPackageResult`.
         public struct SearchPackageResult: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/summary`.
-            public var summary: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/hasDocs`.
-            public var hasDocs: Swift.Bool
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/lastActivityAt`.
-            public var lastActivityAt: Foundation.Date?
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageId`.
-            public var packageId: Swift.String
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageName`.
-            public var packageName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/repositoryOwner`.
             public var repositoryOwner: Swift.String
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/lastActivityAt`.
+            public var lastActivityAt: Foundation.Date?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/repositoryName`.
             public var repositoryName: Swift.String
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/stars`.
-            public var stars: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/keywords`.
-            public var keywords: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageName`.
+            public var packageName: Swift.String?
             /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageURL`.
             public var packageURL: Swift.String
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/keywords`.
+            public var keywords: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/packageId`.
+            public var packageId: Swift.String
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/stars`.
+            public var stars: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/hasDocs`.
+            public var hasDocs: Swift.Bool
+            /// - Remark: Generated from `#/components/schemas/SearchPackageResult/summary`.
+            public var summary: Swift.String?
             /// Creates a new `SearchPackageResult`.
             ///
             /// - Parameters:
-            ///   - summary:
-            ///   - hasDocs:
-            ///   - lastActivityAt:
-            ///   - packageId:
-            ///   - packageName:
             ///   - repositoryOwner:
+            ///   - lastActivityAt:
             ///   - repositoryName:
-            ///   - stars:
-            ///   - keywords:
+            ///   - packageName:
             ///   - packageURL:
+            ///   - keywords:
+            ///   - packageId:
+            ///   - stars:
+            ///   - hasDocs:
+            ///   - summary:
             public init(
-                summary: Swift.String? = nil,
-                hasDocs: Swift.Bool,
-                lastActivityAt: Foundation.Date? = nil,
-                packageId: Swift.String,
-                packageName: Swift.String? = nil,
                 repositoryOwner: Swift.String,
+                lastActivityAt: Foundation.Date? = nil,
                 repositoryName: Swift.String,
-                stars: Swift.Int64? = nil,
+                packageName: Swift.String? = nil,
+                packageURL: Swift.String,
                 keywords: [Swift.String]? = nil,
-                packageURL: Swift.String
+                packageId: Swift.String,
+                stars: Swift.Int64? = nil,
+                hasDocs: Swift.Bool,
+                summary: Swift.String? = nil
             ) {
-                self.summary = summary
-                self.hasDocs = hasDocs
-                self.lastActivityAt = lastActivityAt
-                self.packageId = packageId
-                self.packageName = packageName
                 self.repositoryOwner = repositoryOwner
+                self.lastActivityAt = lastActivityAt
                 self.repositoryName = repositoryName
-                self.stars = stars
-                self.keywords = keywords
+                self.packageName = packageName
                 self.packageURL = packageURL
+                self.keywords = keywords
+                self.packageId = packageId
+                self.stars = stars
+                self.hasDocs = hasDocs
+                self.summary = summary
             }
             public enum CodingKeys: String, CodingKey {
-                case summary
-                case hasDocs
-                case lastActivityAt
-                case packageId
-                case packageName
                 case repositoryOwner
+                case lastActivityAt
                 case repositoryName
-                case stars
-                case keywords
+                case packageName
                 case packageURL
+                case keywords
+                case packageId
+                case stars
+                case hasDocs
+                case summary
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget`.
-        public struct APIPackageControllerGetRouteModelTarget: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/name`.
-            public var name: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
-            public struct _typePayload: Codable, Hashable, Sendable {
-                /// A container of undocumented properties.
-                public var additionalProperties: [String: Components.Schemas._Any]
-                /// Creates a new `_typePayload`.
-                ///
-                /// - Parameters:
-                ///   - additionalProperties: A container of undocumented properties.
-                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
-                    self.additionalProperties = additionalProperties
+        /// - Remark: Generated from `#/components/schemas/ProductDependency`.
+        public struct ProductDependency: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/ProductDependency/name`.
+            public var name: Swift.String {
+                get  {
+                    storage.value.name
                 }
-                public init(from decoder: any Decoder) throws {
-                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try encoder.encodeAdditionalProperties(additionalProperties)
+                _modify {
+                    yield &storage.value.name
                 }
             }
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
-            public var _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
-            /// Creates a new `APIPackageControllerGetRouteModelTarget`.
+            /// - Remark: Generated from `#/components/schemas/ProductDependency/identity`.
+            public var identity: Swift.String {
+                get  {
+                    storage.value.identity
+                }
+                _modify {
+                    yield &storage.value.identity
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/ProductDependency/url`.
+            public var url: Swift.String {
+                get  {
+                    storage.value.url
+                }
+                _modify {
+                    yield &storage.value.url
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/ProductDependency/dependencies`.
+            public var dependencies: [Components.Schemas.ProductDependency] {
+                get  {
+                    storage.value.dependencies
+                }
+                _modify {
+                    yield &storage.value.dependencies
+                }
+            }
+            /// Creates a new `ProductDependency`.
             ///
             /// - Parameters:
             ///   - name:
-            ///   - _type:
+            ///   - identity:
+            ///   - url:
+            ///   - dependencies:
             public init(
                 name: Swift.String,
-                _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
+                identity: Swift.String,
+                url: Swift.String,
+                dependencies: [Components.Schemas.ProductDependency]
             ) {
-                self.name = name
-                self._type = _type
+                storage = .init(value: .init(
+                    name: name,
+                    identity: identity,
+                    url: url,
+                    dependencies: dependencies
+                ))
             }
             public enum CodingKeys: String, CodingKey {
                 case name
-                case _type = "type"
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults`.
-        public struct APIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/linux`.
-            public var linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/tvOS`.
-            public var tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/iOS`.
-            public var iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/visionOS`.
-            public var visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/macOS`.
-            public var macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformResults/watchOS`.
-            public var watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            /// Creates a new `APIPackageControllerGetRouteModelPlatformResults`.
-            ///
-            /// - Parameters:
-            ///   - linux:
-            ///   - tvOS:
-            ///   - iOS:
-            ///   - visionOS:
-            ///   - macOS:
-            ///   - watchOS:
-            public init(
-                linux: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
-                tvOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
-                iOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
-                visionOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
-                macOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility,
-                watchOS: Components.Schemas.APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility
-            ) {
-                self.linux = linux
-                self.tvOS = tvOS
-                self.iOS = iOS
-                self.visionOS = visionOS
-                self.macOS = macOS
-                self.watchOS = watchOS
-            }
-            public enum CodingKeys: String, CodingKey {
-                case linux
-                case tvOS
-                case iOS
-                case visionOS
-                case macOS
-                case watchOS
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/SwiftVersion`.
-        public struct SwiftVersion: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/SwiftVersion/major`.
-            public var major: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/SwiftVersion/patch`.
-            public var patch: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/SwiftVersion/minor`.
-            public var minor: Swift.Int64
-            /// Creates a new `SwiftVersion`.
-            ///
-            /// - Parameters:
-            ///   - major:
-            ///   - patch:
-            ///   - minor:
-            public init(
-                major: Swift.Int64,
-                patch: Swift.Int64,
-                minor: Swift.Int64
-            ) {
-                self.major = major
-                self.patch = patch
-                self.minor = minor
-            }
-            public enum CodingKeys: String, CodingKey {
-                case major
-                case patch
-                case minor
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity`.
-        public struct APIPackageControllerGetRouteModelActivity: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesURL`.
-            public var openIssuesURL: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesCount`.
-            public var openIssuesCount: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsURL`.
-            public var openPullRequestsURL: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastIssueClosedAt`.
-            public var lastIssueClosedAt: Foundation.Date?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastPullRequestClosedAt`.
-            public var lastPullRequestClosedAt: Foundation.Date?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsCount`.
-            public var openPullRequestsCount: Swift.Int64
-            /// Creates a new `APIPackageControllerGetRouteModelActivity`.
-            ///
-            /// - Parameters:
-            ///   - openIssuesURL:
-            ///   - openIssuesCount:
-            ///   - openPullRequestsURL:
-            ///   - lastIssueClosedAt:
-            ///   - lastPullRequestClosedAt:
-            ///   - openPullRequestsCount:
-            public init(
-                openIssuesURL: Swift.String? = nil,
-                openIssuesCount: Swift.Int64,
-                openPullRequestsURL: Swift.String? = nil,
-                lastIssueClosedAt: Foundation.Date? = nil,
-                lastPullRequestClosedAt: Foundation.Date? = nil,
-                openPullRequestsCount: Swift.Int64
-            ) {
-                self.openIssuesURL = openIssuesURL
-                self.openIssuesCount = openIssuesCount
-                self.openPullRequestsURL = openPullRequestsURL
-                self.lastIssueClosedAt = lastIssueClosedAt
-                self.lastPullRequestClosedAt = lastPullRequestClosedAt
-                self.openPullRequestsCount = openPullRequestsCount
-            }
-            public enum CodingKeys: String, CodingKey {
-                case openIssuesURL
-                case openIssuesCount
-                case openPullRequestsURL
-                case lastIssueClosedAt
-                case lastPullRequestClosedAt
-                case openPullRequestsCount
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory`.
-        public struct APIPackageControllerGetRouteModelHistory: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCount`.
-            public var releaseCount: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCountURL`.
-            public var commitCountURL: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCountURL`.
-            public var releaseCountURL: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/createdAt`.
-            public var createdAt: Foundation.Date
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCount`.
-            public var commitCount: Swift.Int64
-            /// Creates a new `APIPackageControllerGetRouteModelHistory`.
-            ///
-            /// - Parameters:
-            ///   - releaseCount:
-            ///   - commitCountURL:
-            ///   - releaseCountURL:
-            ///   - createdAt:
-            ///   - commitCount:
-            public init(
-                releaseCount: Swift.Int64,
-                commitCountURL: Swift.String,
-                releaseCountURL: Swift.String,
-                createdAt: Foundation.Date,
-                commitCount: Swift.Int64
-            ) {
-                self.releaseCount = releaseCount
-                self.commitCountURL = commitCountURL
-                self.releaseCountURL = releaseCountURL
-                self.createdAt = createdAt
-                self.commitCount = commitCount
-            }
-            public enum CodingKeys: String, CodingKey {
-                case releaseCount
-                case commitCountURL
-                case releaseCountURL
-                case createdAt
-                case commitCount
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/Link`.
-        public struct Link: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/Link/url`.
-            public var url: Swift.String
-            /// - Remark: Generated from `#/components/schemas/Link/label`.
-            public var label: Swift.String
-            /// Creates a new `Link`.
-            ///
-            /// - Parameters:
-            ///   - url:
-            ///   - label:
-            public init(
-                url: Swift.String,
-                label: Swift.String
-            ) {
-                self.url = url
-                self.label = label
-            }
-            public enum CodingKeys: String, CodingKey {
+                case identity
                 case url
-                case label
+                case dependencies
+            }
+            public init(from decoder: any Decoder) throws {
+                storage = try .init(from: decoder)
+            }
+            public func encode(to encoder: any Encoder) throws {
+                try storage.encode(to: encoder)
+            }
+            /// Internal reference storage to allow type recursion.
+            private var storage: OpenAPIRuntime.CopyOnWriteBox<Storage>
+            private struct Storage: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/ProductDependency/name`.
+                var name: Swift.String
+                /// - Remark: Generated from `#/components/schemas/ProductDependency/identity`.
+                var identity: Swift.String
+                /// - Remark: Generated from `#/components/schemas/ProductDependency/url`.
+                var url: Swift.String
+                /// - Remark: Generated from `#/components/schemas/ProductDependency/dependencies`.
+                var dependencies: [Components.Schemas.ProductDependency]
+                init(
+                    name: Swift.String,
+                    identity: Swift.String,
+                    url: Swift.String,
+                    dependencies: [Components.Schemas.ProductDependency]
+                ) {
+                    self.name = name
+                    self.identity = identity
+                    self.url = url
+                    self.dependencies = dependencies
+                }
+                typealias CodingKeys = Components.Schemas.ProductDependency.CodingKeys
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1PlatformVersion`.
+        public struct PackageCollectionModelV1PlatformVersion: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1PlatformVersion/version`.
+            public var version: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1PlatformVersion/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1PlatformVersion`.
+            ///
+            /// - Parameters:
+            ///   - version:
+            ///   - name:
+            public init(
+                version: Swift.String,
+                name: Swift.String
+            ) {
+                self.version = version
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case version
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest`.
+        public struct PackageCollectionModelV1CollectionPackageVersionManifest: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest/targets`.
+            public var targets: [Components.Schemas.PackageCollectionModelV1Target]
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest/products`.
+            public var products: [Components.Schemas.PackageCollectionModelV1Product]
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest/minimumPlatformVersions`.
+            public var minimumPlatformVersions: [Components.Schemas.PackageCollectionModelV1PlatformVersion]?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest/toolsVersion`.
+            public var toolsVersion: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionManifest/packageName`.
+            public var packageName: Swift.String
+            /// Creates a new `PackageCollectionModelV1CollectionPackageVersionManifest`.
+            ///
+            /// - Parameters:
+            ///   - targets:
+            ///   - products:
+            ///   - minimumPlatformVersions:
+            ///   - toolsVersion:
+            ///   - packageName:
+            public init(
+                targets: [Components.Schemas.PackageCollectionModelV1Target],
+                products: [Components.Schemas.PackageCollectionModelV1Product],
+                minimumPlatformVersions: [Components.Schemas.PackageCollectionModelV1PlatformVersion]? = nil,
+                toolsVersion: Swift.String,
+                packageName: Swift.String
+            ) {
+                self.targets = targets
+                self.products = products
+                self.minimumPlatformVersions = minimumPlatformVersions
+                self.toolsVersion = toolsVersion
+                self.packageName = packageName
+            }
+            public enum CodingKeys: String, CodingKey {
+                case targets
+                case products
+                case minimumPlatformVersions
+                case toolsVersion
+                case packageName
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
+        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/beta`.
+            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/latest`.
+            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults/stable`.
+            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults?
+            /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults`.
+            ///
+            /// - Parameters:
+            ///   - beta:
+            ///   - latest:
+            ///   - stable:
+            public init(
+                beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
+                latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
+                stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults? = nil
+            ) {
+                self.beta = beta
+                self.latest = latest
+                self.stable = stable
+            }
+            public enum CodingKeys: String, CodingKey {
+                case beta
+                case latest
+                case stable
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults`.
+        public struct APIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_8`.
+            public var v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_7`.
+            public var v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_6`.
+            public var v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_9`.
+            public var v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            /// Creates a new `APIPackageControllerGetRouteModelSwiftVersionResults`.
+            ///
+            /// - Parameters:
+            ///   - v5_8:
+            ///   - v5_7:
+            ///   - v5_6:
+            ///   - v5_9:
+            public init(
+                v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
+                v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
+                v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
+                v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
+            ) {
+                self.v5_8 = v5_8
+                self.v5_7 = v5_7
+                self.v5_6 = v5_6
+                self.v5_9 = v5_9
+            }
+            public enum CodingKeys: String, CodingKey {
+                case v5_8
+                case v5_7
+                case v5_6
+                case v5_9
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
+        public struct APIPackageControllerGetRouteModelBuildResultSwiftVersion: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/parameter`.
+            public var parameter: Components.Schemas.SwiftVersion
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/status`.
+            public var status: Swift.String
+            /// Creates a new `APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
+            ///
+            /// - Parameters:
+            ///   - parameter:
+            ///   - status:
+            public init(
+                parameter: Components.Schemas.SwiftVersion,
+                status: Swift.String
+            ) {
+                self.parameter = parameter
+                self.status = status
+            }
+            public enum CodingKeys: String, CodingKey {
+                case parameter
+                case status
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
+        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/referenceName`.
+            public var referenceName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults/results`.
+            public var results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults
+            /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults`.
+            ///
+            /// - Parameters:
+            ///   - referenceName:
+            ///   - results:
+            public init(
+                referenceName: Swift.String,
+                results: Components.Schemas.APIPackageControllerGetRouteModelPlatformResults
+            ) {
+                self.referenceName = referenceName
+                self.results = results
+            }
+            public enum CodingKeys: String, CodingKey {
+                case referenceName
+                case results
             }
         }
         /// - Remark: Generated from `#/components/schemas/DateLink`.
@@ -887,262 +894,706 @@ public enum Components {
                 case link
             }
         }
-        /// - Remark: Generated from `#/components/schemas/Reference`.
-        public struct Reference: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/Reference/branch`.
-            public var branch: Swift.String
-            /// Creates a new `Reference`.
+        /// - Remark: Generated from `#/components/schemas/WeightedKeyword`.
+        public struct WeightedKeyword: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/WeightedKeyword/count`.
+            public var count: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/WeightedKeyword/keyword`.
+            public var keyword: Swift.String
+            /// Creates a new `WeightedKeyword`.
             ///
             /// - Parameters:
-            ///   - branch:
-            public init(branch: Swift.String) {
-                self.branch = branch
+            ///   - count:
+            ///   - keyword:
+            public init(
+                count: Swift.Int64,
+                keyword: Swift.String
+            ) {
+                self.count = count
+                self.keyword = keyword
             }
             public enum CodingKeys: String, CodingKey {
-                case branch
+                case count
+                case keyword
             }
         }
-        /// - Remark: Generated from `#/components/schemas/ProductDependency`.
-        public struct ProductDependency: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/ProductDependency/identity`.
-            public var identity: Swift.String {
-                get  {
-                    storage.value.identity
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel`.
+        public struct APIPackageControllerGetRouteModel: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/products`.
+            public var products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/history`.
+            public var history: Components.Schemas.APIPackageControllerGetRouteModelHistory?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionBuildInfo`.
+            public var swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformCompatibility`.
+            public var platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/activity`.
+            public var activity: Components.Schemas.APIPackageControllerGetRouteModelActivity?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionCompatibility`.
+            public var swiftVersionCompatibility: [Components.Schemas.SwiftVersion]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/url`.
+            public var url: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/dependencies`.
+            public var dependencies: [Components.Schemas.ResolvedDependency]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/hasBinaryTargets`.
+            public var hasBinaryTargets: Swift.Bool
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/homepageUrl`.
+            public var homepageUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/summary`.
+            public var summary: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/isArchived`.
+            public var isArchived: Swift.Bool
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/license`.
+            public var license: Components.Schemas.License
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/stars`.
+            public var stars: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryName`.
+            public var repositoryName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
+            public struct documentationTargetPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `documentationTargetPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
                 }
-                _modify {
-                    yield &storage.value.identity
+                public init(from decoder: any Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
-            /// - Remark: Generated from `#/components/schemas/ProductDependency/name`.
-            public var name: Swift.String {
-                get  {
-                    storage.value.name
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
+            public var documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/weightedKeywords`.
+            public var weightedKeywords: [Components.Schemas.WeightedKeyword]
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releaseReferences`.
+            public var releaseReferences: [Components.Schemas.Reference]
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releases`.
+            public var releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/title`.
+            public var title: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/packageId`.
+            public var packageId: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
+            public struct authorsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Components.Schemas._Any]
+                /// Creates a new `authorsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                    self.additionalProperties = additionalProperties
                 }
-                _modify {
-                    yield &storage.value.name
+                public init(from decoder: any Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
                 }
             }
-            /// - Remark: Generated from `#/components/schemas/ProductDependency/dependencies`.
-            public var dependencies: [Components.Schemas.ProductDependency] {
-                get  {
-                    storage.value.dependencies
-                }
-                _modify {
-                    yield &storage.value.dependencies
-                }
-            }
-            /// - Remark: Generated from `#/components/schemas/ProductDependency/url`.
-            public var url: Swift.String {
-                get  {
-                    storage.value.url
-                }
-                _modify {
-                    yield &storage.value.url
-                }
-            }
-            /// Creates a new `ProductDependency`.
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
+            public var authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/licenseUrl`.
+            public var licenseUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/keywords`.
+            public var keywords: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwner`.
+            public var repositoryOwner: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwnerName`.
+            public var repositoryOwnerName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformBuildInfo`.
+            public var platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/targets`.
+            public var targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/score`.
+            public var score: Swift.Int64?
+            /// Creates a new `APIPackageControllerGetRouteModel`.
             ///
             /// - Parameters:
-            ///   - identity:
-            ///   - name:
-            ///   - dependencies:
+            ///   - products:
+            ///   - history:
+            ///   - swiftVersionBuildInfo:
+            ///   - platformCompatibility:
+            ///   - activity:
+            ///   - swiftVersionCompatibility:
             ///   - url:
+            ///   - dependencies:
+            ///   - hasBinaryTargets:
+            ///   - homepageUrl:
+            ///   - summary:
+            ///   - isArchived:
+            ///   - license:
+            ///   - stars:
+            ///   - repositoryName:
+            ///   - documentationTarget:
+            ///   - weightedKeywords:
+            ///   - releaseReferences:
+            ///   - releases:
+            ///   - title:
+            ///   - packageId:
+            ///   - authors:
+            ///   - licenseUrl:
+            ///   - keywords:
+            ///   - repositoryOwner:
+            ///   - repositoryOwnerName:
+            ///   - platformBuildInfo:
+            ///   - targets:
+            ///   - score:
             public init(
-                identity: Swift.String,
-                name: Swift.String,
-                dependencies: [Components.Schemas.ProductDependency],
-                url: Swift.String
+                products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]? = nil,
+                history: Components.Schemas.APIPackageControllerGetRouteModelHistory? = nil,
+                swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
+                platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]? = nil,
+                activity: Components.Schemas.APIPackageControllerGetRouteModelActivity? = nil,
+                swiftVersionCompatibility: [Components.Schemas.SwiftVersion]? = nil,
+                url: Swift.String,
+                dependencies: [Components.Schemas.ResolvedDependency]? = nil,
+                hasBinaryTargets: Swift.Bool,
+                homepageUrl: Swift.String? = nil,
+                summary: Swift.String? = nil,
+                isArchived: Swift.Bool,
+                license: Components.Schemas.License,
+                stars: Swift.Int64? = nil,
+                repositoryName: Swift.String,
+                documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload? = nil,
+                weightedKeywords: [Components.Schemas.WeightedKeyword],
+                releaseReferences: [Components.Schemas.Reference],
+                releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo,
+                title: Swift.String,
+                packageId: Swift.String,
+                authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload? = nil,
+                licenseUrl: Swift.String? = nil,
+                keywords: [Swift.String]? = nil,
+                repositoryOwner: Swift.String,
+                repositoryOwnerName: Swift.String,
+                platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults? = nil,
+                targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]? = nil,
+                score: Swift.Int64? = nil
             ) {
-                storage = .init(value: .init(
-                    identity: identity,
-                    name: name,
-                    dependencies: dependencies,
-                    url: url
-                ))
+                self.products = products
+                self.history = history
+                self.swiftVersionBuildInfo = swiftVersionBuildInfo
+                self.platformCompatibility = platformCompatibility
+                self.activity = activity
+                self.swiftVersionCompatibility = swiftVersionCompatibility
+                self.url = url
+                self.dependencies = dependencies
+                self.hasBinaryTargets = hasBinaryTargets
+                self.homepageUrl = homepageUrl
+                self.summary = summary
+                self.isArchived = isArchived
+                self.license = license
+                self.stars = stars
+                self.repositoryName = repositoryName
+                self.documentationTarget = documentationTarget
+                self.weightedKeywords = weightedKeywords
+                self.releaseReferences = releaseReferences
+                self.releases = releases
+                self.title = title
+                self.packageId = packageId
+                self.authors = authors
+                self.licenseUrl = licenseUrl
+                self.keywords = keywords
+                self.repositoryOwner = repositoryOwner
+                self.repositoryOwnerName = repositoryOwnerName
+                self.platformBuildInfo = platformBuildInfo
+                self.targets = targets
+                self.score = score
             }
             public enum CodingKeys: String, CodingKey {
-                case identity
-                case name
-                case dependencies
+                case products
+                case history
+                case swiftVersionBuildInfo
+                case platformCompatibility
+                case activity
+                case swiftVersionCompatibility
                 case url
-            }
-            public init(from decoder: any Decoder) throws {
-                storage = try .init(from: decoder)
-            }
-            public func encode(to encoder: any Encoder) throws {
-                try storage.encode(to: encoder)
-            }
-            /// Internal reference storage to allow type recursion.
-            private var storage: OpenAPIRuntime.CopyOnWriteBox<Storage>
-            private struct Storage: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/ProductDependency/identity`.
-                var identity: Swift.String
-                /// - Remark: Generated from `#/components/schemas/ProductDependency/name`.
-                var name: Swift.String
-                /// - Remark: Generated from `#/components/schemas/ProductDependency/dependencies`.
-                var dependencies: [Components.Schemas.ProductDependency]
-                /// - Remark: Generated from `#/components/schemas/ProductDependency/url`.
-                var url: Swift.String
-                init(
-                    identity: Swift.String,
-                    name: Swift.String,
-                    dependencies: [Components.Schemas.ProductDependency],
-                    url: Swift.String
-                ) {
-                    self.identity = identity
-                    self.name = name
-                    self.dependencies = dependencies
-                    self.url = url
-                }
-                typealias CodingKeys = Components.Schemas.ProductDependency.CodingKeys
+                case dependencies
+                case hasBinaryTargets
+                case homepageUrl
+                case summary
+                case isArchived
+                case license
+                case stars
+                case repositoryName
+                case documentationTarget
+                case weightedKeywords
+                case releaseReferences
+                case releases
+                case title
+                case packageId
+                case authors
+                case licenseUrl
+                case keywords
+                case repositoryOwner
+                case repositoryOwnerName
+                case platformBuildInfo
+                case targets
+                case score
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
-        public struct APIPackageControllerGetRouteModelBuildResultSwiftVersion: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/status`.
-            public var status: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultSwiftVersion/parameter`.
-            public var parameter: Components.Schemas.SwiftVersion
-            /// Creates a new `APIPackageControllerGetRouteModelBuildResultSwiftVersion`.
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory`.
+        public struct APIPackageControllerGetRouteModelHistory: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCountURL`.
+            public var commitCountURL: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/createdAt`.
+            public var createdAt: Foundation.Date
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCount`.
+            public var releaseCount: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/releaseCountURL`.
+            public var releaseCountURL: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelHistory/commitCount`.
+            public var commitCount: Swift.Int64
+            /// Creates a new `APIPackageControllerGetRouteModelHistory`.
             ///
             /// - Parameters:
-            ///   - status:
-            ///   - parameter:
+            ///   - commitCountURL:
+            ///   - createdAt:
+            ///   - releaseCount:
+            ///   - releaseCountURL:
+            ///   - commitCount:
             public init(
-                status: Swift.String,
-                parameter: Components.Schemas.SwiftVersion
+                commitCountURL: Swift.String,
+                createdAt: Foundation.Date,
+                releaseCount: Swift.Int64,
+                releaseCountURL: Swift.String,
+                commitCount: Swift.Int64
             ) {
-                self.status = status
-                self.parameter = parameter
+                self.commitCountURL = commitCountURL
+                self.createdAt = createdAt
+                self.releaseCount = releaseCount
+                self.releaseCountURL = releaseCountURL
+                self.commitCount = commitCount
             }
             public enum CodingKeys: String, CodingKey {
-                case status
-                case parameter
+                case commitCountURL
+                case createdAt
+                case releaseCount
+                case releaseCountURL
+                case commitCount
             }
         }
-        /// - Remark: Generated from `#/components/schemas/Badge`.
-        public struct Badge: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/Badge/color`.
-            public var color: Swift.String
-            /// - Remark: Generated from `#/components/schemas/Badge/cacheSeconds`.
-            public var cacheSeconds: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/Badge/logoSvg`.
-            public var logoSvg: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/Badge/isError`.
-            public var isError: Swift.Bool
-            /// - Remark: Generated from `#/components/schemas/Badge/message`.
-            public var message: Swift.String
-            /// - Remark: Generated from `#/components/schemas/Badge/schemaVersion`.
-            public var schemaVersion: Swift.Int64
-            /// - Remark: Generated from `#/components/schemas/Badge/label`.
-            public var label: Swift.String
-            /// Creates a new `Badge`.
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Compatibility`.
+        public struct PackageCollectionModelV1Compatibility: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Compatibility/swiftVersion`.
+            public var swiftVersion: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Compatibility/platform`.
+            public var platform: Components.Schemas.PackageCollectionModelV1Platform
+            /// Creates a new `PackageCollectionModelV1Compatibility`.
             ///
             /// - Parameters:
-            ///   - color:
-            ///   - cacheSeconds:
-            ///   - logoSvg:
-            ///   - isError:
-            ///   - message:
-            ///   - schemaVersion:
-            ///   - label:
+            ///   - swiftVersion:
+            ///   - platform:
             public init(
-                color: Swift.String,
-                cacheSeconds: Swift.Int64,
-                logoSvg: Swift.String? = nil,
-                isError: Swift.Bool,
-                message: Swift.String,
-                schemaVersion: Swift.Int64,
-                label: Swift.String
+                swiftVersion: Swift.String,
+                platform: Components.Schemas.PackageCollectionModelV1Platform
             ) {
-                self.color = color
-                self.cacheSeconds = cacheSeconds
-                self.logoSvg = logoSvg
-                self.isError = isError
-                self.message = message
-                self.schemaVersion = schemaVersion
-                self.label = label
+                self.swiftVersion = swiftVersion
+                self.platform = platform
             }
             public enum CodingKeys: String, CodingKey {
-                case color
-                case cacheSeconds
-                case logoSvg
-                case isError
-                case message
-                case schemaVersion
-                case label
+                case swiftVersion
+                case platform
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License`.
         public struct PackageCollectionModelV1License: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License/name`.
-            public var name: Swift.String?
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License/url`.
             public var url: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1License/name`.
+            public var name: Swift.String?
             /// Creates a new `PackageCollectionModelV1License`.
             ///
             /// - Parameters:
-            ///   - name:
             ///   - url:
+            ///   - name:
             public init(
-                name: Swift.String? = nil,
-                url: Swift.String
+                url: Swift.String,
+                name: Swift.String? = nil
             ) {
-                self.name = name
                 self.url = url
+                self.name = name
             }
             public enum CodingKeys: String, CodingKey {
-                case name
                 case url
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/Any`.
-        public struct _Any: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/Any/_0`.
-            public var _0: Components.Schemas.SearchPackageResult
-            /// Creates a new `_Any`.
-            ///
-            /// - Parameters:
-            ///   - _0:
-            public init(_0: Components.Schemas.SearchPackageResult) {
-                self._0 = _0
-            }
-            public enum CodingKeys: String, CodingKey {
-                case _0
+                case name
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate`.
         public struct PackageCollectionModelV1SignatureCertificate: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate/subject`.
-            public var subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate/issuer`.
             public var issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificate/subject`.
+            public var subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             /// Creates a new `PackageCollectionModelV1SignatureCertificate`.
             ///
             /// - Parameters:
-            ///   - subject:
             ///   - issuer:
+            ///   - subject:
             public init(
-                subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName,
-                issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
+                issuer: Components.Schemas.PackageCollectionModelV1SignatureCertificateName,
+                subject: Components.Schemas.PackageCollectionModelV1SignatureCertificateName
             ) {
-                self.subject = subject
                 self.issuer = issuer
+                self.subject = subject
             }
             public enum CodingKeys: String, CodingKey {
-                case subject
                 case issuer
+                case subject
             }
         }
-        /// - Remark: Generated from `#/components/schemas/BuildPlatform`.
-        @frozen public enum BuildPlatform: String, Codable, Hashable, Sendable {
-            case ios = "ios"
-            case linux = "linux"
-            case macos_hyphen_spm = "macos-spm"
-            case macos_hyphen_xcodebuild = "macos-xcodebuild"
-            case tvos = "tvos"
-            case visionos = "visionos"
-            case watchos = "watchos"
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget`.
+        public struct APIPackageControllerGetRouteModelTarget: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
+            public struct _typePayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Components.Schemas._Any]
+                /// Creates a new `_typePayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/type`.
+            public var _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelTarget/name`.
+            public var name: Swift.String
+            /// Creates a new `APIPackageControllerGetRouteModelTarget`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            ///   - name:
+            public init(
+                _type: Components.Schemas.APIPackageControllerGetRouteModelTarget._typePayload,
+                name: Swift.String
+            ) {
+                self._type = _type
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Platform`.
+        public struct PackageCollectionModelV1Platform: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Platform/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1Platform`.
+            ///
+            /// - Parameters:
+            ///   - name:
+            public init(name: Swift.String) {
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO`.
+        public struct APIPostBuildReportDTO: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildCommand`.
+            public var buildCommand: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/logUrl`.
+            public var logUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/resolvedDependencies`.
+            public var resolvedDependencies: [Components.Schemas.ResolvedDependency]?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildId`.
+            public var buildId: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/runnerId`.
+            public var runnerId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/builderVersion`.
+            public var builderVersion: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/jobUrl`.
+            public var jobUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/platform`.
+            public var platform: Components.Schemas.BuildPlatform
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/status`.
+            public var status: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/productDependencies`.
+            public var productDependencies: [Components.Schemas.ProductDependency]?
+            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/swiftVersion`.
+            public var swiftVersion: Components.Schemas.SwiftVersion
+            /// Creates a new `APIPostBuildReportDTO`.
+            ///
+            /// - Parameters:
+            ///   - buildCommand:
+            ///   - logUrl:
+            ///   - resolvedDependencies:
+            ///   - buildId:
+            ///   - runnerId:
+            ///   - builderVersion:
+            ///   - jobUrl:
+            ///   - platform:
+            ///   - status:
+            ///   - productDependencies:
+            ///   - swiftVersion:
+            public init(
+                buildCommand: Swift.String? = nil,
+                logUrl: Swift.String? = nil,
+                resolvedDependencies: [Components.Schemas.ResolvedDependency]? = nil,
+                buildId: Swift.String,
+                runnerId: Swift.String? = nil,
+                builderVersion: Swift.String? = nil,
+                jobUrl: Swift.String? = nil,
+                platform: Components.Schemas.BuildPlatform,
+                status: Swift.String,
+                productDependencies: [Components.Schemas.ProductDependency]? = nil,
+                swiftVersion: Components.Schemas.SwiftVersion
+            ) {
+                self.buildCommand = buildCommand
+                self.logUrl = logUrl
+                self.resolvedDependencies = resolvedDependencies
+                self.buildId = buildId
+                self.runnerId = runnerId
+                self.builderVersion = builderVersion
+                self.jobUrl = jobUrl
+                self.platform = platform
+                self.status = status
+                self.productDependencies = productDependencies
+                self.swiftVersion = swiftVersion
+            }
+            public enum CodingKeys: String, CodingKey {
+                case buildCommand
+                case logUrl
+                case resolvedDependencies
+                case buildId
+                case runnerId
+                case builderVersion
+                case jobUrl
+                case platform
+                case status
+                case productDependencies
+                case swiftVersion
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName`.
+        public struct PackageCollectionModelV1SignatureCertificateName: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/commonName`.
+            public var commonName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organization`.
+            public var organization: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organizationalUnit`.
+            public var organizationalUnit: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/userID`.
+            public var userID: Swift.String?
+            /// Creates a new `PackageCollectionModelV1SignatureCertificateName`.
+            ///
+            /// - Parameters:
+            ///   - commonName:
+            ///   - organization:
+            ///   - organizationalUnit:
+            ///   - userID:
+            public init(
+                commonName: Swift.String? = nil,
+                organization: Swift.String? = nil,
+                organizationalUnit: Swift.String? = nil,
+                userID: Swift.String? = nil
+            ) {
+                self.commonName = commonName
+                self.organization = organization
+                self.organizationalUnit = organizationalUnit
+                self.userID = userID
+            }
+            public enum CodingKeys: String, CodingKey {
+                case commonName
+                case organization
+                case organizationalUnit
+                case userID
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/Link`.
+        public struct Link: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Link/url`.
+            public var url: Swift.String
+            /// - Remark: Generated from `#/components/schemas/Link/label`.
+            public var label: Swift.String
+            /// Creates a new `Link`.
+            ///
+            /// - Parameters:
+            ///   - url:
+            ///   - label:
+            public init(
+                url: Swift.String,
+                label: Swift.String
+            ) {
+                self.url = url
+                self.label = label
+            }
+            public enum CodingKeys: String, CodingKey {
+                case url
+                case label
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor`.
+        public struct PackageCollectionModelV1CollectionAuthor: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionAuthor/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1CollectionAuthor`.
+            ///
+            /// - Parameters:
+            ///   - name:
+            public init(name: Swift.String) {
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
+        public struct APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/referenceName`.
+            public var referenceName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults/results`.
+            public var results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults
+            /// Creates a new `APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelSwiftVersionResults`.
+            ///
+            /// - Parameters:
+            ///   - referenceName:
+            ///   - results:
+            public init(
+                referenceName: Swift.String,
+                results: Components.Schemas.APIPackageControllerGetRouteModelSwiftVersionResults
+            ) {
+                self.referenceName = referenceName
+                self.results = results
+            }
+            public enum CodingKeys: String, CodingKey {
+                case referenceName
+                case results
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO`.
+        public struct APIPostDocReportDTO: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/fileCount`.
+            public var fileCount: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/logUrl`.
+            public var logUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/status`.
+            public var status: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/mbSize`.
+            public var mbSize: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/error`.
+            public var error: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/linkablePathsCount`.
+            public var linkablePathsCount: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/APIPostDocReportDTO/docArchives`.
+            public var docArchives: [Components.Schemas.DocArchive]?
+            /// Creates a new `APIPostDocReportDTO`.
+            ///
+            /// - Parameters:
+            ///   - fileCount:
+            ///   - logUrl:
+            ///   - status:
+            ///   - mbSize:
+            ///   - error:
+            ///   - linkablePathsCount:
+            ///   - docArchives:
+            public init(
+                fileCount: Swift.Int64? = nil,
+                logUrl: Swift.String? = nil,
+                status: Swift.String,
+                mbSize: Swift.Int64? = nil,
+                error: Swift.String? = nil,
+                linkablePathsCount: Swift.Int64? = nil,
+                docArchives: [Components.Schemas.DocArchive]? = nil
+            ) {
+                self.fileCount = fileCount
+                self.logUrl = logUrl
+                self.status = status
+                self.mbSize = mbSize
+                self.error = error
+                self.linkablePathsCount = linkablePathsCount
+                self.docArchives = docArchives
+            }
+            public enum CodingKeys: String, CodingKey {
+                case fileCount
+                case logUrl
+                case status
+                case mbSize
+                case error
+                case linkablePathsCount
+                case docArchives
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection`.
+        public struct PackageCollectionModelV1SignedCollection: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/revision`.
+            public var revision: Swift.Int64?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/overview`.
+            public var overview: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedBy`.
+            public var generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/keywords`.
+            public var keywords: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/packages`.
+            public var packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage]
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/generatedAt`.
+            public var generatedAt: Foundation.Date
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/signature`.
+            public var signature: Components.Schemas.PackageCollectionModelV1Signature
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/formatVersion`.
+            public var formatVersion: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignedCollection/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1SignedCollection`.
+            ///
+            /// - Parameters:
+            ///   - revision:
+            ///   - overview:
+            ///   - generatedBy:
+            ///   - keywords:
+            ///   - packages:
+            ///   - generatedAt:
+            ///   - signature:
+            ///   - formatVersion:
+            ///   - name:
+            public init(
+                revision: Swift.Int64? = nil,
+                overview: Swift.String? = nil,
+                generatedBy: Components.Schemas.PackageCollectionModelV1CollectionAuthor? = nil,
+                keywords: [Swift.String]? = nil,
+                packages: [Components.Schemas.PackageCollectionModelV1CollectionPackage],
+                generatedAt: Foundation.Date,
+                signature: Components.Schemas.PackageCollectionModelV1Signature,
+                formatVersion: Swift.String,
+                name: Swift.String
+            ) {
+                self.revision = revision
+                self.overview = overview
+                self.generatedBy = generatedBy
+                self.keywords = keywords
+                self.packages = packages
+                self.generatedAt = generatedAt
+                self.signature = signature
+                self.formatVersion = formatVersion
+                self.name = name
+            }
+            public enum CodingKeys: String, CodingKey {
+                case revision
+                case overview
+                case generatedBy
+                case keywords
+                case packages
+                case generatedAt
+                case signature
+                case formatVersion
+                case name
+            }
         }
         /// - Remark: Generated from `#/components/schemas/SearchResponse`.
         public struct SearchResponse: Codable, Hashable, Sendable {
@@ -1199,109 +1650,67 @@ public enum Components {
                 case searchFilters
             }
         }
-        /// - Remark: Generated from `#/components/schemas/ResolvedDependency`.
-        public struct ResolvedDependency: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/ResolvedDependency/repositoryURL`.
-            public var repositoryURL: Swift.String
-            /// - Remark: Generated from `#/components/schemas/ResolvedDependency/packageName`.
-            public var packageName: Swift.String
-            /// Creates a new `ResolvedDependency`.
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage`.
+        public struct PackageCollectionModelV1CollectionPackage: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/url`.
+            public var url: Swift.String
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/versions`.
+            public var versions: [Components.Schemas.PackageCollectionModelV1CollectionPackageVersion]
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/identity`.
+            public var identity: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/keywords`.
+            public var keywords: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/readmeURL`.
+            public var readmeURL: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/summary`.
+            public var summary: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackage/license`.
+            public var license: Components.Schemas.PackageCollectionModelV1License?
+            /// Creates a new `PackageCollectionModelV1CollectionPackage`.
             ///
             /// - Parameters:
-            ///   - repositoryURL:
-            ///   - packageName:
+            ///   - url:
+            ///   - versions:
+            ///   - identity:
+            ///   - keywords:
+            ///   - readmeURL:
+            ///   - summary:
+            ///   - license:
             public init(
-                repositoryURL: Swift.String,
-                packageName: Swift.String
+                url: Swift.String,
+                versions: [Components.Schemas.PackageCollectionModelV1CollectionPackageVersion],
+                identity: Swift.String? = nil,
+                keywords: [Swift.String]? = nil,
+                readmeURL: Swift.String? = nil,
+                summary: Swift.String? = nil,
+                license: Components.Schemas.PackageCollectionModelV1License? = nil
             ) {
-                self.repositoryURL = repositoryURL
-                self.packageName = packageName
+                self.url = url
+                self.versions = versions
+                self.identity = identity
+                self.keywords = keywords
+                self.readmeURL = readmeURL
+                self.summary = summary
+                self.license = license
             }
             public enum CodingKeys: String, CodingKey {
-                case repositoryURL
-                case packageName
+                case url
+                case versions
+                case identity
+                case keywords
+                case readmeURL
+                case summary
+                case license
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
-        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/stable`.
-            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/beta`.
-            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/latest`.
-            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
-            /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
-            ///
-            /// - Parameters:
-            ///   - stable:
-            ///   - beta:
-            ///   - latest:
-            public init(
-                stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
-                beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
-                latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil
-            ) {
-                self.stable = stable
-                self.beta = beta
-                self.latest = latest
-            }
-            public enum CodingKeys: String, CodingKey {
-                case stable
-                case beta
-                case latest
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo`.
-        public struct APIPackageControllerGetRouteModelReleaseInfo: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/stable`.
-            public var stable: Components.Schemas.DateLink?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/latest`.
-            public var latest: Components.Schemas.DateLink?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelReleaseInfo/beta`.
-            public var beta: Components.Schemas.DateLink?
-            /// Creates a new `APIPackageControllerGetRouteModelReleaseInfo`.
-            ///
-            /// - Parameters:
-            ///   - stable:
-            ///   - latest:
-            ///   - beta:
-            public init(
-                stable: Components.Schemas.DateLink? = nil,
-                latest: Components.Schemas.DateLink? = nil,
-                beta: Components.Schemas.DateLink? = nil
-            ) {
-                self.stable = stable
-                self.latest = latest
-                self.beta = beta
-            }
-            public enum CodingKeys: String, CodingKey {
-                case stable
-                case latest
-                case beta
-            }
-        }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
-        public struct APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/parameter`.
-            public var parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/status`.
-            public var status: Swift.String
-            /// Creates a new `APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
-            ///
-            /// - Parameters:
-            ///   - parameter:
-            ///   - status:
-            public init(
-                parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility,
-                status: Swift.String
-            ) {
-                self.parameter = parameter
-                self.status = status
-            }
-            public enum CodingKeys: String, CodingKey {
-                case parameter
-                case status
-            }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelPlatformCompatibility`.
+        @frozen public enum APIPackageControllerGetRouteModelPlatformCompatibility: String, Codable, Hashable, Sendable {
+            case iOS = "iOS"
+            case linux = "linux"
+            case macOS = "macOS"
+            case tvOS = "tvOS"
+            case visionOS = "visionOS"
+            case watchOS = "watchOS"
         }
         /// - Remark: Generated from `#/components/schemas/License`.
         @frozen public enum License: String, Codable, Hashable, Sendable {
@@ -1339,19 +1748,33 @@ public enum Components {
             case other = "other"
             case none = "none"
         }
-        /// - Remark: Generated from `#/components/schemas/APIVersion`.
-        public struct APIVersion: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIVersion/version`.
-            public var version: Swift.String
-            /// Creates a new `APIVersion`.
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
+        public struct APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/beta`.
+            public var beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/latest`.
+            public var latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults/stable`.
+            public var stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults?
+            /// Creates a new `APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults`.
             ///
             /// - Parameters:
-            ///   - version:
-            public init(version: Swift.String) {
-                self.version = version
+            ///   - beta:
+            ///   - latest:
+            ///   - stable:
+            public init(
+                beta: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
+                latest: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil,
+                stable: Components.Schemas.APIPackageControllerGetRouteModelNamedBuildResultsAPIPackageControllerGetRouteModelPlatformResults? = nil
+            ) {
+                self.beta = beta
+                self.latest = latest
+                self.stable = stable
             }
             public enum CodingKeys: String, CodingKey {
-                case version
+                case beta
+                case latest
+                case stable
             }
         }
         /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelProduct`.
@@ -1395,74 +1818,90 @@ public enum Components {
                 case _type = "type"
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults`.
-        public struct APIPackageControllerGetRouteModelSwiftVersionResults: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_7`.
-            public var v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_6`.
-            public var v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_8`.
-            public var v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelSwiftVersionResults/v5_9`.
-            public var v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
-            /// Creates a new `APIPackageControllerGetRouteModelSwiftVersionResults`.
+        /// - Remark: Generated from `#/components/schemas/Any`.
+        public struct _Any: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Any/_0`.
+            public var _0: Components.Schemas.SearchPackageResult
+            /// Creates a new `_Any`.
             ///
             /// - Parameters:
-            ///   - v5_7:
-            ///   - v5_6:
-            ///   - v5_8:
-            ///   - v5_9:
-            public init(
-                v5_7: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
-                v5_6: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
-                v5_8: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion,
-                v5_9: Components.Schemas.APIPackageControllerGetRouteModelBuildResultSwiftVersion
-            ) {
-                self.v5_7 = v5_7
-                self.v5_6 = v5_6
-                self.v5_8 = v5_8
-                self.v5_9 = v5_9
+            ///   - _0:
+            public init(_0: Components.Schemas.SearchPackageResult) {
+                self._0 = _0
             }
             public enum CodingKeys: String, CodingKey {
-                case v5_7
-                case v5_6
-                case v5_8
-                case v5_9
+                case _0
             }
         }
-        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName`.
-        public struct PackageCollectionModelV1SignatureCertificateName: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organizationalUnit`.
-            public var organizationalUnit: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/commonName`.
-            public var commonName: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/organization`.
-            public var organization: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1SignatureCertificateName/userID`.
-            public var userID: Swift.String?
-            /// Creates a new `PackageCollectionModelV1SignatureCertificateName`.
+        /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionAuthor`.
+        public struct PackageCollectionModelV1CollectionPackageVersionAuthor: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1CollectionPackageVersionAuthor/name`.
+            public var name: Swift.String
+            /// Creates a new `PackageCollectionModelV1CollectionPackageVersionAuthor`.
             ///
             /// - Parameters:
-            ///   - organizationalUnit:
-            ///   - commonName:
-            ///   - organization:
-            ///   - userID:
-            public init(
-                organizationalUnit: Swift.String? = nil,
-                commonName: Swift.String? = nil,
-                organization: Swift.String? = nil,
-                userID: Swift.String? = nil
-            ) {
-                self.organizationalUnit = organizationalUnit
-                self.commonName = commonName
-                self.organization = organization
-                self.userID = userID
+            ///   - name:
+            public init(name: Swift.String) {
+                self.name = name
             }
             public enum CodingKeys: String, CodingKey {
-                case organizationalUnit
-                case commonName
-                case organization
-                case userID
+                case name
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/ResolvedDependency`.
+        public struct ResolvedDependency: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/ResolvedDependency/packageName`.
+            public var packageName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/ResolvedDependency/repositoryURL`.
+            public var repositoryURL: Swift.String
+            /// Creates a new `ResolvedDependency`.
+            ///
+            /// - Parameters:
+            ///   - packageName:
+            ///   - repositoryURL:
+            public init(
+                packageName: Swift.String,
+                repositoryURL: Swift.String
+            ) {
+                self.packageName = packageName
+                self.repositoryURL = repositoryURL
+            }
+            public enum CodingKeys: String, CodingKey {
+                case packageName
+                case repositoryURL
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/BuildPlatform`.
+        @frozen public enum BuildPlatform: String, Codable, Hashable, Sendable {
+            case ios = "ios"
+            case linux = "linux"
+            case macos_hyphen_spm = "macos-spm"
+            case macos_hyphen_xcodebuild = "macos-xcodebuild"
+            case tvos = "tvos"
+            case visionos = "visionos"
+            case watchos = "watchos"
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
+        public struct APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/status`.
+            public var status: Swift.String
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility/parameter`.
+            public var parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility
+            /// Creates a new `APIPackageControllerGetRouteModelBuildResultAPIPackageControllerGetRouteModelPlatformCompatibility`.
+            ///
+            /// - Parameters:
+            ///   - status:
+            ///   - parameter:
+            public init(
+                status: Swift.String,
+                parameter: Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility
+            ) {
+                self.status = status
+                self.parameter = parameter
+            }
+            public enum CodingKeys: String, CodingKey {
+                case status
+                case parameter
             }
         }
         /// - Remark: Generated from `#/components/schemas/PackageCollectionModelV1Signature`.
@@ -1488,302 +1927,185 @@ public enum Components {
                 case signature
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO`.
-        public struct APIPostBuildReportDTO: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildCommand`.
-            public var buildCommand: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/status`.
-            public var status: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/jobUrl`.
-            public var jobUrl: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/logUrl`.
-            public var logUrl: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/platform`.
-            public var platform: Components.Schemas.BuildPlatform
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/swiftVersion`.
-            public var swiftVersion: Components.Schemas.SwiftVersion
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/buildId`.
-            public var buildId: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/runnerId`.
-            public var runnerId: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/productDependencies`.
-            public var productDependencies: [Components.Schemas.ProductDependency]?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/builderVersion`.
-            public var builderVersion: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPostBuildReportDTO/resolvedDependencies`.
-            public var resolvedDependencies: [Components.Schemas.ResolvedDependency]?
-            /// Creates a new `APIPostBuildReportDTO`.
+        /// - Remark: Generated from `#/components/schemas/DocArchive`.
+        public struct DocArchive: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/DocArchive/title`.
+            public var title: Swift.String
+            /// - Remark: Generated from `#/components/schemas/DocArchive/name`.
+            public var name: Swift.String
+            /// Creates a new `DocArchive`.
             ///
             /// - Parameters:
-            ///   - buildCommand:
-            ///   - status:
-            ///   - jobUrl:
-            ///   - logUrl:
-            ///   - platform:
-            ///   - swiftVersion:
-            ///   - buildId:
-            ///   - runnerId:
-            ///   - productDependencies:
-            ///   - builderVersion:
-            ///   - resolvedDependencies:
+            ///   - title:
+            ///   - name:
             public init(
-                buildCommand: Swift.String? = nil,
-                status: Swift.String,
-                jobUrl: Swift.String? = nil,
-                logUrl: Swift.String? = nil,
-                platform: Components.Schemas.BuildPlatform,
-                swiftVersion: Components.Schemas.SwiftVersion,
-                buildId: Swift.String,
-                runnerId: Swift.String? = nil,
-                productDependencies: [Components.Schemas.ProductDependency]? = nil,
-                builderVersion: Swift.String? = nil,
-                resolvedDependencies: [Components.Schemas.ResolvedDependency]? = nil
+                title: Swift.String,
+                name: Swift.String
             ) {
-                self.buildCommand = buildCommand
-                self.status = status
-                self.jobUrl = jobUrl
-                self.logUrl = logUrl
-                self.platform = platform
-                self.swiftVersion = swiftVersion
-                self.buildId = buildId
-                self.runnerId = runnerId
-                self.productDependencies = productDependencies
-                self.builderVersion = builderVersion
-                self.resolvedDependencies = resolvedDependencies
+                self.title = title
+                self.name = name
             }
             public enum CodingKeys: String, CodingKey {
-                case buildCommand
-                case status
-                case jobUrl
-                case logUrl
-                case platform
-                case swiftVersion
-                case buildId
-                case runnerId
-                case productDependencies
-                case builderVersion
-                case resolvedDependencies
+                case title
+                case name
             }
         }
-        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel`.
-        public struct APIPackageControllerGetRouteModel: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionCompatibility`.
-            public var swiftVersionCompatibility: [Components.Schemas.SwiftVersion]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/weightedKeywords`.
-            public var weightedKeywords: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/keywords`.
-            public var keywords: [Swift.String]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/packageId`.
-            public var packageId: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/summary`.
-            public var summary: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/license`.
-            public var license: Components.Schemas.License
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformBuildInfo`.
-            public var platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/products`.
-            public var products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
-            public struct authorsPayload: Codable, Hashable, Sendable {
-                /// A container of undocumented properties.
-                public var additionalProperties: [String: Components.Schemas._Any]
-                /// Creates a new `authorsPayload`.
-                ///
-                /// - Parameters:
-                ///   - additionalProperties: A container of undocumented properties.
-                public init(additionalProperties: [String: Components.Schemas._Any] = .init()) {
-                    self.additionalProperties = additionalProperties
-                }
-                public init(from decoder: any Decoder) throws {
-                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try encoder.encodeAdditionalProperties(additionalProperties)
-                }
-            }
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/authors`.
-            public var authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/activity`.
-            public var activity: Components.Schemas.APIPackageControllerGetRouteModelActivity?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/score`.
-            public var score: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/title`.
-            public var title: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwner`.
-            public var repositoryOwner: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/platformCompatibility`.
-            public var platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/targets`.
-            public var targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releaseReferences`.
-            public var releaseReferences: [Components.Schemas.Reference]
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/dependencies`.
-            public var dependencies: [Components.Schemas.ResolvedDependency]?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/url`.
-            public var url: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/homepageUrl`.
-            public var homepageUrl: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/isArchived`.
-            public var isArchived: Swift.Bool
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/licenseUrl`.
-            public var licenseUrl: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
-            public struct documentationTargetPayload: Codable, Hashable, Sendable {
-                /// A container of undocumented properties.
-                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                /// Creates a new `documentationTargetPayload`.
-                ///
-                /// - Parameters:
-                ///   - additionalProperties: A container of undocumented properties.
-                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
-                    self.additionalProperties = additionalProperties
-                }
-                public init(from decoder: any Decoder) throws {
-                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try encoder.encodeAdditionalProperties(additionalProperties)
-                }
-            }
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/documentationTarget`.
-            public var documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/swiftVersionBuildInfo`.
-            public var swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryOwnerName`.
-            public var repositoryOwnerName: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/hasBinaryTargets`.
-            public var hasBinaryTargets: Swift.Bool
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/stars`.
-            public var stars: Swift.Int64?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/history`.
-            public var history: Components.Schemas.APIPackageControllerGetRouteModelHistory?
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/repositoryName`.
-            public var repositoryName: Swift.String
-            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModel/releases`.
-            public var releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo
-            /// Creates a new `APIPackageControllerGetRouteModel`.
+        /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel`.
+        public struct SearchFilterViewModel: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/key`.
+            public var key: Swift.String
+            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/value`.
+            public var value: Swift.String
+            /// - Remark: Generated from `#/components/schemas/SearchFilterViewModel/operator`.
+            public var _operator: Swift.String
+            /// Creates a new `SearchFilterViewModel`.
             ///
             /// - Parameters:
-            ///   - swiftVersionCompatibility:
-            ///   - weightedKeywords:
-            ///   - keywords:
-            ///   - packageId:
-            ///   - summary:
-            ///   - license:
-            ///   - platformBuildInfo:
-            ///   - products:
-            ///   - authors:
-            ///   - activity:
-            ///   - score:
-            ///   - title:
-            ///   - repositoryOwner:
-            ///   - platformCompatibility:
-            ///   - targets:
-            ///   - releaseReferences:
-            ///   - dependencies:
-            ///   - url:
-            ///   - homepageUrl:
-            ///   - isArchived:
-            ///   - licenseUrl:
-            ///   - documentationTarget:
-            ///   - swiftVersionBuildInfo:
-            ///   - repositoryOwnerName:
-            ///   - hasBinaryTargets:
-            ///   - stars:
-            ///   - history:
-            ///   - repositoryName:
-            ///   - releases:
+            ///   - key:
+            ///   - value:
+            ///   - _operator:
             public init(
-                swiftVersionCompatibility: [Components.Schemas.SwiftVersion]? = nil,
-                weightedKeywords: Swift.String,
-                keywords: [Swift.String]? = nil,
-                packageId: Swift.String,
-                summary: Swift.String? = nil,
-                license: Components.Schemas.License,
-                platformBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelPlatformResults? = nil,
-                products: [Components.Schemas.APIPackageControllerGetRouteModelProduct]? = nil,
-                authors: Components.Schemas.APIPackageControllerGetRouteModel.authorsPayload? = nil,
-                activity: Components.Schemas.APIPackageControllerGetRouteModelActivity? = nil,
-                score: Swift.Int64? = nil,
-                title: Swift.String,
-                repositoryOwner: Swift.String,
-                platformCompatibility: [Components.Schemas.APIPackageControllerGetRouteModelPlatformCompatibility]? = nil,
-                targets: [Components.Schemas.APIPackageControllerGetRouteModelTarget]? = nil,
-                releaseReferences: [Components.Schemas.Reference],
-                dependencies: [Components.Schemas.ResolvedDependency]? = nil,
-                url: Swift.String,
-                homepageUrl: Swift.String? = nil,
-                isArchived: Swift.Bool,
-                licenseUrl: Swift.String? = nil,
-                documentationTarget: Components.Schemas.APIPackageControllerGetRouteModel.documentationTargetPayload? = nil,
-                swiftVersionBuildInfo: Components.Schemas.APIPackageControllerGetRouteModelBuildInfoAPIPackageControllerGetRouteModelSwiftVersionResults? = nil,
-                repositoryOwnerName: Swift.String,
-                hasBinaryTargets: Swift.Bool,
-                stars: Swift.Int64? = nil,
-                history: Components.Schemas.APIPackageControllerGetRouteModelHistory? = nil,
-                repositoryName: Swift.String,
-                releases: Components.Schemas.APIPackageControllerGetRouteModelReleaseInfo
+                key: Swift.String,
+                value: Swift.String,
+                _operator: Swift.String
             ) {
-                self.swiftVersionCompatibility = swiftVersionCompatibility
-                self.weightedKeywords = weightedKeywords
-                self.keywords = keywords
-                self.packageId = packageId
-                self.summary = summary
-                self.license = license
-                self.platformBuildInfo = platformBuildInfo
-                self.products = products
-                self.authors = authors
-                self.activity = activity
-                self.score = score
-                self.title = title
-                self.repositoryOwner = repositoryOwner
-                self.platformCompatibility = platformCompatibility
-                self.targets = targets
-                self.releaseReferences = releaseReferences
-                self.dependencies = dependencies
-                self.url = url
-                self.homepageUrl = homepageUrl
-                self.isArchived = isArchived
-                self.licenseUrl = licenseUrl
-                self.documentationTarget = documentationTarget
-                self.swiftVersionBuildInfo = swiftVersionBuildInfo
-                self.repositoryOwnerName = repositoryOwnerName
-                self.hasBinaryTargets = hasBinaryTargets
-                self.stars = stars
-                self.history = history
-                self.repositoryName = repositoryName
-                self.releases = releases
+                self.key = key
+                self.value = value
+                self._operator = _operator
             }
             public enum CodingKeys: String, CodingKey {
-                case swiftVersionCompatibility
-                case weightedKeywords
-                case keywords
-                case packageId
-                case summary
-                case license
-                case platformBuildInfo
-                case products
-                case authors
-                case activity
-                case score
-                case title
-                case repositoryOwner
-                case platformCompatibility
-                case targets
-                case releaseReferences
-                case dependencies
-                case url
-                case homepageUrl
-                case isArchived
-                case licenseUrl
-                case documentationTarget
-                case swiftVersionBuildInfo
-                case repositoryOwnerName
-                case hasBinaryTargets
-                case stars
-                case history
-                case repositoryName
-                case releases
+                case key
+                case value
+                case _operator = "operator"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/Badge`.
+        public struct Badge: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Badge/schemaVersion`.
+            public var schemaVersion: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/Badge/cacheSeconds`.
+            public var cacheSeconds: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/Badge/isError`.
+            public var isError: Swift.Bool
+            /// - Remark: Generated from `#/components/schemas/Badge/label`.
+            public var label: Swift.String
+            /// - Remark: Generated from `#/components/schemas/Badge/logoSvg`.
+            public var logoSvg: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/Badge/message`.
+            public var message: Swift.String
+            /// - Remark: Generated from `#/components/schemas/Badge/color`.
+            public var color: Swift.String
+            /// Creates a new `Badge`.
+            ///
+            /// - Parameters:
+            ///   - schemaVersion:
+            ///   - cacheSeconds:
+            ///   - isError:
+            ///   - label:
+            ///   - logoSvg:
+            ///   - message:
+            ///   - color:
+            public init(
+                schemaVersion: Swift.Int64,
+                cacheSeconds: Swift.Int64,
+                isError: Swift.Bool,
+                label: Swift.String,
+                logoSvg: Swift.String? = nil,
+                message: Swift.String,
+                color: Swift.String
+            ) {
+                self.schemaVersion = schemaVersion
+                self.cacheSeconds = cacheSeconds
+                self.isError = isError
+                self.label = label
+                self.logoSvg = logoSvg
+                self.message = message
+                self.color = color
+            }
+            public enum CodingKeys: String, CodingKey {
+                case schemaVersion
+                case cacheSeconds
+                case isError
+                case label
+                case logoSvg
+                case message
+                case color
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/SwiftVersion`.
+        public struct SwiftVersion: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/SwiftVersion/patch`.
+            public var patch: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/SwiftVersion/major`.
+            public var major: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/SwiftVersion/minor`.
+            public var minor: Swift.Int64
+            /// Creates a new `SwiftVersion`.
+            ///
+            /// - Parameters:
+            ///   - patch:
+            ///   - major:
+            ///   - minor:
+            public init(
+                patch: Swift.Int64,
+                major: Swift.Int64,
+                minor: Swift.Int64
+            ) {
+                self.patch = patch
+                self.major = major
+                self.minor = minor
+            }
+            public enum CodingKeys: String, CodingKey {
+                case patch
+                case major
+                case minor
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity`.
+        public struct APIPackageControllerGetRouteModelActivity: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastIssueClosedAt`.
+            public var lastIssueClosedAt: Foundation.Date?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/lastPullRequestClosedAt`.
+            public var lastPullRequestClosedAt: Foundation.Date?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsCount`.
+            public var openPullRequestsCount: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openPullRequestsURL`.
+            public var openPullRequestsURL: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesCount`.
+            public var openIssuesCount: Swift.Int64
+            /// - Remark: Generated from `#/components/schemas/APIPackageControllerGetRouteModelActivity/openIssuesURL`.
+            public var openIssuesURL: Swift.String?
+            /// Creates a new `APIPackageControllerGetRouteModelActivity`.
+            ///
+            /// - Parameters:
+            ///   - lastIssueClosedAt:
+            ///   - lastPullRequestClosedAt:
+            ///   - openPullRequestsCount:
+            ///   - openPullRequestsURL:
+            ///   - openIssuesCount:
+            ///   - openIssuesURL:
+            public init(
+                lastIssueClosedAt: Foundation.Date? = nil,
+                lastPullRequestClosedAt: Foundation.Date? = nil,
+                openPullRequestsCount: Swift.Int64,
+                openPullRequestsURL: Swift.String? = nil,
+                openIssuesCount: Swift.Int64,
+                openIssuesURL: Swift.String? = nil
+            ) {
+                self.lastIssueClosedAt = lastIssueClosedAt
+                self.lastPullRequestClosedAt = lastPullRequestClosedAt
+                self.openPullRequestsCount = openPullRequestsCount
+                self.openPullRequestsURL = openPullRequestsURL
+                self.openIssuesCount = openIssuesCount
+                self.openIssuesURL = openIssuesURL
+            }
+            public enum CodingKeys: String, CodingKey {
+                case lastIssueClosedAt
+                case lastPullRequestClosedAt
+                case openPullRequestsCount
+                case openPullRequestsURL
+                case openIssuesCount
+                case openIssuesURL
             }
         }
     }
@@ -1799,6 +2121,118 @@ public enum Components {
 
 /// API operations, with input and output types, generated from `#/paths` in the OpenAPI document.
 public enum Operations {
+    /// /api/version
+    ///
+    /// Get the site's version.
+    ///
+    /// - Remark: HTTP `GET /api/version`.
+    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
+    public enum getApiVersion {
+        public static let id: Swift.String = "getApiVersion"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/api/version/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.getApiVersion.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - headers:
+            public init(headers: Operations.getApiVersion.Input.Headers = .init()) {
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content/application\/json`.
+                    case json(Components.Schemas.APIVersion)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.APIVersion {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.getApiVersion.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.getApiVersion.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// OK
+            ///
+            /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.getApiVersion.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.getApiVersion.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
     /// /api/builds/{id}/doc-report
     ///
     /// Send a documentation generation report.
@@ -1895,145 +2329,6 @@ public enum Operations {
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
             public var ok: Operations.postApiBuildsByIdDoc_hyphen_report.Output.Ok {
-                get throws {
-                    switch self {
-                    case let .ok(response):
-                        return response
-                    default:
-                        try throwUnexpectedResponseStatus(
-                            expectedStatus: "ok",
-                            response: self
-                        )
-                    }
-                }
-            }
-            /// Undocumented response.
-            ///
-            /// A response with a code that is not documented in the OpenAPI document.
-            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
-        }
-        @frozen public enum AcceptableContentType: AcceptableProtocol {
-            case json
-            case other(Swift.String)
-            public init?(rawValue: Swift.String) {
-                switch rawValue.lowercased() {
-                case "application/json":
-                    self = .json
-                default:
-                    self = .other(rawValue)
-                }
-            }
-            public var rawValue: Swift.String {
-                switch self {
-                case let .other(string):
-                    return string
-                case .json:
-                    return "application/json"
-                }
-            }
-            public static var allCases: [Self] {
-                [
-                    .json
-                ]
-            }
-        }
-    }
-    /// /api/versions/{id}/build-report
-    ///
-    /// Send a build report.
-    ///
-    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
-    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
-    public enum postApiVersionsByIdBuild_hyphen_report {
-        public static let id: Swift.String = "postApiVersionsByIdBuild-report"
-        public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path`.
-            public struct Path: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path/id`.
-                public var id: Swift.String
-                /// Creates a new `Path`.
-                ///
-                /// - Parameters:
-                ///   - id:
-                public init(id: Swift.String) {
-                    self.id = id
-                }
-            }
-            public var path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path
-            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/header`.
-            public struct Headers: Sendable, Hashable {
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>]
-                /// Creates a new `Headers`.
-                ///
-                /// - Parameters:
-                ///   - accept:
-                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>] = .defaultValues()) {
-                    self.accept = accept
-                }
-            }
-            public var headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers
-            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody`.
-            @frozen public enum Body: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody/content/application\/json`.
-                case json(Components.Schemas.APIPostBuildReportDTO)
-            }
-            public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
-            /// Creates a new `Input`.
-            ///
-            /// - Parameters:
-            ///   - path:
-            ///   - headers:
-            ///   - body:
-            public init(
-                path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
-                headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
-                body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
-            ) {
-                self.path = path
-                self.headers = headers
-                self.body = body
-            }
-        }
-        @frozen public enum Output: Sendable, Hashable {
-            public struct Ok: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content`.
-                @frozen public enum Body: Sendable, Hashable {
-                    /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content/application\/json`.
-                    case json(Swift.Int64)
-                    /// The associated value of the enum case if `self` is `.json`.
-                    ///
-                    /// - Throws: An error if `self` is not `.json`.
-                    /// - SeeAlso: `.json`.
-                    public var json: Swift.Int64 {
-                        get throws {
-                            switch self {
-                            case let .json(body):
-                                return body
-                            }
-                        }
-                    }
-                }
-                /// Received HTTP response body
-                public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
-                /// Creates a new `Ok`.
-                ///
-                /// - Parameters:
-                ///   - body: Received HTTP response body
-                public init(body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body) {
-                    self.body = body
-                }
-            }
-            /// OK
-            ///
-            /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)/responses/200`.
-            ///
-            /// HTTP response code: `200 ok`.
-            case ok(Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok)
-            /// The associated value of the enum case if `self` is `.ok`.
-            ///
-            /// - Throws: An error if `self` is not `.ok`.
-            /// - SeeAlso: `.ok`.
-            public var ok: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2230,46 +2525,71 @@ public enum Operations {
             }
         }
     }
-    /// /api/version
+    /// /api/packages/{owner}/{repository}
     ///
-    /// Get the site's version.
+    /// Get package details.
     ///
-    /// - Remark: HTTP `GET /api/version`.
-    /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)`.
-    public enum getApiVersion {
-        public static let id: Swift.String = "getApiVersion"
+    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
+    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
+    public enum getApiPackagesByOwnerByRepository {
+        public static let id: Swift.String = "getApiPackagesByOwnerByRepository"
         public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/api/version/GET/header`.
+            /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/owner`.
+                public var owner: Swift.String
+                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/repository`.
+                public var repository: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - owner:
+                ///   - repository:
+                public init(
+                    owner: Swift.String,
+                    repository: Swift.String
+                ) {
+                    self.owner = owner
+                    self.repository = repository
+                }
+            }
+            public var path: Operations.getApiPackagesByOwnerByRepository.Input.Path
+            /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/header`.
             public struct Headers: Sendable, Hashable {
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>]
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
                 ///   - accept:
-                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiVersion.AcceptableContentType>] = .defaultValues()) {
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>] = .defaultValues()) {
                     self.accept = accept
                 }
             }
-            public var headers: Operations.getApiVersion.Input.Headers
+            public var headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers
             /// Creates a new `Input`.
             ///
             /// - Parameters:
+            ///   - path:
             ///   - headers:
-            public init(headers: Operations.getApiVersion.Input.Headers = .init()) {
+            public init(
+                path: Operations.getApiPackagesByOwnerByRepository.Input.Path,
+                headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers = .init()
+            ) {
+                self.path = path
                 self.headers = headers
             }
         }
         @frozen public enum Output: Sendable, Hashable {
             public struct Ok: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content`.
+                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content`.
                 @frozen public enum Body: Sendable, Hashable {
-                    /// - Remark: Generated from `#/paths/api/version/GET/responses/200/content/application\/json`.
-                    case json(Components.Schemas.APIVersion)
+                    /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content/application\/json`.
+                    case json(Components.Schemas.APIPackageControllerGetRouteModel)
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Components.Schemas.APIVersion {
+                    public var json: Components.Schemas.APIPackageControllerGetRouteModel {
                         get throws {
                             switch self {
                             case let .json(body):
@@ -2279,26 +2599,288 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.getApiVersion.Output.Ok.Body
+                public var body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - body: Received HTTP response body
-                public init(body: Operations.getApiVersion.Output.Ok.Body) {
+                public init(body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body) {
                     self.body = body
                 }
             }
             /// OK
             ///
-            /// - Remark: Generated from `#/paths//api/version/get(getApiVersion)/responses/200`.
+            /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
-            case ok(Operations.getApiVersion.Output.Ok)
+            case ok(Operations.getApiPackagesByOwnerByRepository.Output.Ok)
             /// The associated value of the enum case if `self` is `.ok`.
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            public var ok: Operations.getApiVersion.Output.Ok {
+            public var ok: Operations.getApiPackagesByOwnerByRepository.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// /api/versions/{id}/build-report
+    ///
+    /// Send a build report.
+    ///
+    /// - Remark: HTTP `POST /api/versions/{id}/build-report`.
+    /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)`.
+    public enum postApiVersionsByIdBuild_hyphen_report {
+        public static let id: Swift.String = "postApiVersionsByIdBuild-report"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - id:
+                public init(id: Swift.String) {
+                    self.id = id
+                }
+            }
+            public var path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path
+            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiVersionsByIdBuild_hyphen_report.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers
+            /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.APIPostBuildReportDTO)
+            }
+            public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Path,
+                headers: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Headers = .init(),
+                body: Operations.postApiVersionsByIdBuild_hyphen_report.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/api/versions/{id}/build-report/POST/responses/200/content/application\/json`.
+                    case json(Swift.Int64)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Swift.Int64 {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// OK
+            ///
+            /// - Remark: Generated from `#/paths//api/versions/{id}/build-report/post(postApiVersionsByIdBuild-report)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.postApiVersionsByIdBuild_hyphen_report.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// /api/package-collections
+    ///
+    /// Generate a signed package collection.
+    ///
+    /// - Remark: HTTP `POST /api/package-collections`.
+    /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
+    public enum postApiPackage_hyphen_collections {
+        public static let id: Swift.String = "postApiPackage-collections"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/api/package-collections/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.postApiPackage_hyphen_collections.Input.Headers
+            /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.APIPostPackageCollectionDTO)
+            }
+            public var body: Operations.postApiPackage_hyphen_collections.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - headers:
+            ///   - body:
+            public init(
+                headers: Operations.postApiPackage_hyphen_collections.Input.Headers = .init(),
+                body: Operations.postApiPackage_hyphen_collections.Input.Body
+            ) {
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content/application\/json`.
+                    case json(Components.Schemas.PackageCollectionModelV1SignedCollection)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.PackageCollectionModelV1SignedCollection {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// OK
+            ///
+            /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.postApiPackage_hyphen_collections.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.postApiPackage_hyphen_collections.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
@@ -2441,266 +3023,6 @@ public enum Operations {
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
             public var ok: Operations.getApiSearch.Output.Ok {
-                get throws {
-                    switch self {
-                    case let .ok(response):
-                        return response
-                    default:
-                        try throwUnexpectedResponseStatus(
-                            expectedStatus: "ok",
-                            response: self
-                        )
-                    }
-                }
-            }
-            /// Undocumented response.
-            ///
-            /// A response with a code that is not documented in the OpenAPI document.
-            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
-        }
-        @frozen public enum AcceptableContentType: AcceptableProtocol {
-            case json
-            case other(Swift.String)
-            public init?(rawValue: Swift.String) {
-                switch rawValue.lowercased() {
-                case "application/json":
-                    self = .json
-                default:
-                    self = .other(rawValue)
-                }
-            }
-            public var rawValue: Swift.String {
-                switch self {
-                case let .other(string):
-                    return string
-                case .json:
-                    return "application/json"
-                }
-            }
-            public static var allCases: [Self] {
-                [
-                    .json
-                ]
-            }
-        }
-    }
-    /// /api/packages/{owner}/{repository}
-    ///
-    /// Get package details.
-    ///
-    /// - Remark: HTTP `GET /api/packages/{owner}/{repository}`.
-    /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)`.
-    public enum getApiPackagesByOwnerByRepository {
-        public static let id: Swift.String = "getApiPackagesByOwnerByRepository"
-        public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path`.
-            public struct Path: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/owner`.
-                public var owner: Swift.String
-                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/path/repository`.
-                public var repository: Swift.String
-                /// Creates a new `Path`.
-                ///
-                /// - Parameters:
-                ///   - owner:
-                ///   - repository:
-                public init(
-                    owner: Swift.String,
-                    repository: Swift.String
-                ) {
-                    self.owner = owner
-                    self.repository = repository
-                }
-            }
-            public var path: Operations.getApiPackagesByOwnerByRepository.Input.Path
-            /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/header`.
-            public struct Headers: Sendable, Hashable {
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>]
-                /// Creates a new `Headers`.
-                ///
-                /// - Parameters:
-                ///   - accept:
-                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.getApiPackagesByOwnerByRepository.AcceptableContentType>] = .defaultValues()) {
-                    self.accept = accept
-                }
-            }
-            public var headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers
-            /// Creates a new `Input`.
-            ///
-            /// - Parameters:
-            ///   - path:
-            ///   - headers:
-            public init(
-                path: Operations.getApiPackagesByOwnerByRepository.Input.Path,
-                headers: Operations.getApiPackagesByOwnerByRepository.Input.Headers = .init()
-            ) {
-                self.path = path
-                self.headers = headers
-            }
-        }
-        @frozen public enum Output: Sendable, Hashable {
-            public struct Ok: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content`.
-                @frozen public enum Body: Sendable, Hashable {
-                    /// - Remark: Generated from `#/paths/api/packages/{owner}/{repository}/GET/responses/200/content/application\/json`.
-                    case json(Components.Schemas.APIPackageControllerGetRouteModel)
-                    /// The associated value of the enum case if `self` is `.json`.
-                    ///
-                    /// - Throws: An error if `self` is not `.json`.
-                    /// - SeeAlso: `.json`.
-                    public var json: Components.Schemas.APIPackageControllerGetRouteModel {
-                        get throws {
-                            switch self {
-                            case let .json(body):
-                                return body
-                            }
-                        }
-                    }
-                }
-                /// Received HTTP response body
-                public var body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body
-                /// Creates a new `Ok`.
-                ///
-                /// - Parameters:
-                ///   - body: Received HTTP response body
-                public init(body: Operations.getApiPackagesByOwnerByRepository.Output.Ok.Body) {
-                    self.body = body
-                }
-            }
-            /// OK
-            ///
-            /// - Remark: Generated from `#/paths//api/packages/{owner}/{repository}/get(getApiPackagesByOwnerByRepository)/responses/200`.
-            ///
-            /// HTTP response code: `200 ok`.
-            case ok(Operations.getApiPackagesByOwnerByRepository.Output.Ok)
-            /// The associated value of the enum case if `self` is `.ok`.
-            ///
-            /// - Throws: An error if `self` is not `.ok`.
-            /// - SeeAlso: `.ok`.
-            public var ok: Operations.getApiPackagesByOwnerByRepository.Output.Ok {
-                get throws {
-                    switch self {
-                    case let .ok(response):
-                        return response
-                    default:
-                        try throwUnexpectedResponseStatus(
-                            expectedStatus: "ok",
-                            response: self
-                        )
-                    }
-                }
-            }
-            /// Undocumented response.
-            ///
-            /// A response with a code that is not documented in the OpenAPI document.
-            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
-        }
-        @frozen public enum AcceptableContentType: AcceptableProtocol {
-            case json
-            case other(Swift.String)
-            public init?(rawValue: Swift.String) {
-                switch rawValue.lowercased() {
-                case "application/json":
-                    self = .json
-                default:
-                    self = .other(rawValue)
-                }
-            }
-            public var rawValue: Swift.String {
-                switch self {
-                case let .other(string):
-                    return string
-                case .json:
-                    return "application/json"
-                }
-            }
-            public static var allCases: [Self] {
-                [
-                    .json
-                ]
-            }
-        }
-    }
-    /// /api/package-collections
-    ///
-    /// Generate a signed package collection.
-    ///
-    /// - Remark: HTTP `POST /api/package-collections`.
-    /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)`.
-    public enum postApiPackage_hyphen_collections {
-        public static let id: Swift.String = "postApiPackage-collections"
-        public struct Input: Sendable, Hashable {
-            /// - Remark: Generated from `#/paths/api/package-collections/POST/header`.
-            public struct Headers: Sendable, Hashable {
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>]
-                /// Creates a new `Headers`.
-                ///
-                /// - Parameters:
-                ///   - accept:
-                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postApiPackage_hyphen_collections.AcceptableContentType>] = .defaultValues()) {
-                    self.accept = accept
-                }
-            }
-            public var headers: Operations.postApiPackage_hyphen_collections.Input.Headers
-            /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody`.
-            @frozen public enum Body: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/package-collections/POST/requestBody/content/application\/json`.
-                case json(Components.Schemas.APIPostPackageCollectionDTO)
-            }
-            public var body: Operations.postApiPackage_hyphen_collections.Input.Body
-            /// Creates a new `Input`.
-            ///
-            /// - Parameters:
-            ///   - headers:
-            ///   - body:
-            public init(
-                headers: Operations.postApiPackage_hyphen_collections.Input.Headers = .init(),
-                body: Operations.postApiPackage_hyphen_collections.Input.Body
-            ) {
-                self.headers = headers
-                self.body = body
-            }
-        }
-        @frozen public enum Output: Sendable, Hashable {
-            public struct Ok: Sendable, Hashable {
-                /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content`.
-                @frozen public enum Body: Sendable, Hashable {
-                    /// - Remark: Generated from `#/paths/api/package-collections/POST/responses/200/content/application\/json`.
-                    case json(Components.Schemas.PackageCollectionModelV1SignedCollection)
-                    /// The associated value of the enum case if `self` is `.json`.
-                    ///
-                    /// - Throws: An error if `self` is not `.json`.
-                    /// - SeeAlso: `.json`.
-                    public var json: Components.Schemas.PackageCollectionModelV1SignedCollection {
-                        get throws {
-                            switch self {
-                            case let .json(body):
-                                return body
-                            }
-                        }
-                    }
-                }
-                /// Received HTTP response body
-                public var body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body
-                /// Creates a new `Ok`.
-                ///
-                /// - Parameters:
-                ///   - body: Received HTTP response body
-                public init(body: Operations.postApiPackage_hyphen_collections.Output.Ok.Body) {
-                    self.body = body
-                }
-            }
-            /// OK
-            ///
-            /// - Remark: Generated from `#/paths//api/package-collections/post(postApiPackage-collections)/responses/200`.
-            ///
-            /// HTTP response code: `200 ok`.
-            case ok(Operations.postApiPackage_hyphen_collections.Output.Ok)
-            /// The associated value of the enum case if `self` is `.ok`.
-            ///
-            /// - Throws: An error if `self` is not `.ok`.
-            /// - SeeAlso: `.ok`.
-            public var ok: Operations.postApiPackage_hyphen_collections.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):
