@@ -39,16 +39,15 @@ let package = Package(
             exclude: [
                 "production.openapi.json",
                 "staging.openapi.json",
+                //                "openapi.json",
+                //                "openapi-generator-config.yaml"
+            ],
+            plugins: [
+                .plugin(
+                    name: "OpenAPIGenerator",
+                    package: "swift-openapi-generator"
+                ),
             ]
-//                "openapi.json",
-//                "openapi-generator-config.yaml"
-            // -
-//            plugins: [
-//                .plugin(
-//                    name: "OpenAPIGenerator",
-//                    package: "swift-openapi-generator"
-//                ),
-//            ]
         ),
         .testTarget(
             name: "SPIAPITests",
