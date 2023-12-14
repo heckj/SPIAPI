@@ -43,11 +43,10 @@ public func search(terms _: String) async throws {
             print(individualResult) // OpenAPI schema information breaks down here with existing schema
             // Ideally we'd be getting a list of packages decoded and returned, but the schema drops
             // to any in the generated code.
-            
+
             // Based on what I've learned about VaporToOpenAPI, this can be mitigated with a more
             // thorough example in the upstream code where the schema is being determined.
         }
-        
 
     // if we want access to the status code for this unexpected scenario:
     case let .undocumented(statusCode: statusCode, _):
